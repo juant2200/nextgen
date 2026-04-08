@@ -325,50 +325,63 @@
   </style>
 <style id="ng-add-css">
 :root{--ng-bg:#0b0f17;--ng-bg2:#131a26;--ng-fg:#e6edf7;--ng-fg2:#9aa6b8;--ng-accent:#C9A84C;--ng-up:#10b981;--ng-down:#ef4444;--ng-border:rgba(201,168,76,.18);--ng-radius:12px;}
-.ng-section{padding:64px 24px;max-width:1200px;margin:0 auto;color:var(--ng-fg);font-family:Inter,sans-serif}
+.ng-section{padding:64px 24px;max-width:1240px;margin:0 auto;color:var(--ng-fg);font-family:Inter,sans-serif}
 .ng-section h2{font-size:32px;margin-bottom:8px;color:var(--ng-accent);font-family:'Playfair Display',serif}
-.ng-section .ng-sub{color:var(--ng-fg2);margin-bottom:32px}
+.ng-section .ng-sub{color:var(--ng-fg2);margin-bottom:28px;font-size:15px}
 .ng-lang-switch{display:inline-flex;gap:4px;background:var(--ng-bg2);padding:4px;border-radius:999px;border:1px solid var(--ng-border)}
 .ng-lang-btn{background:transparent;color:var(--ng-fg2);border:0;padding:6px 14px;border-radius:999px;font-weight:600;font-size:13px;cursor:pointer}
 .ng-lang-btn.active{background:var(--ng-accent);color:#1a120a}
-.ng-market-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-@media(max-width:900px){.ng-market-grid{grid-template-columns:1fr}}
-.ng-market-grid h3{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--ng-fg2);margin-bottom:12px}
-.ng-price-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
-.ng-price-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);padding:14px 16px}
-.ng-price-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
-.ng-price-head strong{font-size:14px}.ng-price-head span{font-size:11px;color:var(--ng-fg2)}
-.ng-price-value{font-size:22px;font-weight:700;margin-bottom:4px}
-.ng-price-change{font-size:13px;font-weight:600}
+.ng-market-wrap{background:linear-gradient(180deg,rgba(201,168,76,.04),rgba(201,168,76,0));border:1px solid var(--ng-border);border-radius:20px;padding:32px;margin-top:16px}
+.ng-market-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+@media(max-width:980px){.ng-market-grid{grid-template-columns:1fr}}
+.ng-market-col h3{font-size:13px;text-transform:uppercase;letter-spacing:1.2px;color:var(--ng-fg2);margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.ng-market-col h3 .ng-live{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ng-up);animation:ngpulse 1.6s infinite}
+@keyframes ngpulse{0%,100%{opacity:.4}50%{opacity:1}}
+.ng-price-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.ng-price-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);padding:14px 16px;cursor:pointer;transition:transform .15s,border-color .15s}
+.ng-price-card:hover{transform:translateY(-2px);border-color:var(--ng-accent)}
+.ng-price-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.ng-price-head strong{font-size:13px}.ng-price-head span{font-size:10px;color:var(--ng-fg2);letter-spacing:.5px}
+.ng-price-value{font-size:20px;font-weight:700;margin-bottom:3px}
+.ng-price-change{font-size:12px;font-weight:600}
 .ng-up .ng-price-change{color:var(--ng-up)}.ng-down .ng-price-change{color:var(--ng-down)}
-.ng-opinion{margin-top:32px;background:var(--ng-bg2);border:1px solid var(--ng-border);border-left:4px solid var(--ng-accent);border-radius:var(--ng-radius);padding:24px 28px}
-.ng-opinion h4{margin:16px 0 6px;color:var(--ng-accent);font-size:13px;text-transform:uppercase}
-.ng-opinion p,.ng-opinion li{color:var(--ng-fg);line-height:1.55}
+.ng-opinion{margin-top:24px;background:var(--ng-bg2);border:1px solid var(--ng-border);border-left:4px solid var(--ng-accent);border-radius:var(--ng-radius);padding:24px 28px}
+.ng-opinion h4{margin:16px 0 6px;color:var(--ng-accent);font-size:13px;text-transform:uppercase;letter-spacing:.5px}
+.ng-opinion p,.ng-opinion li{color:var(--ng-fg);line-height:1.55;font-size:14px}
 .ng-disclaimer{margin-top:18px;font-size:12px;color:var(--ng-fg2);font-style:italic}
 .ng-events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
-.ng-event-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);overflow:hidden}
-.ng-event-cover{aspect-ratio:16/10;background:#0f1622;display:flex;align-items:center;justify-content:center;color:var(--ng-fg2);font-size:13px}
+.ng-event-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);overflow:hidden;cursor:pointer;transition:transform .15s,border-color .15s}
+.ng-event-card:hover{transform:translateY(-3px);border-color:var(--ng-accent)}
+.ng-event-cover{aspect-ratio:16/10;background:linear-gradient(135deg,#1a2333,#0f1622);display:flex;align-items:center;justify-content:center;color:var(--ng-fg2);font-size:34px}
 .ng-event-cover img{width:100%;height:100%;object-fit:cover}
 .ng-event-body{padding:18px 20px}
-.ng-event-body h3{margin:0 0 8px;font-size:18px;color:var(--ng-accent)}
-.ng-event-body p{color:var(--ng-fg);font-size:14px;line-height:1.5}
-.ng-chart-wrap{display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.ng-event-body h3{margin:0 0 8px;font-size:17px;color:var(--ng-accent)}
+.ng-event-body p{color:var(--ng-fg);font-size:13px;line-height:1.5;margin:0}
+.ng-sector-chart{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:900px){.ng-sector-chart{grid-template-columns:1fr}}
+.ng-sector-bars{display:flex;flex-direction:column;gap:10px}
+.ng-bar-row{cursor:pointer}
+.ng-bar-row:hover .ng-bar-fill{filter:brightness(1.25)}
+.ng-bar-label{display:flex;justify-content:space-between;font-size:13px;color:var(--ng-fg);margin-bottom:4px}
+.ng-bar-label strong{color:var(--ng-accent);font-weight:700}
+.ng-bar-track{height:10px;background:var(--ng-bg2);border-radius:999px;overflow:hidden;border:1px solid var(--ng-border)}
+.ng-bar-fill{height:100%;border-radius:999px;transition:filter .15s}
+.ng-sector-pie{display:flex;flex-direction:column;align-items:center;justify-content:center}
 .ng-pie{width:240px;height:240px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.ng-pie-hole{width:130px;height:130px;background:var(--ng-bg);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.ng-pie-hole strong{font-size:38px;color:var(--ng-accent)}
-.ng-pie-hole small{font-size:11px;color:var(--ng-fg2);text-transform:uppercase}
-.ng-chart-legend{list-style:none;padding:0;margin:0}
-.ng-chart-legend li{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:14px}
-.ng-dot{display:inline-block;width:12px;height:12px;border-radius:50%}
-.ng-news-sector{margin-bottom:36px}
-.ng-news-sector h3{font-size:18px;color:var(--ng-accent);margin-bottom:14px;border-bottom:1px solid var(--ng-border);padding-bottom:6px}
-.ng-news-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
-.ng-news-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);padding:18px}
-.ng-news-card h4{font-size:16px;margin:0 0 8px}
-.ng-news-card h4 a{color:var(--ng-fg);text-decoration:none}
-.ng-news-card h4 a:hover{color:var(--ng-accent)}
-.ng-news-card p{font-size:13px;color:var(--ng-fg2);line-height:1.5;margin:0 0 10px}
-.ng-news-more{font-size:12px;color:var(--ng-accent);text-decoration:none;font-weight:600}
+.ng-pie-hole{width:150px;height:150px;background:var(--ng-bg);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ng-pie-hole strong{font-size:42px;color:var(--ng-accent);font-weight:700}
+.ng-pie-hole small{font-size:11px;color:var(--ng-fg2);text-transform:uppercase;letter-spacing:1px}
+.ng-pie-caption{margin-top:14px;font-size:12px;color:var(--ng-fg2);text-align:center}
+.ng-news-sector{margin-bottom:34px}
+.ng-news-sector h3{font-size:17px;color:var(--ng-accent);margin-bottom:12px;border-bottom:1px solid var(--ng-border);padding-bottom:6px}
+.ng-news-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.ng-news-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);padding:16px;cursor:pointer;transition:transform .15s,border-color .15s;display:block;text-decoration:none;color:var(--ng-fg)}
+.ng-news-card:hover{transform:translateY(-2px);border-color:var(--ng-accent)}
+.ng-news-card h4{font-size:15px;margin:0 0 8px;color:var(--ng-fg)}
+.ng-news-card p{font-size:12.5px;color:var(--ng-fg2);line-height:1.5;margin:0 0 10px}
+.ng-news-more{font-size:11px;color:var(--ng-accent);font-weight:600;letter-spacing:.3px}
+#ng-chatbot-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--ng-accent);color:#0A0A0A;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);z-index:9999}
+#ng-chat-modal{position:fixed;bottom:90px;right:24px;width:340px;background:#181818;border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:16px;z-index:9999;color:#F0EDE6;box-shadow:0 8px 40px rgba(0,0,0,.6)}
 </style>
 </head>
 <body>
@@ -1203,32 +1216,36 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 
+</div>
+
+
 <!-- ============================================================
-     NextGEN - Additions injected by Cowork on 2026-04-08
-     Past events, council chart, news, market, language switcher
+     NextGEN v2 Additions - Cowork 2026-04-08
      ============================================================ -->
+<section id="ng-market-extra" class="ng-section">
+  <h2 data-i18n="market.title">Mercado en Vivo</h2>
+  <p class="ng-sub" data-i18n="market.sub">Acciones y criptomonedas lado a lado. Datos en vivo. Contenido educativo, no asesoria financiera.</p>
+  <div class="ng-market-wrap">
+    <div class="ng-market-grid">
+      <div class="ng-market-col"><h3><span class="ng-live"></span><span data-i18n="market.stocks">Acciones</span></h3><div id="ng-market-stocks" class="ng-price-cards">Cargando...</div></div>
+      <div class="ng-market-col"><h3><span class="ng-live"></span><span data-i18n="market.crypto">Criptomonedas</span></h3><div id="ng-market-crypto" class="ng-price-cards">Cargando...</div></div>
+    </div>
+  </div>
+  <div id="ng-market-opinion"></div>
+</section>
+<section id="ng-members-sectors-section" class="ng-section">
+  <h2 data-i18n="sectors.title">Sectores de Nuestros Miembros</h2>
+  <p class="ng-sub" data-i18n="sectors.sub">Donde esta la experiencia del grupo. Haz clic en un sector para filtrar el directorio.</p>
+  <div id="ng-members-sectors"></div>
+</section>
 <section id="ng-past-events-section" class="ng-section">
   <h2 data-i18n="events.title">Actividades Pasadas</h2>
   <p class="ng-sub" data-i18n="events.sub">Lo que hemos vivido juntos.</p>
   <div id="ng-past-events"></div>
 </section>
-<section id="ng-council-chart-section" class="ng-section">
-  <h2 data-i18n="council.title">Consejo Fundador</h2>
-  <p class="ng-sub" data-i18n="council.note">Areas de negocio representadas</p>
-  <div id="ng-council-chart"></div>
-</section>
-<section id="ng-market-extra" class="ng-section">
-  <h2 data-i18n="market.title">Mercado en Vivo (Stocks + Crypto)</h2>
-  <p class="ng-sub" data-i18n="market.sub">Educativo, no asesoria financiera.</p>
-  <div class="ng-market-grid">
-    <div><h3 data-i18n="market.stocks">Acciones</h3><div id="ng-market-stocks" class="ng-price-cards">Cargando...</div></div>
-    <div><h3 data-i18n="market.crypto">Criptomonedas</h3><div id="ng-market-crypto" class="ng-price-cards">Cargando...</div></div>
-  </div>
-  <div id="ng-market-opinion"></div>
-</section>
 <section id="ng-news-section" class="ng-section">
   <h2 data-i18n="news.title">Noticias por Sector</h2>
-  <p class="ng-sub" data-i18n="news.sub">Resumenes de las fuentes que importan.</p>
+  <p class="ng-sub" data-i18n="news.sub">Resumenes de las fuentes que importan para los sectores de nuestros miembros.</p>
   <div id="ng-news"></div>
 </section>
 <div id="ng-lang-float" style="position:fixed;top:16px;right:16px;z-index:9998">
@@ -1238,108 +1255,283 @@ document.addEventListener('DOMContentLoaded',()=>{
 <script id="ng-add-js">
 (function(){
 var DAILY={date:"2026-04-08",
- stocks_opinion:"Las acciones tecnologicas estadounidenses siguen marcando el ritmo del mercado, con NVIDIA y los hyperscalers concentrando el flujo institucional. Vigilamos rotacion hacia industriales y energia conforme bajen tasas reales.",
- crypto_opinion:"Bitcoin se mantiene en rango alto post-halving y la liquidez stablecoin sigue creciendo. Ethereum muestra fortaleza tras mejoras de L2. Solana lidera en volumen pero su volatilidad es el doble del BTC.",
+ stocks_opinion_es:"Las tecnologicas estadounidenses siguen marcando el ritmo, con NVIDIA y los hyperscalers concentrando el flujo institucional. Vigilamos rotacion hacia industriales y energia conforme bajen tasas reales.",
+ crypto_opinion_es:"Bitcoin se mantiene en rango alto post-halving y la liquidez stablecoin sigue creciendo. Ethereum muestra fortaleza tras mejoras de L2. Solana lidera en volumen pero con mayor volatilidad.",
+ stocks_opinion_en:"US tech stocks keep setting the pace, with NVIDIA and hyperscalers absorbing institutional flow. Watching rotation into industrials and energy as real rates ease.",
+ crypto_opinion_en:"Bitcoin holds high post-halving range as stablecoin liquidity expands. Ethereum shows strength after L2 upgrades. Solana leads in volume with higher volatility.",
  watchlist:[
-  {ticker:"NVDA",thesis:"Demanda de chips para IA insostenible vs el capex anunciado por hyperscalers para 2026."},
-  {ticker:"MSFT",thesis:"Azure + Copilot consolidan la monetizacion de IA empresarial."},
-  {ticker:"BTC", thesis:"Reserva digital de valor; reducir si rompe a la baja la media de 200 dias."},
-  {ticker:"ETH", thesis:"Beneficiario directo de la actividad on-chain; vigilar fees y net issuance."}
+  {t:"NVDA",es:"Demanda de chips para IA insostenible vs el capex anunciado.",en:"AI chip demand outpacing announced capex."},
+  {t:"MSFT",es:"Azure + Copilot consolidan la monetizacion de IA empresarial.",en:"Azure + Copilot driving enterprise AI monetization."},
+  {t:"BTC", es:"Reserva digital de valor; reducir si rompe media de 200 dias.",en:"Digital store of value; trim if 200-day breaks."},
+  {t:"ETH", es:"Beneficiario directo de la actividad on-chain.",en:"Direct beneficiary of on-chain activity."}
  ]};
-var I18N={
- es:{"council.title":"Consejo Fundador","council.note":"Areas de negocio representadas","events.title":"Actividades Pasadas","events.sub":"Lo que hemos vivido juntos","news.title":"Noticias por Sector","news.sub":"Resumenes de las fuentes que importan","market.title":"Mercado en Vivo","market.sub":"Educativo, no asesoria financiera","market.stocks":"Acciones","market.crypto":"Criptomonedas"},
- en:{"council.title":"Founding Council","council.note":"Business areas represented","events.title":"Past Events","events.sub":"What we have lived together","news.title":"News by Sector","news.sub":"Summaries from the sources that matter","market.title":"Live Market","market.sub":"Educational, not financial advice","market.stocks":"Stocks","market.crypto":"Crypto"}
+
+var T={
+ es:{
+  "market.title":"Mercado en Vivo","market.sub":"Acciones y criptomonedas lado a lado. Datos en vivo. Contenido educativo, no asesoria financiera.","market.stocks":"Acciones","market.crypto":"Criptomonedas",
+  "sectors.title":"Sectores de Nuestros Miembros","sectors.sub":"Donde esta la experiencia del grupo. Haz clic en un sector para filtrar el directorio.",
+  "events.title":"Actividades Pasadas","events.sub":"Lo que hemos vivido juntos.",
+  "news.title":"Noticias por Sector","news.sub":"Resumenes de las fuentes que importan para los sectores de nuestros miembros."
+ },
+ en:{
+  "market.title":"Live Market","market.sub":"Stocks and crypto side by side. Live data. Educational content, not financial advice.","market.stocks":"Stocks","market.crypto":"Crypto",
+  "sectors.title":"Our Members Sectors","sectors.sub":"Where the group expertise lives. Click a sector to filter the directory.",
+  "events.title":"Past Events","events.sub":"What we have lived together.",
+  "news.title":"News by Sector","news.sub":"Summaries from the sources that matter for our members sectors."
+ }
 };
-function applyLang(L){var d=I18N[L]||I18N.es;document.querySelectorAll("[data-i18n]").forEach(function(e){var k=e.getAttribute("data-i18n");if(d[k])e.textContent=d[k]});try{localStorage.setItem("ng_lang",L)}catch(e){}document.querySelectorAll(".ng-lang-btn").forEach(function(b){b.classList.toggle("active",b.dataset.lang===L)})}
+
+// Translations for the EXISTING site text (EN -> ES map)
+var PAGE_TR_ES_FROM_EN={
+ "NextGEN Founders Dinner — April 10 · Private Venue, Santo Domingo":"Cena de Fundadores NextGEN — 10 de abril · Lugar privado, Santo Domingo",
+ "Community News: 30 active members and growing":"Noticias de la comunidad: 30 miembros activos y creciendo",
+ "Upcoming: Strategy Session · Scaling from $1M to $10M ARR":"Proximamente: Sesion de Estrategia · Escalando de $1M a $10M ARR",
+ "Investment Opportunity: Pre-seed PropTech round — members only":"Oportunidad de Inversion: Ronda PropTech Pre-seed — solo miembros",
+ "Market Watch: LatAm VC deal flow up 22% YTD":"Mercado: Flujo de deals VC en LatAm sube 22% en el ano",
+ "Q1 Strategy Dinner Recap now posted in the Member Portal":"Resumen de Cena Estrategica Q1 publicado en el Portal de Miembros",
+ "Private Community":"Comunidad Privada","About":"Nosotros","News":"Noticias","Events":"Eventos",
+ "Opportunities":"Oportunidades","Members":"Miembros","Member Portal":"Portal de Miembros","Apply":"Aplicar",
+ "Membership by Invitation Only":"Membresia Solo por Invitacion",
+ "Where the Next":"Donde la Proxima","Generation of Leaders":"Generacion de Lideres","Build Together.":"Construye Unida.",
+ "NextGEN is a private community of ambitious young entrepreneurs, founders, and emerging business leaders built to create real relationships, share opportunities, and grow together.":"NextGEN es una comunidad privada de jovenes emprendedores ambiciosos, fundadores y lideres empresariales emergentes, creada para construir relaciones reales, compartir oportunidades y crecer juntos.",
+ "Request an Invitation":"Solicitar Invitacion","Member Portal \u2192":"Portal de Miembros \u2192",
+ "Active Members":"Miembros Activos","Founding Members":"Miembros Fundadores","Events Per Year":"Eventos por Ano","Curated Network":"Red Curada",
+ "Who We Are":"Quienes Somos","Built on Real Relationships.":"Construidos en Relaciones Reales.","Driven by Ambition.":"Impulsados por Ambicion.",
+ "Real Relationships":"Relaciones Reales","Deal Flow Session — Q2":"Sesion de Deal Flow — Q2",
+ "Members share active opportunities, investment theses, and early-stage deals. Strictly members only. No recording.":"Los miembros comparten oportunidades activas, tesis de inversion y deals en etapa temprana. Estricto solo miembros. Sin grabacion.",
+ "Annual":"Anual","NextGEN Summer Kickoff":"Kickoff de Verano NextGEN",
+ "Our annual May event. A larger gathering to welcome new members and set the tone for the second half of the year.":"Nuestro evento anual de mayo. Un encuentro mas grande para recibir nuevos miembros y marcar el tono para la segunda mitad del ano.",
+ "More Events Coming":"Mas Eventos Proximamente","Members get early access before public announcement.":"Los miembros tienen acceso anticipado antes del anuncio publico.",
+ "View Full Calendar":"Ver Calendario Completo","Members Only":"Solo Miembros",
+ "Investment Opportunities":"Oportunidades de Inversion",
+ "Deals shared within NextGEN come from members, trusted operators, and founders in our extended network.":"Los deals compartidos en NextGEN vienen de miembros, operadores de confianza y fundadores en nuestra red extendida.",
+ "Disclaimer:":"Aviso legal:","PropTech · Pre-Seed":"PropTech · Pre-Seed","Shared Mar 18":"Compartido 18 mar",
+ "Parcel — Fractional Real Estate":"Parcel — Bienes Raices Fraccionales",
+ "Parcel enables fractional ownership of commercial real estate in emerging markets, starting in LatAm. Prior exits in fintech and real estate.":"Parcel permite propiedad fraccional de bienes raices comerciales en mercados emergentes, comenzando en LatAm. Exits previos en fintech y bienes raices.",
+ "Round":"Ronda","Stage":"Etapa","Allocation":"Asignacion","Open":"Abierto",
+ "Founding Member":"Miembro Fundador","Co-Founder, NextGEN":"Co-Fundador, NextGEN","Business Professional":"Profesional de Negocios","Founder / Entrepreneur":"Fundador / Emprendedor","Entrepreneur in Progress":"Emprendedor en Progreso",
+ "Home":"Inicio","Directory":"Directorio","Dashboard":"Panel","Admin":"Admin","Logout":"Cerrar sesion","Login":"Iniciar sesion",
+ "Search":"Buscar","Name":"Nombre","Role":"Cargo","Company":"Empresa","Industry":"Industria","Profile":"Perfil",
+ "View Profile":"Ver Perfil","Contact":"Contacto","Email":"Correo","Phone":"Telefono","WhatsApp":"WhatsApp",
+ "All":"Todos","Filter":"Filtrar","Clear":"Limpiar","Save":"Guardar","Cancel":"Cancelar","Close":"Cerrar","Back":"Atras","Next":"Siguiente","Previous":"Anterior",
+ "Loading...":"Cargando...","No results":"Sin resultados","Coming Soon":"Proximamente",
+ "Get in Touch":"Contactanos","Follow Us":"Siguenos","Subscribe":"Suscribirse","Privacy":"Privacidad","Terms":"Terminos",
+ "Join":"Unirse","Learn More":"Saber mas"
+};
+// Reverse map for EN
+var PAGE_TR_EN_FROM_ES={};
+Object.keys(PAGE_TR_ES_FROM_EN).forEach(function(k){PAGE_TR_EN_FROM_ES[PAGE_TR_ES_FROM_EN[k]]=k});
+
+// Save original EN text in data attribute on first run
+var _originalsSaved=false;
+function saveOriginals(){
+ if(_originalsSaved)return;
+ var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
+  var t=(n.nodeValue||'').trim();
+  if(t.length<2||t.length>300)return NodeFilter.FILTER_REJECT;
+  var p=n.parentNode;while(p){if(p.tagName==='SCRIPT'||p.tagName==='STYLE'||p.tagName==='NOSCRIPT')return NodeFilter.FILTER_REJECT;p=p.parentNode}
+  return NodeFilter.FILTER_ACCEPT;
+ }});
+ var nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(function(n){
+  if(!n.__ngOrig)n.__ngOrig=n.nodeValue;
+ });
+ window._ngTextNodes=nodes;
+ _originalsSaved=true;
+}
+
+function applyLang(L){
+ saveOriginals();
+ // Own data-i18n first
+ var dict=T[L]||T.es;
+ document.querySelectorAll('[data-i18n]').forEach(function(e){var k=e.getAttribute('data-i18n');if(dict[k])e.textContent=dict[k]});
+ // Page-wide text swap
+ var map=(L==='es')?PAGE_TR_ES_FROM_EN:PAGE_TR_EN_FROM_ES;
+ (window._ngTextNodes||[]).forEach(function(n){
+  var orig=(n.__ngOrig||'').trim();
+  if(!orig)return;
+  if(L==='en'){n.nodeValue=n.__ngOrig;return}
+  // ES: try exact match, then trimmed
+  var hit=map[orig];
+  if(hit){n.nodeValue=n.nodeValue.replace(orig,hit)}
+ });
+ try{localStorage.setItem('ng_lang',L)}catch(e){}
+ document.querySelectorAll('.ng-lang-btn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===L)});
+ document.documentElement.lang=L;
+}
 window.ngSetLang=applyLang;
 
 var EVENTS=[
- {n:"Inauguracion y Consolidacion de NextGEN",d:"Primera actividad oficial de la comunidad, donde se realizo el primer acercamiento presencial entre los miembros, marcando el inicio de NextGEN."},
- {n:"Polo",d:"Encuentro en un prestigioso torneo de polo en Santo Domingo, fortaleciendo el networking entre miembros."},
- {n:"Visita a Oliver & Oliver",d:"Visita a las bodegas de Oliver & Oliver, guiada por Maximo Lopez Oliver, presidente y miembro activo."},
- {n:"Boca Marina",d:"Actividad en Boca Marina con dinamicas enfocadas en la vision de negocios y resolucion de problemas."},
- {n:"Encuentro con Omar Fernandez",d:"Desayuno donde el senador compartio su vision y propuestas con la comunidad."},
- {n:"Bar Room",d:"Networking en ambiente informal y dinamico para fortalecer relaciones."},
- {n:"Encuentro con Hermanos Nin",d:"Charla con los Hermanos Nin, emprendedores dominicanos en Canada, sobre su trayectoria empresarial."}
+ {n:"Inauguracion y Consolidacion de NextGEN",d:"Primera actividad oficial de la comunidad, donde se realizo el primer acercamiento presencial entre los miembros, marcando el inicio de NextGEN.",icon:"\ud83d\udc8e"},
+ {n:"Polo",d:"Encuentro en un prestigioso torneo de polo en Santo Domingo, fortaleciendo el networking entre miembros.",icon:"\ud83d\udc0e"},
+ {n:"Visita a Oliver & Oliver",d:"Visita a las bodegas de Oliver & Oliver, guiada por Maximo Lopez Oliver, presidente y miembro activo.",icon:"\ud83e\udd43"},
+ {n:"Boca Marina",d:"Actividad en Boca Marina con dinamicas enfocadas en la vision de negocios y resolucion de problemas.",icon:"\u26f5"},
+ {n:"Encuentro con Omar Fernandez",d:"Desayuno donde el senador compartio su vision y propuestas con la comunidad.",icon:"\ud83c\udf7d\ufe0f"},
+ {n:"Bar Room",d:"Networking en ambiente informal y dinamico para fortalecer relaciones.",icon:"\ud83c\udf78"},
+ {n:"Encuentro con Hermanos Nin",d:"Charla con los Hermanos Nin, emprendedores dominicanos en Canada, sobre su trayectoria empresarial.",icon:"\ud83c\udf0e"}
 ];
 
-var COUNCIL=[
- {s:"Turismo y Hospitalidad",c:"#0ea5e9"},
- {s:"Energia",c:"#f59e0b"},
- {s:"Tecnologia",c:"#8b5cf6"},
- {s:"Industria y Manufactura",c:"#10b981"},
- {s:"Bienes Raices",c:"#ef4444"},
- {s:"Servicios Financieros",c:"#3b82f6"}
+// Aligned with MEMBERS industries present in the existing site
+var SECTOR_MAP={
+ "Technology":["SaaS / Technology","Technology / Logistics","Technology / SaaS","Insurance / Tech / HR"],
+ "Finance":["Finance / Conglomerate","Banking / Finance","Beverages / Capital","Financial Regulation"],
+ "RealEstate":["Real Estate / Health","Construction / Real Estate","Retail / Real Estate","Construction"],
+ "Legal":["Legal","Legal / Conglomerate"],
+ "Hospitality":["Hospitality / Retail","Tourism / Hospitality","Food & Beverage"],
+ "Logistics":["Logistics / Transport","Distribution / Sales","Automotive / Import"],
+ "Energy":["Energy / Renewable"],
+ "Industrial":["Waste Management / Environmental","Waste Management / Municipal","Marine / Waterproofing","Bath / Kitchen / Hardware"],
+ "Entertainment":["Entertainment / Music"],
+ "Consulting":["Consulting","Community / Entrepreneurship"]
+};
+var SECTOR_META={
+ "Technology":{es:"Tecnologia",en:"Technology",color:"#8b5cf6",icon:"\ud83d\udcbb"},
+ "Finance":{es:"Finanzas",en:"Finance",color:"#3b82f6",icon:"\ud83d\udcb0"},
+ "RealEstate":{es:"Bienes Raices",en:"Real Estate",color:"#ef4444",icon:"\ud83c\udfd8\ufe0f"},
+ "Legal":{es:"Legal",en:"Legal",color:"#64748b",icon:"\u2696\ufe0f"},
+ "Hospitality":{es:"Hospitalidad y Turismo",en:"Hospitality & Tourism",color:"#0ea5e9",icon:"\ud83c\udfdd\ufe0f"},
+ "Logistics":{es:"Logistica y Automotriz",en:"Logistics & Auto",color:"#10b981",icon:"\ud83d\ude9a"},
+ "Energy":{es:"Energia",en:"Energy",color:"#f59e0b",icon:"\u26a1"},
+ "Industrial":{es:"Industrial y Manufactura",en:"Industrial & Mfg",color:"#a16207",icon:"\ud83c\udfed"},
+ "Entertainment":{es:"Entretenimiento",en:"Entertainment",color:"#ec4899",icon:"\ud83c\udfa4"},
+ "Consulting":{es:"Consultoria",en:"Consulting",color:"#14b8a6",icon:"\ud83d\udca1"}
+};
+
+var NEWS_SECTORS=[
+ {key:"Technology",feeds:["https://techcrunch.com/feed/","https://feeds.arstechnica.com/arstechnica/index"]},
+ {key:"Finance",feeds:["https://www.diariolibre.com/rss/economia.xml"]},
+ {key:"RealEstate",feeds:["https://www.reportur.com/feed/"]},
+ {key:"Hospitality",feeds:["https://www.preferente.com/feed","https://www.reportur.com/feed/"]},
+ {key:"Energy",feeds:["https://oilprice.com/rss/main"]},
+ {key:"Logistics",feeds:["https://www.diariolibre.com/rss/economia.xml"]}
 ];
 
 var CRYPTOS=[{i:"bitcoin",l:"Bitcoin",s:"BTC"},{i:"ethereum",l:"Ethereum",s:"ETH"},{i:"solana",l:"Solana",s:"SOL"},{i:"binancecoin",l:"BNB",s:"BNB"},{i:"ripple",l:"XRP",s:"XRP"},{i:"cardano",l:"Cardano",s:"ADA"}];
 var STOCKS=[{s:"^spx",l:"S&P 500"},{s:"^ndq",l:"NASDAQ 100"},{s:"^dji",l:"Dow Jones"},{s:"aapl.us",l:"Apple"},{s:"msft.us",l:"Microsoft"},{s:"nvda.us",l:"NVIDIA"},{s:"tsla.us",l:"Tesla"},{s:"amzn.us",l:"Amazon"}];
-var SECTORS=[
- {key:"turismo",label:"Turismo",icon:"\u{1F3DD}",feeds:["https://www.preferente.com/feed","https://www.reportur.com/feed/"]},
- {key:"economia",label:"Economia",icon:"\u{1F4C8}",feeds:["https://feeds.reuters.com/reuters/businessNews"]},
- {key:"tecnologia",label:"Tecnologia",icon:"\u{1F4BB}",feeds:["https://techcrunch.com/feed/"]},
- {key:"energia",label:"Energia",icon:"\u26A1",feeds:["https://oilprice.com/rss/main"]},
- {key:"gobierno",label:"Gobierno RD",icon:"\u{1F3DB}",feeds:["https://www.diariolibre.com/rss/actualidad.xml"]}
-];
+window._ngData={DAILY:DAILY,T:T,EVENTS:EVENTS,SECTOR_MAP:SECTOR_MAP,SECTOR_META:SECTOR_META,NEWS_SECTORS:NEWS_SECTORS,CRYPTOS:CRYPTOS,STOCKS:STOCKS,applyLang:applyLang,PAGE_TR_ES_FROM_EN:PAGE_TR_ES_FROM_EN,PAGE_TR_EN_FROM_ES:PAGE_TR_EN_FROM_ES};
 
 function fmtMoney(n){if(n==null||isNaN(n))return"-";return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:n<1?6:2}).format(n)}
 function fmtPct(n){if(n==null||isNaN(n))return"-";return(n>=0?"+":"")+n.toFixed(2)+"%"}
-function priceCard(o){var d=o.changePct>=0?"up":"down";return '<div class="ng-price-card ng-'+d+'"><div class="ng-price-head"><strong>'+o.label+'</strong><span>'+o.sub+'</span></div><div class="ng-price-value">'+fmtMoney(o.price)+'</div><div class="ng-price-change">'+fmtPct(o.changePct)+'</div></div>'}
+function priceCard(o){var d=o.changePct>=0?"up":"down";return '<div class="ng-price-card ng-'+d+'" data-symbol="'+o.sub+'" title="'+o.label+'"><div class="ng-price-head"><strong>'+o.label+'</strong><span>'+o.sub+'</span></div><div class="ng-price-value">'+fmtMoney(o.price)+'</div><div class="ng-price-change">'+fmtPct(o.changePct)+'</div></div>'}
 
 function renderCrypto(){
- var t=document.getElementById("ng-market-crypto");if(!t)return;
- var ids=CRYPTOS.map(function(c){return c.i}).join(",");
+ var d=window._ngData;var t=document.getElementById("ng-market-crypto");if(!t)return;
+ var ids=d.CRYPTOS.map(function(c){return c.i}).join(",");
  fetch("https://api.coingecko.com/api/v3/simple/price?ids="+ids+"&vs_currencies=usd&include_24hr_change=true")
   .then(function(r){return r.json()}).then(function(data){
-   t.innerHTML=CRYPTOS.map(function(c){var d=data[c.i]||{};return priceCard({label:c.l,sub:c.s,price:d.usd,changePct:d.usd_24h_change})}).join("");
+   t.innerHTML=d.CRYPTOS.map(function(c){var x=data[c.i]||{};return priceCard({label:c.l,sub:c.s,price:x.usd,changePct:x.usd_24h_change})}).join("");
+   Array.from(t.querySelectorAll('.ng-price-card')).forEach(function(el,i){
+    el.onclick=function(){window.open('https://www.coingecko.com/en/coins/'+d.CRYPTOS[i].i,'_blank')};
+   });
   }).catch(function(){t.innerHTML='<p style="color:#ef4444">No pude cargar cripto</p>'});
 }
+
 function renderStocks(){
- var t=document.getElementById("ng-market-stocks");if(!t)return;
- Promise.all(STOCKS.map(function(s){
-  return fetch("https://stooq.com/q/l/?s="+encodeURIComponent(s.s)+"&f=sd2t2ohlcv&h&e=csv").then(function(r){return r.text()}).then(function(txt){
-   var lines=txt.trim().split("\n");if(lines.length<2)return null;var c=lines[1].split(",");var close=parseFloat(c[6]);return{label:s.l,sub:s.s.toUpperCase().replace(".US",""),price:close,changePct:0}
+ var d=window._ngData;var t=document.getElementById("ng-market-stocks");if(!t)return;
+ Promise.all(d.STOCKS.map(function(s){
+  var url="https://stooq.com/q/l/?s="+encodeURIComponent(s.s)+"&f=sd2t2ohlc&h&e=csv";
+  var proxied="https://corsproxy.io/?"+encodeURIComponent(url);
+  return fetch(proxied).then(function(r){return r.text()}).then(function(txt){
+   var lines=txt.trim().split("\n");if(lines.length<2)return null;
+   var c=lines[1].split(",");if(c.length<7)return null;
+   var close=parseFloat(c[6]);var open=parseFloat(c[3]);
+   var chg=(open&&close)?((close-open)/open*100):0;
+   return{label:s.l,sub:s.s.toUpperCase().replace(".US","").replace("^",""),price:close,changePct:chg}
   }).catch(function(){return null})
  })).then(function(arr){
-  t.innerHTML=arr.filter(Boolean).map(priceCard).join("");
+  var ok=arr.filter(Boolean);
+  if(ok.length===0){t.innerHTML='<p style="color:#9aa6b8;font-size:13px">Datos no disponibles en este momento</p>';return}
+  t.innerHTML=ok.map(priceCard).join("");
+  Array.from(t.querySelectorAll('.ng-price-card')).forEach(function(el,i){
+   var sym=d.STOCKS[i].s;
+   el.onclick=function(){window.open('https://stooq.com/q/?s='+encodeURIComponent(sym),'_blank')};
+  });
  });
 }
 
 function renderEvents(){
- var t=document.getElementById("ng-past-events");if(!t)return;
- t.innerHTML='<div class="ng-events-grid">'+EVENTS.map(function(e){
-  return '<article class="ng-event-card"><div class="ng-event-cover">Foto pendiente</div><div class="ng-event-body"><h3>'+e.n+'</h3><p>'+e.d+'</p></div></article>';
+ var d=window._ngData;var t=document.getElementById("ng-past-events");if(!t)return;
+ t.innerHTML='<div class="ng-events-grid">'+d.EVENTS.map(function(e,i){
+  return '<article class="ng-event-card" data-evt="'+i+'"><div class="ng-event-cover">'+e.icon+'</div><div class="ng-event-body"><h3>'+e.n+'</h3><p>'+e.d+'</p></div></article>';
  }).join("")+'</div>';
+ Array.from(t.querySelectorAll('.ng-event-card')).forEach(function(el){
+  el.onclick=function(){alert(d.EVENTS[+el.dataset.evt].n+'\n\n'+d.EVENTS[+el.dataset.evt].d)};
+ });
 }
 
-function renderCouncil(){
- var t=document.getElementById("ng-council-chart");if(!t)return;
- var step=100/COUNCIL.length;var stops=COUNCIL.map(function(c,i){return c.c+" "+(i*step)+"% "+((i+1)*step)+"%"}).join(",");
- var legend=COUNCIL.map(function(c){return '<li><span class="ng-dot" style="background:'+c.c+'"></span>'+c.s+'</li>'}).join("");
- t.innerHTML='<div class="ng-chart-wrap"><div class="ng-pie" style="background:conic-gradient('+stops+')"><div class="ng-pie-hole"><strong>6</strong><small>Fundadores</small></div></div><ul class="ng-chart-legend">'+legend+'</ul></div>';
+function renderMembersSectors(){
+ var d=window._ngData;var t=document.getElementById("ng-members-sectors");if(!t)return;
+ var M=(typeof MEMBERS!=='undefined')?MEMBERS:[];
+ if(!M.length){t.innerHTML='<p style="color:#9aa6b8">Cargando miembros...</p>';return}
+ var counts={};Object.keys(d.SECTOR_MAP).forEach(function(k){counts[k]=0});
+ var other=0;
+ M.forEach(function(m){
+  var found=false;
+  Object.keys(d.SECTOR_MAP).forEach(function(k){
+   if(d.SECTOR_MAP[k].indexOf(m.industry)>-1){counts[k]++;found=true}
+  });
+  if(!found)other++;
+ });
+ var total=M.length;
+ var L=(localStorage.getItem('ng_lang')||'es');
+ var entries=Object.keys(counts).filter(function(k){return counts[k]>0}).sort(function(a,b){return counts[b]-counts[a]});
+ var max=Math.max.apply(null,entries.map(function(k){return counts[k]}));
+ var bars=entries.map(function(k){
+  var meta=d.SECTOR_META[k];var n=counts[k];var pct=(n/max*100).toFixed(1);
+  var label=meta[L]||meta.es;
+  return '<div class="ng-bar-row" data-sector="'+k+'"><div class="ng-bar-label"><span>'+meta.icon+' '+label+'</span><strong>'+n+'</strong></div><div class="ng-bar-track"><div class="ng-bar-fill" style="width:'+pct+'%;background:'+meta.color+'"></div></div></div>';
+ }).join('');
+ var sum=entries.reduce(function(a,k){return a+counts[k]},0);
+ var acc=0;var stops=entries.map(function(k){var n=counts[k];var start=acc/sum*100;acc+=n;var end=acc/sum*100;return d.SECTOR_META[k].color+' '+start+'% '+end+'%'}).join(',');
+ t.innerHTML='<div class="ng-sector-chart"><div class="ng-sector-bars">'+bars+'</div><div class="ng-sector-pie"><div class="ng-pie" style="background:conic-gradient('+stops+')"><div class="ng-pie-hole"><strong>'+total+'</strong><small>Miembros</small></div></div><div class="ng-pie-caption">'+entries.length+' sectores representados</div></div></div>';
+ Array.from(t.querySelectorAll('.ng-bar-row')).forEach(function(el){
+  el.onclick=function(){
+   var key=el.dataset.sector;
+   var label=d.SECTOR_META[key].es;
+   var tgt=document.getElementById('dir-search')||document.querySelector('#tab-dir input[type="search"]')||document.querySelector('input[placeholder*="earch"]');
+   var tabBtn=Array.from(document.querySelectorAll('[data-tab],button,a')).find(function(b){return /directory|directorio|members/i.test((b.textContent||'')+(b.dataset.tab||''))});
+   if(tabBtn)tabBtn.click();
+   setTimeout(function(){
+    var s=document.getElementById('dir-search')||document.querySelector('input[placeholder*="earch"]');
+    if(s){s.value=d.SECTOR_MAP[key][0]||label;s.dispatchEvent(new Event('input',{bubbles:true}));s.scrollIntoView({behavior:'smooth',block:'center'})}
+    else{document.getElementById('ng-members-sectors-section').scrollIntoView({behavior:'smooth'})}
+   },300);
+  };
+ });
 }
 
 function renderOpinion(){
- var t=document.getElementById("ng-market-opinion");if(!t)return;
- t.innerHTML='<div class="ng-opinion"><strong>Opinion del dia &mdash; '+DAILY.date+'</strong><h4>Mercado de acciones</h4><p>'+DAILY.stocks_opinion+'</p><h4>Mercado cripto</h4><p>'+DAILY.crypto_opinion+'</p><h4>Ideas que estamos vigilando</h4><ul>'+DAILY.watchlist.map(function(w){return '<li><strong>'+w.ticker+'</strong> &mdash; '+w.thesis+'</li>'}).join("")+'</ul><p class="ng-disclaimer">Esto no es asesoria financiera. Contenido educativo para discusion del consejo.</p></div>';
+ var d=window._ngData;var t=document.getElementById("ng-market-opinion");if(!t)return;
+ var L=(localStorage.getItem('ng_lang')||'es');
+ var so=L==='en'?d.DAILY.stocks_opinion_en:d.DAILY.stocks_opinion_es;
+ var co=L==='en'?d.DAILY.crypto_opinion_en:d.DAILY.crypto_opinion_es;
+ var hS=L==='en'?'Stock market':'Mercado de acciones';
+ var hC=L==='en'?'Crypto market':'Mercado cripto';
+ var hW=L==='en'?'What we are watching':'Ideas que estamos vigilando';
+ var hD=L==='en'?'Opinion of the day':'Opinion del dia';
+ var disc=L==='en'?'Not financial advice. Educational content for council discussion.':'Esto no es asesoria financiera. Contenido educativo para discusion del consejo.';
+ t.innerHTML='<div class="ng-opinion"><strong>'+hD+' &mdash; '+d.DAILY.date+'</strong><h4>'+hS+'</h4><p>'+so+'</p><h4>'+hC+'</h4><p>'+co+'</p><h4>'+hW+'</h4><ul>'+d.DAILY.watchlist.map(function(w){return '<li><strong>'+w.t+'</strong> &mdash; '+(L==='en'?w.en:w.es)+'</li>'}).join("")+'</ul><p class="ng-disclaimer">'+disc+'</p></div>';
 }
 
 function renderNews(){
- var t=document.getElementById("ng-news");if(!t)return;
+ var d=window._ngData;var t=document.getElementById("ng-news");if(!t)return;
  t.innerHTML="";
- SECTORS.forEach(function(sec){
+ var L=(localStorage.getItem('ng_lang')||'es');
+ d.NEWS_SECTORS.forEach(function(sec){
+  var meta=d.SECTOR_META[sec.key];if(!meta)return;
   var sx=document.createElement("section");sx.className="ng-news-sector";
-  sx.innerHTML='<h3>'+sec.icon+' '+sec.label+'</h3><div class="ng-news-list">Cargando...</div>';
+  var label=meta[L]||meta.es;
+  sx.innerHTML='<h3>'+meta.icon+' '+label+'</h3><div class="ng-news-list">Cargando...</div>';
   t.appendChild(sx);
   Promise.all(sec.feeds.map(function(u){
    return fetch("https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(u)).then(function(r){return r.json()}).then(function(j){return(j.items||[]).slice(0,2)}).catch(function(){return[]});
   })).then(function(lists){
    var items=[].concat.apply([],lists).slice(0,3);
    var list=sx.querySelector(".ng-news-list");
-   if(items.length===0){list.innerHTML='<p style="color:#9aa6b8">Sin noticias ahora.</p>';return}
+   if(items.length===0){list.innerHTML='<p style="color:#9aa6b8;font-size:13px">Sin noticias ahora.</p>';return}
    list.innerHTML=items.map(function(it){
-    var tmp=document.createElement("div");tmp.innerHTML=it.description||"";var txt=(tmp.textContent||"").slice(0,180)+"...";
-    return '<article class="ng-news-card"><h4><a href="'+it.link+'" target="_blank" rel="noopener">'+it.title+'</a></h4><p>'+txt+'</p><a class="ng-news-more" href="'+it.link+'" target="_blank" rel="noopener">Leer mas &rarr;</a></article>';
+    var tmp=document.createElement("div");tmp.innerHTML=it.description||"";var txt=(tmp.textContent||"").slice(0,170)+"...";
+    return '<a class="ng-news-card" href="'+it.link+'" target="_blank" rel="noopener"><h4>'+it.title+'</h4><p>'+txt+'</p><span class="ng-news-more">'+(L==='en'?'Read more \u2192':'Leer mas \u2192')+'</span></a>';
    }).join("");
   });
  });
@@ -1347,26 +1539,40 @@ function renderNews(){
 
 function renderChatbot(){
  if(document.getElementById("ng-chatbot-fab"))return;
- var fab=document.createElement("button");fab.id="ng-chatbot-fab";fab.innerHTML="\u{1F4AC}";
- fab.style.cssText="position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#C9A84C;color:#0A0A0A;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);z-index:9999";
+ var fab=document.createElement("button");fab.id="ng-chatbot-fab";fab.innerHTML="\ud83d\udcac";
+ fab.title="Market Chat";
  fab.onclick=function(){
   var m=document.getElementById("ng-chat-modal");
   if(m){m.remove();return}
   m=document.createElement("div");m.id="ng-chat-modal";
-  m.style.cssText="position:fixed;bottom:90px;right:24px;width:340px;background:#181818;border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:16px;z-index:9999;color:#F0EDE6;box-shadow:0 8px 40px rgba(0,0,0,.6)";
-  m.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><strong style="color:#C9A84C">Market Chat</strong><button onclick="this.parentNode.parentNode.remove()" style="background:none;border:0;color:#F0EDE6;cursor:pointer;font-size:18px">x</button></div><div id="ng-chat-log" style="min-height:180px;font-size:13px;line-height:1.5;margin-bottom:12px"><p style="color:#7A756E;font-style:italic">Bienvenido al chat del consejo. Backend de IA pendiente: pidele a Claude que conecte Supabase + OpenAI cuando esten listos.</p></div>';
+  var L=(localStorage.getItem('ng_lang')||'es');
+  var title=L==='en'?'Market Chat':'Chat del Mercado';
+  var welcome=L==='en'?'Welcome to the council chat. AI backend pending: ask Claude to wire Supabase + OpenAI when ready.':'Bienvenido al chat del consejo. Backend de IA pendiente: pidele a Claude que conecte Supabase + OpenAI cuando esten listos.';
+  m.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><strong style="color:#C9A84C">'+title+'</strong><button onclick="this.parentNode.parentNode.remove()" style="background:none;border:0;color:#F0EDE6;cursor:pointer;font-size:18px">\u00d7</button></div><div id="ng-chat-log" style="min-height:180px;font-size:13px;line-height:1.5;margin-bottom:12px"><p style="color:#7A756E;font-style:italic">'+welcome+'</p></div>';
   document.body.appendChild(m);
  };
  document.body.appendChild(fab);
 }
 
 function boot(){
- var L="es";try{L=localStorage.getItem("ng_lang")||"es"}catch(e){}applyLang(L);
- document.querySelectorAll(".ng-lang-btn").forEach(function(b){b.addEventListener("click",function(){applyLang(b.dataset.lang)})});
- renderEvents();renderCouncil();renderOpinion();renderCrypto();renderStocks();renderNews();renderChatbot();
+ var L='es';try{L=localStorage.getItem('ng_lang')||'es'}catch(e){}
+ window._ngData.applyLang(L);
+ document.querySelectorAll('.ng-lang-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+   var nl=b.dataset.lang;
+   window._ngData.applyLang(nl);
+   renderOpinion();renderMembersSectors();renderNews();
+  });
+ });
+ var market=document.getElementById('ng-market-extra');
+ if(market){
+  var anchor=document.getElementById('section-news')||document.getElementById('hero')||document.querySelector('main section, body > section');
+  if(anchor&&anchor.parentNode){anchor.parentNode.insertBefore(market,anchor.nextSibling)}
+ }
+ renderEvents();renderMembersSectors();renderOpinion();renderCrypto();renderStocks();renderNews();renderChatbot();
  setInterval(function(){renderCrypto();renderStocks()},60000);
 }
-if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",boot)}else{boot()}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot)}else{boot()}
 })();
 </script>
 </body>
