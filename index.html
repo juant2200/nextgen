@@ -14,6 +14,22 @@
       --text:#F0EDE6;--text-2:#B8B3AA;--text-3:#7A756E;
       --radius:6px;--shadow:0 4px 40px rgba(0,0,0,.5);
     }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>NextGEN — Private Community</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --gold:#C9A84C;--gold-lt:#E4C875;--gold-dk:#9A7B2E;
+      --dark:#0A0A0A;--dark-2:#111111;--dark-3:#181818;--dark-4:#222222;--dark-5:#2A2A2A;
+      --border:rgba(201,168,76,.18);--border2:rgba(255,255,255,.07);
+      --text:#F0EDE6;--text-2:#B8B3AA;--text-3:#7A756E;
+      --radius:6px;--shadow:0 4px 40px rgba(0,0,0,.5);
+    }
     html{scroll-behavior:smooth}
     body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
     h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.2}
@@ -809,7 +825,7 @@
 // ═══════════════════════════════════════════════
 const MEMBERS = [
   {name:"Juan Tomas Diaz Rainieri",profile:"Co-Founder, NextGEN",company:"NextGEN",role:"Co-Founder",industry:"Community / Entrepreneurship",bio:"Co-created NextGEN with the vision of building a trusted community where ambitious young leaders can do their best work together.",initials:"JT",founding:true},
-  {name:"Emmanuel Checo",profile:"Co-Founder, NextGEN",company:"Vela",role:"Founder & CEO",industry:"SaaS / Technology",bio:"Operator and builder who brought NextGEN from idea to reality. Founder of Vela, a SaaS platform for business operations.",initials:"EC",founding:true},
+  {name:"Emmanuel Checo",profile:"Council Member, NextGEN",company:"Vela",role:"Founder & CEO",industry:"SaaS / Technology",bio:"Operator and builder who brought NextGEN from idea to reality. Founder of Vela, a SaaS platform for business operations.",initials:"EC"},
   {name:"Victor Andujar Mendez",profile:"Business Professional",company:"Grupo Vimenca",role:"",industry:"Finance / Conglomerate",bio:"Part of one of the Dominican Republic's leading financial and business conglomerates.",initials:"VA"},
   {name:"Ricardo Read",profile:"Business Professional",company:"Grupo Rica",role:"Administrative Manager",industry:"Food & Beverage",bio:"Gerente Administrativo at Grupo Rica, leading expansion of a key division within one of DR's top consumer brands.",initials:"RR"},
   {name:"Alejandro Najri",profile:"Founder / Entrepreneur",company:"Ferquido",role:"Sales Analyst",industry:"Distribution / Sales",bio:"Entrepreneur and sales professional. Part of Ferquido and building ventures in sales and distribution.",initials:"AN"},
@@ -827,7 +843,7 @@ const MEMBERS = [
   {name:"Thomas Bacci",profile:"Founder / Entrepreneur",company:"Itálica / Corporativo Cariba",role:"",industry:"Retail / Real Estate",bio:"Entrepreneur across multiple ventures including Itálica, Corporativo Cariba, and Home Couture.",initials:"TB"},
   {name:"Diego Alejandro Teruel",profile:"Founder / Entrepreneur",company:"Teruel y Co.",role:"",industry:"Automotive / Import",bio:"Family business in motorcycle and tire import: Vespa, Moto Guzzi, Aprilia, Zontes, and Compasal tires.",initials:"DA"},
   {name:"Ricardo Sánchez",profile:"Founder / Entrepreneur",company:"Renovation Company",role:"Founder",industry:"Construction / Real Estate",bio:"Founder of a commercial and residential renovation company.",initials:"RS"},
-  {name:"Abraham Vilalta",profile:"Founder / Entrepreneur",company:"Grupo Soñe Billini",role:"Commercial Director",industry:"Hospitality / Retail",bio:"Commercial Director at Grupo Soñe Billini, managing commercial performance across multiple group companies.",initials:"AV"},
+  {name:"Abraham Vilalta",profile:"Co-Founder, NextGEN",company:"Grupo Soñe Billini",role:"Commercial Director",industry:"Hospitality / Retail",bio:"Commercial Director at Grupo Soñe Billini, managing commercial performance across multiple group companies.",initials:"AV",founding:true},
   {name:"Rubén Astacio",profile:"Founder / Entrepreneur",company:"Sunset Corp / Mucjo Project",role:"",industry:"Entertainment / Music",bio:"Entrepreneur and creator behind Sunset Corp and Mucjo Project.",initials:"RA"},
   {name:"Miled Hazim",profile:"Founder / Entrepreneur",company:"Helios Solar Park",role:"Founder",industry:"Energy / Renewable",bio:"Developing Helios Solar Park, a photovoltaic energy project in the Dominican Republic.",initials:"MH"},
   {name:"Domingo Lora",profile:"Founder / Entrepreneur",company:"DLB Transport",role:"Founder",industry:"Logistics / Transport",bio:"Founder of DLB Transport, a specialized logistics company for household goods, tools, mattresses, and construction materials.",initials:"DL"},
@@ -847,7 +863,7 @@ const STORE_KEY = 'ng_posts_v2';
 const DEFAULT_POSTS = [
   {id:1,type:'news',cat:'Announcement',title:'NextGEN is Now Live',body:'Welcome to the new NextGEN platform. Here you can stay up to date with community news, upcoming events, investment opportunities, and market insights. Log in to the Member Portal to access the full directory and post your own updates.',author:'Juan Tomas Diaz',date:'2026-03-25',ts:Date.now()-86400000*2},
   {id:2,type:'news',cat:'Event Recap',title:'Q1 Strategy Dinner — Key Takeaways',body:'Last Thursday\'s dinner brought together 14 members for a three-hour conversation covering AI adoption in early-stage companies, the current fundraising environment, and why cash efficiency is non-negotiable. Consensus: the room is optimistic but disciplined.',author:'Emmanuel Checo',date:'2026-03-20',ts:Date.now()-86400000*5},
-  {id:3,type:'news',cat:'Member News',title:'Vela Closes $1.8M Seed Round',body:'NextGEN co-founder Emmanuel Checo closed the seed round for Vela with two NextGEN members participating as angels. A testament to what this community can create when the right people are in the room.',author:'Community',date:'2026-03-15',ts:Date.now()-86400000*10},
+  {id:3,type:'news',cat:'Member News',title:'Vela Closes $1.8M Seed Round',body:'NextGEN council member Emmanuel Checo closed the seed round for Vela with two NextGEN members participating as angels. A testament to what this community can create when the right people are in the room.',author:'Community',date:'2026-03-15',ts:Date.now()-86400000*10},
 ];
 
 function getPosts(){
@@ -1407,7 +1423,7 @@ var NEWS_SECTORS=[
 ];
 
 var CRYPTOS=[{i:"bitcoin",l:"Bitcoin",s:"BTC"},{i:"ethereum",l:"Ethereum",s:"ETH"},{i:"solana",l:"Solana",s:"SOL"},{i:"binancecoin",l:"BNB",s:"BNB"},{i:"ripple",l:"XRP",s:"XRP"},{i:"cardano",l:"Cardano",s:"ADA"}];
-var STOCKS=[{s:"^spx",l:"S&P 500"},{s:"^ndq",l:"NASDAQ 100"},{s:"^dji",l:"Dow Jones"},{s:"aapl.us",l:"Apple"},{s:"msft.us",l:"Microsoft"},{s:"nvda.us",l:"NVIDIA"},{s:"tsla.us",l:"Tesla"},{s:"amzn.us",l:"Amazon"}];
+var STOCKS=[{s:"SP:SPX",l:"S&P 500",short:"SPX"},{s:"NASDAQ:NDX",l:"NASDAQ 100",short:"NDX"},{s:"DJ:DJI",l:"Dow Jones",short:"DJI"},{s:"NASDAQ:AAPL",l:"Apple",short:"AAPL"},{s:"NASDAQ:MSFT",l:"Microsoft",short:"MSFT"},{s:"NASDAQ:NVDA",l:"NVIDIA",short:"NVDA"},{s:"NASDAQ:TSLA",l:"Tesla",short:"TSLA"},{s:"NASDAQ:AMZN",l:"Amazon",short:"AMZN"}];
 window._ngData={DAILY:DAILY,T:T,EVENTS:EVENTS,SECTOR_MAP:SECTOR_MAP,SECTOR_META:SECTOR_META,NEWS_SECTORS:NEWS_SECTORS,CRYPTOS:CRYPTOS,STOCKS:STOCKS,applyLang:applyLang,PAGE_TR_ES_FROM_EN:PAGE_TR_ES_FROM_EN,PAGE_TR_EN_FROM_ES:PAGE_TR_EN_FROM_ES};
 
 function fmtMoney(n){if(n==null||isNaN(n))return"-";return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:n<1?6:2}).format(n)}
@@ -1429,14 +1445,9 @@ function renderCrypto(){
 function renderStocks(){
  var d=window._ngData;var t=document.getElementById("ng-market-stocks");if(!t)return;
  Promise.all(d.STOCKS.map(function(s){
-  var url="https://stooq.com/q/l/?s="+encodeURIComponent(s.s)+"&f=sd2t2ohlc&h&e=csv";
-  var proxied="https://corsproxy.io/?"+encodeURIComponent(url);
-  return fetch(proxied).then(function(r){return r.text()}).then(function(txt){
-   var lines=txt.trim().split("\n");if(lines.length<2)return null;
-   var c=lines[1].split(",");if(c.length<7)return null;
-   var close=parseFloat(c[6]);var open=parseFloat(c[3]);
-   var chg=(open&&close)?((close-open)/open*100):0;
-   return{label:s.l,sub:s.s.toUpperCase().replace(".US","").replace("^",""),price:close,changePct:chg}
+  return fetch("https://scanner.tradingview.com/symbol?symbol="+encodeURIComponent(s.s)+"&fields=close,change&no_404=true").then(function(r){return r.json()}).then(function(j){
+   if(j.code)return null;
+   return{label:s.l,sub:s.short,price:j.close,changePct:j.change}
   }).catch(function(){return null})
  })).then(function(arr){
   var ok=arr.filter(Boolean);
@@ -1444,7 +1455,7 @@ function renderStocks(){
   t.innerHTML=ok.map(priceCard).join("");
   Array.from(t.querySelectorAll('.ng-price-card')).forEach(function(el,i){
    var sym=d.STOCKS[i].s;
-   el.onclick=function(){window.open('https://stooq.com/q/?s='+encodeURIComponent(sym),'_blank')};
+   el.onclick=function(){window.open('https://www.tradingview.com/symbols/'+sym.replace(':','-')+'/','_blank')};
   });
  });
 }
@@ -1564,10 +1575,11 @@ function boot(){
    renderOpinion();renderMembersSectors();renderNews();
   });
  });
- var market=document.getElementById('ng-market-extra');
- if(market){
-  var anchor=document.getElementById('section-news')||document.getElementById('hero')||document.querySelector('main section, body > section');
-  if(anchor&&anchor.parentNode){anchor.parentNode.insertBefore(market,anchor.nextSibling)}
+ var sections=['ng-market-extra','ng-members-sectors-section','ng-past-events-section','ng-news-section'].map(function(id){return document.getElementById(id)}).filter(Boolean);
+ if(sections.length){
+  var landing=document.getElementById('landing')||document.getElementById('portal')||document.body;
+  var anchor=landing.querySelector('section, .hero, #hero')||landing.firstElementChild;
+  if(anchor&&anchor.parentNode){var parent=anchor.parentNode;var ref=anchor.nextSibling;for(var si=0;si<sections.length;si++){parent.insertBefore(sections[si],ref);ref=sections[si].nextSibling}}
  }
  renderEvents();renderMembersSectors();renderOpinion();renderCrypto();renderStocks();renderNews();renderChatbot();
  setInterval(function(){renderCrypto();renderStocks()},60000);
