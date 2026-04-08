@@ -425,13 +425,13 @@
   <div class="nav-inner">
     <div class="logo" onclick="showLanding()">NEXTGEN<span>Private Community</span></div>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#about">About</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#events">Events</a></li>
-      <li><a href="#investments">Opportunities</a></li>
-      <li><a href="#members-section">Members</a></li>
+      <li><a href="#about" onclick="goSection('about');return false">Sobre</a></li>
+      <li><a href="#news" onclick="goSection('news');return false">Noticias</a></li>
+      <li><a href="#events" onclick="goSection('events');return false">Eventos</a></li>
+      <li><a href="#investments" onclick="goSection('investments');return false">Oportunidades</a></li>
+      <li><a href="#members-section" onclick="goSection('members-section');return false">Miembros</a></li>
       <li><a class="nav-pill" onclick="showPortal();return false" href="#">Member Portal</a></li>
-      <li><a class="nav-cta" href="#cta-section">Apply</a></li>
+      <li><a class="nav-cta" href="#cta-section" onclick="goSection('cta-section');return false">Aplicar</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
@@ -616,8 +616,8 @@
       <h2>This Room Is Worth Being In.</h2>
       <p>NextGEN membership is by invitation or application review only. If you're building something serious and looking for people who are too — we'd like to hear from you.</p>
       <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-        <button class="btn-primary">Request an Invitation</button>
-        <button class="btn-ghost" onclick="showPortal()">Already a Member →</button>
+        <button class="btn-primary" onclick="window.location.href='mailto:juant2200@gmail.com?subject=NextGEN%20Application&body=Cuéntame%20brevemente%20sobre%20ti%20y%20tu%20proyecto.'">Solicitar una invitación</button>
+        <button class="btn-ghost" onclick="showPortal()">Ya soy miembro →</button>
       </div>
       <p class="cta-disc">All applications are reviewed by current members. Membership is granted based on fit, not prestige.</p>
     </div>
@@ -660,10 +660,10 @@
       <div class="widget">
         <div class="wh"><span class="wt">Upcoming Events</span><span class="wa">View All</span></div>
         <div class="wb" style="padding:6px 22px 14px">
-          <div class="pe"><div class="pe-date"><span class="d">10</span><span class="m">Apr</span></div><div class="pe-info"><h4>NextGEN Founders Dinner</h4><p>7:00 PM · Private Venue, Santo Domingo · 16 Seats</p></div><button class="pe-rsvp going">Going ✓</button></div>
-          <div class="pe"><div class="pe-date"><span class="d">18</span><span class="m">Apr</span></div><div class="pe-info"><h4>Scaling $1M→$10M ARR — Strategy Session</h4><p>11:30 AM · Downtown · 12 Seats</p></div><button class="pe-rsvp" onclick="this.classList.add('going');this.textContent='Going ✓'">RSVP</button></div>
-          <div class="pe"><div class="pe-date"><span class="d">25</span><span class="m">Apr</span></div><div class="pe-info"><h4>Founders Breakfast</h4><p>8:00 AM · Member Location · 20 Seats</p></div><button class="pe-rsvp" onclick="this.classList.add('going');this.textContent='Going ✓'">RSVP</button></div>
-          <div class="pe"><div class="pe-date"><span class="d">3</span><span class="m">May</span></div><div class="pe-info"><h4>Deal Flow Session — Q2 Review</h4><p>4:00 PM · Private Office · 10 Seats Only</p></div><button class="pe-rsvp" onclick="this.classList.add('going');this.textContent='Going ✓'">RSVP</button></div>
+          <div class="pe"><div class="pe-date"><span class="d">10</span><span class="m">Apr</span></div><div class="pe-info"><h4>NextGEN Founders Dinner</h4><p>7:00 PM · Private Venue, Santo Domingo · 16 Seats</p></div><button class="pe-rsvp going" onclick="toggleRSVP(this)">Going ✓</button></div>
+          <div class="pe"><div class="pe-date"><span class="d">18</span><span class="m">Apr</span></div><div class="pe-info"><h4>Scaling $1M→$10M ARR — Strategy Session</h4><p>11:30 AM · Downtown · 12 Seats</p></div><button class="pe-rsvp" onclick="toggleRSVP(this)">RSVP</button></div>
+          <div class="pe"><div class="pe-date"><span class="d">25</span><span class="m">Apr</span></div><div class="pe-info"><h4>Founders Breakfast</h4><p>8:00 AM · Member Location · 20 Seats</p></div><button class="pe-rsvp" onclick="toggleRSVP(this)">RSVP</button></div>
+          <div class="pe"><div class="pe-date"><span class="d">3</span><span class="m">May</span></div><div class="pe-info"><h4>Deal Flow Session — Q2 Review</h4><p>4:00 PM · Private Office · 10 Seats Only</p></div><button class="pe-rsvp" onclick="toggleRSVP(this)">RSVP</button></div>
         </div>
       </div>
       <!-- Community Feed (dynamic) -->
@@ -1176,6 +1176,14 @@ function renderPostsList(){
 // ═══════════════════════════════════════════════
 //  NAVIGATION
 // ═══════════════════════════════════════════════
+function goSection(id){
+  if(document.getElementById('portal').classList.contains('active')){showLanding();}
+  setTimeout(function(){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},80);
+}
+function toggleRSVP(btn){
+  if(btn.classList.contains('going')){btn.classList.remove('going');btn.textContent='RSVP';}
+  else{btn.classList.add('going');btn.textContent='Going ✓';}
+}
 function showLanding(){
   document.getElementById('portal').classList.remove('active');
   document.getElementById('landing').classList.add('active');
@@ -1516,7 +1524,7 @@ function renderOpinion(){
  var L=(localStorage.getItem('ng_lang')||'es');
  var so=L==='en'?d.DAILY.stocks_opinion_en:d.DAILY.stocks_opinion_es;
  var co=L==='en'?d.DAILY.crypto_opinion_en:d.DAILY.crypto_opinion_es;
- var hS=L==='en'?'Stock market':'Mercado de acciones';
+ var hS=L==='en'?'Stock market':'Mercado de valores';
  var hC=L==='en'?'Crypto market':'Mercado cripto';
  var hW=L==='en'?'What we are watching':'Ideas que estamos vigilando';
  var hD=L==='en'?'Opinion of the day':'Opinion del dia';
