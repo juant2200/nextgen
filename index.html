@@ -323,6 +323,53 @@
       #tab-dir,.portal-layout,#tab-admin{padding:20px 22px}
     }
   </style>
+<style id="ng-add-css">
+:root{--ng-bg:#0b0f17;--ng-bg2:#131a26;--ng-fg:#e6edf7;--ng-fg2:#9aa6b8;--ng-accent:#C9A84C;--ng-up:#10b981;--ng-down:#ef4444;--ng-border:rgba(201,168,76,.18);--ng-radius:12px;}
+.ng-section{padding:64px 24px;max-width:1200px;margin:0 auto;color:var(--ng-fg);font-family:Inter,sans-serif}
+.ng-section h2{font-size:32px;margin-bottom:8px;color:var(--ng-accent);font-family:'Playfair Display',serif}
+.ng-section .ng-sub{color:var(--ng-fg2);margin-bottom:32px}
+.ng-lang-switch{display:inline-flex;gap:4px;background:var(--ng-bg2);padding:4px;border-radius:999px;border:1px solid var(--ng-border)}
+.ng-lang-btn{background:transparent;color:var(--ng-fg2);border:0;padding:6px 14px;border-radius:999px;font-weight:600;font-size:13px;cursor:pointer}
+.ng-lang-btn.active{background:var(--ng-accent);color:#1a120a}
+.ng-market-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:900px){.ng-market-grid{grid-template-columns:1fr}}
+.ng-market-grid h3{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--ng-fg2);margin-bottom:12px}
+.ng-price-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.ng-price-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);padding:14px 16px}
+.ng-price-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.ng-price-head strong{font-size:14px}.ng-price-head span{font-size:11px;color:var(--ng-fg2)}
+.ng-price-value{font-size:22px;font-weight:700;margin-bottom:4px}
+.ng-price-change{font-size:13px;font-weight:600}
+.ng-up .ng-price-change{color:var(--ng-up)}.ng-down .ng-price-change{color:var(--ng-down)}
+.ng-opinion{margin-top:32px;background:var(--ng-bg2);border:1px solid var(--ng-border);border-left:4px solid var(--ng-accent);border-radius:var(--ng-radius);padding:24px 28px}
+.ng-opinion h4{margin:16px 0 6px;color:var(--ng-accent);font-size:13px;text-transform:uppercase}
+.ng-opinion p,.ng-opinion li{color:var(--ng-fg);line-height:1.55}
+.ng-disclaimer{margin-top:18px;font-size:12px;color:var(--ng-fg2);font-style:italic}
+.ng-events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+.ng-event-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);overflow:hidden}
+.ng-event-cover{aspect-ratio:16/10;background:#0f1622;display:flex;align-items:center;justify-content:center;color:var(--ng-fg2);font-size:13px}
+.ng-event-cover img{width:100%;height:100%;object-fit:cover}
+.ng-event-body{padding:18px 20px}
+.ng-event-body h3{margin:0 0 8px;font-size:18px;color:var(--ng-accent)}
+.ng-event-body p{color:var(--ng-fg);font-size:14px;line-height:1.5}
+.ng-chart-wrap{display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.ng-pie{width:240px;height:240px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ng-pie-hole{width:130px;height:130px;background:var(--ng-bg);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ng-pie-hole strong{font-size:38px;color:var(--ng-accent)}
+.ng-pie-hole small{font-size:11px;color:var(--ng-fg2);text-transform:uppercase}
+.ng-chart-legend{list-style:none;padding:0;margin:0}
+.ng-chart-legend li{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:14px}
+.ng-dot{display:inline-block;width:12px;height:12px;border-radius:50%}
+.ng-news-sector{margin-bottom:36px}
+.ng-news-sector h3{font-size:18px;color:var(--ng-accent);margin-bottom:14px;border-bottom:1px solid var(--ng-border);padding-bottom:6px}
+.ng-news-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+.ng-news-card{background:var(--ng-bg2);border:1px solid var(--ng-border);border-radius:var(--ng-radius);padding:18px}
+.ng-news-card h4{font-size:16px;margin:0 0 8px}
+.ng-news-card h4 a{color:var(--ng-fg);text-decoration:none}
+.ng-news-card h4 a:hover{color:var(--ng-accent)}
+.ng-news-card p{font-size:13px;color:var(--ng-fg2);line-height:1.5;margin:0 0 10px}
+.ng-news-more{font-size:12px;color:var(--ng-accent);text-decoration:none;font-weight:600}
+</style>
 </head>
 <body>
 
@@ -1154,6 +1201,173 @@ document.addEventListener('DOMContentLoaded',()=>{
   const ndate=document.getElementById('n-date');
   if(ndate)ndate.value=today;
 });
+</script>
+
+<!-- ============================================================
+     NextGEN - Additions injected by Cowork on 2026-04-08
+     Past events, council chart, news, market, language switcher
+     ============================================================ -->
+<section id="ng-past-events-section" class="ng-section">
+  <h2 data-i18n="events.title">Actividades Pasadas</h2>
+  <p class="ng-sub" data-i18n="events.sub">Lo que hemos vivido juntos.</p>
+  <div id="ng-past-events"></div>
+</section>
+<section id="ng-council-chart-section" class="ng-section">
+  <h2 data-i18n="council.title">Consejo Fundador</h2>
+  <p class="ng-sub" data-i18n="council.note">Areas de negocio representadas</p>
+  <div id="ng-council-chart"></div>
+</section>
+<section id="ng-market-extra" class="ng-section">
+  <h2 data-i18n="market.title">Mercado en Vivo (Stocks + Crypto)</h2>
+  <p class="ng-sub" data-i18n="market.sub">Educativo, no asesoria financiera.</p>
+  <div class="ng-market-grid">
+    <div><h3 data-i18n="market.stocks">Acciones</h3><div id="ng-market-stocks" class="ng-price-cards">Cargando...</div></div>
+    <div><h3 data-i18n="market.crypto">Criptomonedas</h3><div id="ng-market-crypto" class="ng-price-cards">Cargando...</div></div>
+  </div>
+  <div id="ng-market-opinion"></div>
+</section>
+<section id="ng-news-section" class="ng-section">
+  <h2 data-i18n="news.title">Noticias por Sector</h2>
+  <p class="ng-sub" data-i18n="news.sub">Resumenes de las fuentes que importan.</p>
+  <div id="ng-news"></div>
+</section>
+<div id="ng-lang-float" style="position:fixed;top:16px;right:16px;z-index:9998">
+  <div class="ng-lang-switch"><button class="ng-lang-btn active" data-lang="es" type="button">ES</button><button class="ng-lang-btn" data-lang="en" type="button">EN</button></div>
+</div>
+
+<script id="ng-add-js">
+(function(){
+var DAILY={date:"2026-04-08",
+ stocks_opinion:"Las acciones tecnologicas estadounidenses siguen marcando el ritmo del mercado, con NVIDIA y los hyperscalers concentrando el flujo institucional. Vigilamos rotacion hacia industriales y energia conforme bajen tasas reales.",
+ crypto_opinion:"Bitcoin se mantiene en rango alto post-halving y la liquidez stablecoin sigue creciendo. Ethereum muestra fortaleza tras mejoras de L2. Solana lidera en volumen pero su volatilidad es el doble del BTC.",
+ watchlist:[
+  {ticker:"NVDA",thesis:"Demanda de chips para IA insostenible vs el capex anunciado por hyperscalers para 2026."},
+  {ticker:"MSFT",thesis:"Azure + Copilot consolidan la monetizacion de IA empresarial."},
+  {ticker:"BTC", thesis:"Reserva digital de valor; reducir si rompe a la baja la media de 200 dias."},
+  {ticker:"ETH", thesis:"Beneficiario directo de la actividad on-chain; vigilar fees y net issuance."}
+ ]};
+var I18N={
+ es:{"council.title":"Consejo Fundador","council.note":"Areas de negocio representadas","events.title":"Actividades Pasadas","events.sub":"Lo que hemos vivido juntos","news.title":"Noticias por Sector","news.sub":"Resumenes de las fuentes que importan","market.title":"Mercado en Vivo","market.sub":"Educativo, no asesoria financiera","market.stocks":"Acciones","market.crypto":"Criptomonedas"},
+ en:{"council.title":"Founding Council","council.note":"Business areas represented","events.title":"Past Events","events.sub":"What we have lived together","news.title":"News by Sector","news.sub":"Summaries from the sources that matter","market.title":"Live Market","market.sub":"Educational, not financial advice","market.stocks":"Stocks","market.crypto":"Crypto"}
+};
+function applyLang(L){var d=I18N[L]||I18N.es;document.querySelectorAll("[data-i18n]").forEach(function(e){var k=e.getAttribute("data-i18n");if(d[k])e.textContent=d[k]});try{localStorage.setItem("ng_lang",L)}catch(e){}document.querySelectorAll(".ng-lang-btn").forEach(function(b){b.classList.toggle("active",b.dataset.lang===L)})}
+window.ngSetLang=applyLang;
+
+var EVENTS=[
+ {n:"Inauguracion y Consolidacion de NextGEN",d:"Primera actividad oficial de la comunidad, donde se realizo el primer acercamiento presencial entre los miembros, marcando el inicio de NextGEN."},
+ {n:"Polo",d:"Encuentro en un prestigioso torneo de polo en Santo Domingo, fortaleciendo el networking entre miembros."},
+ {n:"Visita a Oliver & Oliver",d:"Visita a las bodegas de Oliver & Oliver, guiada por Maximo Lopez Oliver, presidente y miembro activo."},
+ {n:"Boca Marina",d:"Actividad en Boca Marina con dinamicas enfocadas en la vision de negocios y resolucion de problemas."},
+ {n:"Encuentro con Omar Fernandez",d:"Desayuno donde el senador compartio su vision y propuestas con la comunidad."},
+ {n:"Bar Room",d:"Networking en ambiente informal y dinamico para fortalecer relaciones."},
+ {n:"Encuentro con Hermanos Nin",d:"Charla con los Hermanos Nin, emprendedores dominicanos en Canada, sobre su trayectoria empresarial."}
+];
+
+var COUNCIL=[
+ {s:"Turismo y Hospitalidad",c:"#0ea5e9"},
+ {s:"Energia",c:"#f59e0b"},
+ {s:"Tecnologia",c:"#8b5cf6"},
+ {s:"Industria y Manufactura",c:"#10b981"},
+ {s:"Bienes Raices",c:"#ef4444"},
+ {s:"Servicios Financieros",c:"#3b82f6"}
+];
+
+var CRYPTOS=[{i:"bitcoin",l:"Bitcoin",s:"BTC"},{i:"ethereum",l:"Ethereum",s:"ETH"},{i:"solana",l:"Solana",s:"SOL"},{i:"binancecoin",l:"BNB",s:"BNB"},{i:"ripple",l:"XRP",s:"XRP"},{i:"cardano",l:"Cardano",s:"ADA"}];
+var STOCKS=[{s:"^spx",l:"S&P 500"},{s:"^ndq",l:"NASDAQ 100"},{s:"^dji",l:"Dow Jones"},{s:"aapl.us",l:"Apple"},{s:"msft.us",l:"Microsoft"},{s:"nvda.us",l:"NVIDIA"},{s:"tsla.us",l:"Tesla"},{s:"amzn.us",l:"Amazon"}];
+var SECTORS=[
+ {key:"turismo",label:"Turismo",icon:"\u{1F3DD}",feeds:["https://www.preferente.com/feed","https://www.reportur.com/feed/"]},
+ {key:"economia",label:"Economia",icon:"\u{1F4C8}",feeds:["https://feeds.reuters.com/reuters/businessNews"]},
+ {key:"tecnologia",label:"Tecnologia",icon:"\u{1F4BB}",feeds:["https://techcrunch.com/feed/"]},
+ {key:"energia",label:"Energia",icon:"\u26A1",feeds:["https://oilprice.com/rss/main"]},
+ {key:"gobierno",label:"Gobierno RD",icon:"\u{1F3DB}",feeds:["https://www.diariolibre.com/rss/actualidad.xml"]}
+];
+
+function fmtMoney(n){if(n==null||isNaN(n))return"-";return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:n<1?6:2}).format(n)}
+function fmtPct(n){if(n==null||isNaN(n))return"-";return(n>=0?"+":"")+n.toFixed(2)+"%"}
+function priceCard(o){var d=o.changePct>=0?"up":"down";return '<div class="ng-price-card ng-'+d+'"><div class="ng-price-head"><strong>'+o.label+'</strong><span>'+o.sub+'</span></div><div class="ng-price-value">'+fmtMoney(o.price)+'</div><div class="ng-price-change">'+fmtPct(o.changePct)+'</div></div>'}
+
+function renderCrypto(){
+ var t=document.getElementById("ng-market-crypto");if(!t)return;
+ var ids=CRYPTOS.map(function(c){return c.i}).join(",");
+ fetch("https://api.coingecko.com/api/v3/simple/price?ids="+ids+"&vs_currencies=usd&include_24hr_change=true")
+  .then(function(r){return r.json()}).then(function(data){
+   t.innerHTML=CRYPTOS.map(function(c){var d=data[c.i]||{};return priceCard({label:c.l,sub:c.s,price:d.usd,changePct:d.usd_24h_change})}).join("");
+  }).catch(function(){t.innerHTML='<p style="color:#ef4444">No pude cargar cripto</p>'});
+}
+function renderStocks(){
+ var t=document.getElementById("ng-market-stocks");if(!t)return;
+ Promise.all(STOCKS.map(function(s){
+  return fetch("https://stooq.com/q/l/?s="+encodeURIComponent(s.s)+"&f=sd2t2ohlcv&h&e=csv").then(function(r){return r.text()}).then(function(txt){
+   var lines=txt.trim().split("\n");if(lines.length<2)return null;var c=lines[1].split(",");var close=parseFloat(c[6]);return{label:s.l,sub:s.s.toUpperCase().replace(".US",""),price:close,changePct:0}
+  }).catch(function(){return null})
+ })).then(function(arr){
+  t.innerHTML=arr.filter(Boolean).map(priceCard).join("");
+ });
+}
+
+function renderEvents(){
+ var t=document.getElementById("ng-past-events");if(!t)return;
+ t.innerHTML='<div class="ng-events-grid">'+EVENTS.map(function(e){
+  return '<article class="ng-event-card"><div class="ng-event-cover">Foto pendiente</div><div class="ng-event-body"><h3>'+e.n+'</h3><p>'+e.d+'</p></div></article>';
+ }).join("")+'</div>';
+}
+
+function renderCouncil(){
+ var t=document.getElementById("ng-council-chart");if(!t)return;
+ var step=100/COUNCIL.length;var stops=COUNCIL.map(function(c,i){return c.c+" "+(i*step)+"% "+((i+1)*step)+"%"}).join(",");
+ var legend=COUNCIL.map(function(c){return '<li><span class="ng-dot" style="background:'+c.c+'"></span>'+c.s+'</li>'}).join("");
+ t.innerHTML='<div class="ng-chart-wrap"><div class="ng-pie" style="background:conic-gradient('+stops+')"><div class="ng-pie-hole"><strong>6</strong><small>Fundadores</small></div></div><ul class="ng-chart-legend">'+legend+'</ul></div>';
+}
+
+function renderOpinion(){
+ var t=document.getElementById("ng-market-opinion");if(!t)return;
+ t.innerHTML='<div class="ng-opinion"><strong>Opinion del dia &mdash; '+DAILY.date+'</strong><h4>Mercado de acciones</h4><p>'+DAILY.stocks_opinion+'</p><h4>Mercado cripto</h4><p>'+DAILY.crypto_opinion+'</p><h4>Ideas que estamos vigilando</h4><ul>'+DAILY.watchlist.map(function(w){return '<li><strong>'+w.ticker+'</strong> &mdash; '+w.thesis+'</li>'}).join("")+'</ul><p class="ng-disclaimer">Esto no es asesoria financiera. Contenido educativo para discusion del consejo.</p></div>';
+}
+
+function renderNews(){
+ var t=document.getElementById("ng-news");if(!t)return;
+ t.innerHTML="";
+ SECTORS.forEach(function(sec){
+  var sx=document.createElement("section");sx.className="ng-news-sector";
+  sx.innerHTML='<h3>'+sec.icon+' '+sec.label+'</h3><div class="ng-news-list">Cargando...</div>';
+  t.appendChild(sx);
+  Promise.all(sec.feeds.map(function(u){
+   return fetch("https://api.rss2json.com/v1/api.json?rss_url="+encodeURIComponent(u)).then(function(r){return r.json()}).then(function(j){return(j.items||[]).slice(0,2)}).catch(function(){return[]});
+  })).then(function(lists){
+   var items=[].concat.apply([],lists).slice(0,3);
+   var list=sx.querySelector(".ng-news-list");
+   if(items.length===0){list.innerHTML='<p style="color:#9aa6b8">Sin noticias ahora.</p>';return}
+   list.innerHTML=items.map(function(it){
+    var tmp=document.createElement("div");tmp.innerHTML=it.description||"";var txt=(tmp.textContent||"").slice(0,180)+"...";
+    return '<article class="ng-news-card"><h4><a href="'+it.link+'" target="_blank" rel="noopener">'+it.title+'</a></h4><p>'+txt+'</p><a class="ng-news-more" href="'+it.link+'" target="_blank" rel="noopener">Leer mas &rarr;</a></article>';
+   }).join("");
+  });
+ });
+}
+
+function renderChatbot(){
+ if(document.getElementById("ng-chatbot-fab"))return;
+ var fab=document.createElement("button");fab.id="ng-chatbot-fab";fab.innerHTML="\u{1F4AC}";
+ fab.style.cssText="position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#C9A84C;color:#0A0A0A;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.4);z-index:9999";
+ fab.onclick=function(){
+  var m=document.getElementById("ng-chat-modal");
+  if(m){m.remove();return}
+  m=document.createElement("div");m.id="ng-chat-modal";
+  m.style.cssText="position:fixed;bottom:90px;right:24px;width:340px;background:#181818;border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:16px;z-index:9999;color:#F0EDE6;box-shadow:0 8px 40px rgba(0,0,0,.6)";
+  m.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><strong style="color:#C9A84C">Market Chat</strong><button onclick="this.parentNode.parentNode.remove()" style="background:none;border:0;color:#F0EDE6;cursor:pointer;font-size:18px">x</button></div><div id="ng-chat-log" style="min-height:180px;font-size:13px;line-height:1.5;margin-bottom:12px"><p style="color:#7A756E;font-style:italic">Bienvenido al chat del consejo. Backend de IA pendiente: pidele a Claude que conecte Supabase + OpenAI cuando esten listos.</p></div>';
+  document.body.appendChild(m);
+ };
+ document.body.appendChild(fab);
+}
+
+function boot(){
+ var L="es";try{L=localStorage.getItem("ng_lang")||"es"}catch(e){}applyLang(L);
+ document.querySelectorAll(".ng-lang-btn").forEach(function(b){b.addEventListener("click",function(){applyLang(b.dataset.lang)})});
+ renderEvents();renderCouncil();renderOpinion();renderCrypto();renderStocks();renderNews();renderChatbot();
+ setInterval(function(){renderCrypto();renderStocks()},60000);
+}
+if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",boot)}else{boot()}
+})();
 </script>
 </body>
 </html>
