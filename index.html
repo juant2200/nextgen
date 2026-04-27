@@ -747,7 +747,7 @@
 // ═══════════════════════════════════════════════
 const MEMBERS = [
   {name:"Juan Tomas Diaz Rainieri",profile:"Founder · NextGEN",company:"JV HOLDINGS",role:"Gerente Comercial del Consejo",industry:"Consejo Administrativo",bio:"Founder de NextGEN. Lidera la vision, las relaciones comerciales y la curaduria de la comunidad. CEO de JV HOLDINGS, grupo que opera y desarrolla negocios en Republica Dominicana.",initials:"JT",founding:true,council:true,councilOrder:1},
-  {name:"Emmanuel Checo",profile:"Founder · NextGEN",company:"Cherruso",role:"Organizador del Consejo",industry:"Consejo Administrativo",bio:"Founder de NextGEN y Organizador del consejo. Coordina los eventos y la operacion de la comunidad. Co-fundador de Cherruso junto a Joaquin Venegas y Juan Bolivar.",initials:"EC",founding:true,council:true,councilOrder:2},
+  {name:"Emmanuel Checo",profile:"Founder · NextGEN",company:"Cherruso",role:"Organizador del Consejo",industry:"Consejo Administrativo",bio:"Founder de NextGEN y Organizador del consejo. Coordina los eventos y la operacion de la comunidad. Co-fundador de Cherruso junto a Joaquin Ruiz y Juan Bolivar.",initials:"EC",founding:true,council:true,councilOrder:2},
   {name:"Victor Andujar Mendez",profile:"Business Professional",company:"Grupo Vimenca",role:"",industry:"Finance / Conglomerate",bio:"Part of one of the Dominican Republic's leading financial and business conglomerates.",initials:"VA"},
   {name:"Ricardo Read",profile:"Business Professional",company:"Grupo Rica",role:"Administrative Manager",industry:"Food & Beverage",bio:"Gerente Administrativo at Grupo Rica, leading expansion of a key division within one of DR's top consumer brands.",initials:"RR"},
   {name:"Alejandro Najri",profile:"Founder / Entrepreneur",company:"Ferquido",role:"Sales Analyst",industry:"Distribution / Sales",bio:"Entrepreneur and sales professional. Part of Ferquido and building ventures in sales and distribution.",initials:"AN"},
@@ -2048,11 +2048,12 @@ document.addEventListener('DOMContentLoaded', function(){
     if (typeof MEMBERS === 'undefined' || !Array.isArray(MEMBERS)) return;
     // Direct LinkedIn URLs (verified or seed). Otherwise use a search URL.
     var DIRECT_LI = {
-      'Juan Tomas Diaz Rainieri': 'https://www.linkedin.com/search/results/people/?keywords=Juan%20Tomas%20Diaz%20Rainieri',
-      'Emmanuel Checo': 'https://www.linkedin.com/search/results/people/?keywords=Emmanuel%20Checo',
-      'Abraham Vilalta': 'https://www.linkedin.com/search/results/people/?keywords=Abraham%20Vilalta',
-      'Teofilo Solano': 'https://www.linkedin.com/search/results/people/?keywords=Teofilo%20Solano',
-      'Alejandro Guerrero': 'https://www.linkedin.com/search/results/people/?keywords=Alejandro%20Guerrero%20Banco%20Popular'
+      'Juan Tomas Diaz Rainieri': 'https://www.linkedin.com/in/juan-tomas-diaz-914322193/',
+      'Emmanuel Checo': 'https://www.linkedin.com/in/emmanuel-checo-fiorentino-387940247/',
+      'Abraham Vilalta': 'https://www.linkedin.com/in/abraham-vilalta-b57b451bb/',
+      'Teofilo Solano': 'https://www.linkedin.com/in/te%C3%B3filosolano/',
+      'Alejandro Guerrero': 'https://www.linkedin.com/in/alejandro-guerrero-56a0a3258/',
+      'Joaquin Venegas': 'https://www.linkedin.com/in/joaquin-ruiz-0677a9195/'
     };
     function liUrl(m){
       if (DIRECT_LI[m.name]) return DIRECT_LI[m.name];
