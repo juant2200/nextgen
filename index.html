@@ -752,7 +752,8 @@ const MEMBERS = [
   {name:"Ricardo Read",profile:"Business Professional",company:"Grupo Rica",role:"Administrative Manager",industry:"Food & Beverage",bio:"Gerente Administrativo at Grupo Rica, leading expansion of a key division within one of DR's top consumer brands.",initials:"RR"},
   {name:"Alejandro Najri",profile:"Founder / Entrepreneur",company:"Ferquido",role:"Sales Analyst",industry:"Distribution / Sales",bio:"Entrepreneur and sales professional. Part of Ferquido and building ventures in sales and distribution.",initials:"AN"},
   {name:"Miguel Hernandez",profile:"Business Professional",company:"Superintendencia de Bancos",role:"",industry:"Financial Regulation",bio:"Professional in the Dominican banking regulatory sector.",initials:"MH"},
-  {name:"Alejandro Guerrero",profile:"Consejo · Finanzas",company:"Banco Popular",role:"Finanzas",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como encargado de Finanzas. Profesional en banca empresarial, construyendo su camino emprendedor en paralelo a su carrera bancaria.",initials:"AG",council:true,councilOrder:5},
+  {name:"Alejandro Guerrero",profile:"Consejo · Finanzas",company:"Banco Popular",role:"Finanzas",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como encargado de Finanzas. Profesional en banca empresarial, construyendo su camino emprendedor en paralelo a su carrera bancaria.",initials:"AG",founding:true,council:true,councilOrder:5},
+  {name:"Joaquin Ruiz",profile:"Founding Member",company:"Cherruso",role:"Co-Founder",industry:"Tecnologia / Operaciones",bio:"Miembro fundador de NextGEN. Co-fundador de Cherruso junto a Emmanuel Checo y Juan Bolivar.",initials:"JR",founding:true},
   {name:"Jean Oleaga",profile:"Business Professional",company:"McKinsey & Company",role:"Strategy Consultant",industry:"Consulting",bio:"Strategy consultant at McKinsey & Co, designing growth strategies for financial groups and franchise leaders across the region.",initials:"JO"},
   {name:"José Daniel Rodríguez Muñoz",profile:"Business Professional",company:"Headrick",role:"Attorney",industry:"Legal",bio:"Lawyer at Headrick, one of the Dominican Republic's leading law firms.",initials:"JD"},
   {name:"Juan Sebastian Franco",profile:"Founder / Entrepreneur",company:"Franco Fernandez & Asociados",role:"Founder",industry:"Insurance / Tech / HR",bio:"Founder across multiple ventures: Franco Fernandez & Asociados (insurance), SPID (digital insurance), CBP Consulting (HR), and CrestView Technologies.",initials:"JS"},
@@ -769,7 +770,7 @@ const MEMBERS = [
   {name:"Rubén Astacio",profile:"Founder / Entrepreneur",company:"Sunset Corp / Mucjo Project",role:"",industry:"Entertainment / Music",bio:"Entrepreneur and creator behind Sunset Corp and Mucjo Project.",initials:"RA"},
   {name:"Miled Hazim",profile:"Founder / Entrepreneur",company:"Helios Solar Park",role:"Founder",industry:"Energy / Renewable",bio:"Developing Helios Solar Park, a photovoltaic energy project in the Dominican Republic.",initials:"MH"},
   {name:"Domingo Lora",profile:"Founder / Entrepreneur",company:"DLB Transport",role:"Founder",industry:"Logistics / Transport",bio:"Founder of DLB Transport, a specialized logistics company for household goods, tools, mattresses, and construction materials.",initials:"DL"},
-  {name:"Teofilo Solano",profile:"Consejo · Operador",company:"Fleet RD / CIMSA",role:"Operador",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como Operador. Founder de Fleet RD (alquiler de yates a nivel nacional) y Gerente Comercial en CIMSA.",initials:"TS",council:true,councilOrder:4},
+  {name:"Teofilo Solano",profile:"Consejo · Operador",company:"Fleet RD / CIMSA",role:"Operador",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como Operador. Founder de Fleet RD (alquiler de yates a nivel nacional) y Gerente Comercial en CIMSA.",initials:"TS",founding:true,council:true,councilOrder:4},
   {name:"Alejandro Fernandez",profile:"Business Professional",company:"Baccessory",role:"Project Sales",industry:"Bath / Kitchen / Hardware",bio:"Sales professional at Baccessory, a company specializing in bathroom, kitchen, and hardware products.",initials:"AF"},
   {name:"Daniel Hiraldo",profile:"Founder / Entrepreneur",company:"Ventux",role:"Founder",industry:"Technology / SaaS",bio:"Founder of Ventux, a software company focused on automating sales, marketing, and customer service processes.",initials:"DH"},
   {name:"Maximo Lopez",profile:"Founder / Entrepreneur",company:"Oliver & Oliver / Caribbean Brands",role:"President",industry:"Beverages / Capital",bio:"President of Oliver & Oliver, Bodegas Pedro Oliver, Rones del Caribe, Caribbean Brands, and Terravida Capital Partners.",initials:"ML"},
@@ -1994,10 +1995,14 @@ document.addEventListener('DOMContentLoaded', function(){
     if (typeof MEMBERS === 'undefined' || !Array.isArray(MEMBERS)) return;
     var beforeCount = MEMBERS.length;
     // Stable sort: council first (by councilOrder), then non-council (preserving order)
+    function tier(m){
+      if (m.council) return (m.councilOrder || 999);
+      if (m.founding) return 1000; // founding non-council
+      return 2000; // regular members
+    }
     MEMBERS.sort(function(a, b){
-      var ac = a.council ? (a.councilOrder || 999) : 1000;
-      var bc = b.council ? (b.councilOrder || 999) : 1000;
-      if (ac !== bc) return ac - bc;
+      var ta = tier(a), tb = tier(b);
+      if (ta !== tb) return ta - tb;
       return 0;
     });
     // Re-render the landing members grid + portal directory
@@ -2008,18 +2013,30 @@ document.addEventListener('DOMContentLoaded', function(){
     if (grid) {
       var cards = grid.querySelectorAll('.member-card');
       // Find first non-council index
-      var firstNonCouncilIdx = -1;
-      MEMBERS.forEach(function(m, i){ if (!m.council && firstNonCouncilIdx === -1) firstNonCouncilIdx = i; });
-      if (firstNonCouncilIdx > 0 && cards[firstNonCouncilIdx]) {
-        var sep = document.createElement('div');
-        sep.style.cssText = 'grid-column:1/-1;text-align:center;padding:20px 0 10px;border-top:1px solid rgba(201,168,76,.18);margin-top:14px;color:#c9a84c;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700';
-        sep.textContent = 'Miembros';
-        cards[firstNonCouncilIdx].parentNode.insertBefore(sep, cards[firstNonCouncilIdx]);
-        // Also insert "Consejo Administrativo" header at top
-        var header = document.createElement('div');
-        header.style.cssText = 'grid-column:1/-1;text-align:center;padding:0 0 14px;color:#c9a84c;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700';
-        header.textContent = 'Consejo Administrativo';
-        grid.insertBefore(header, grid.firstChild);
+      // Find boundaries by tier
+      var firstFoundingIdx = -1, firstRegularIdx = -1;
+      MEMBERS.forEach(function(m, i){
+        if (!m.council && m.founding && firstFoundingIdx === -1) firstFoundingIdx = i;
+        if (!m.council && !m.founding && firstRegularIdx === -1) firstRegularIdx = i;
+      });
+      // Insert "Consejo Administrativo" header at top
+      var header = document.createElement('div');
+      header.style.cssText = 'grid-column:1/-1;text-align:center;padding:0 0 14px;color:#c9a84c;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700';
+      header.textContent = 'Consejo Administrativo';
+      grid.insertBefore(header, grid.firstChild);
+      // Insert "Miembros Fundadores" before first founding non-council
+      if (firstFoundingIdx > 0 && cards[firstFoundingIdx]) {
+        var sep1 = document.createElement('div');
+        sep1.style.cssText = 'grid-column:1/-1;text-align:center;padding:20px 0 10px;border-top:1px solid rgba(201,168,76,.18);margin-top:14px;color:#c9a84c;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700';
+        sep1.textContent = 'Miembros Fundadores';
+        cards[firstFoundingIdx].parentNode.insertBefore(sep1, cards[firstFoundingIdx]);
+      }
+      // Insert "Miembros" before first regular
+      if (firstRegularIdx > 0 && cards[firstRegularIdx]) {
+        var sep2 = document.createElement('div');
+        sep2.style.cssText = 'grid-column:1/-1;text-align:center;padding:20px 0 10px;border-top:1px solid rgba(201,168,76,.18);margin-top:14px;color:#c9a84c;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700';
+        sep2.textContent = 'Miembros';
+        cards[firstRegularIdx].parentNode.insertBefore(sep2, cards[firstRegularIdx]);
       }
     }
   }, 400);
