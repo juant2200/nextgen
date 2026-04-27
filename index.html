@@ -747,7 +747,7 @@
 // ═══════════════════════════════════════════════
 const MEMBERS = [
   {name:"Juan Tomas Diaz Rainieri",profile:"Founder · NextGEN",company:"JV HOLDINGS",role:"Gerente Comercial del Consejo",industry:"Consejo Administrativo",bio:"Founder de NextGEN. Lidera la vision, las relaciones comerciales y la curaduria de la comunidad. CEO de JV HOLDINGS, grupo que opera y desarrolla negocios en Republica Dominicana.",initials:"JT",founding:true,council:true,councilOrder:1},
-  {name:"Emmanuel Checo",profile:"Founder · NextGEN",company:"Vela",role:"Organizador del Consejo",industry:"Consejo Administrativo",bio:"Founder de NextGEN y Organizador del consejo. Coordina los eventos y la operacion de la comunidad. Fundador de Vela, plataforma SaaS para operaciones de negocio.",initials:"EC",founding:true,council:true,councilOrder:2},
+  {name:"Emmanuel Checo",profile:"Founder · NextGEN",company:"Cherruso",role:"Organizador del Consejo",industry:"Consejo Administrativo",bio:"Founder de NextGEN y Organizador del consejo. Coordina los eventos y la operacion de la comunidad. Co-fundador de Cherruso junto a Joaquin Venegas y Juan Bolivar.",initials:"EC",founding:true,council:true,councilOrder:2},
   {name:"Victor Andujar Mendez",profile:"Business Professional",company:"Grupo Vimenca",role:"",industry:"Finance / Conglomerate",bio:"Part of one of the Dominican Republic's leading financial and business conglomerates.",initials:"VA"},
   {name:"Ricardo Read",profile:"Business Professional",company:"Grupo Rica",role:"Administrative Manager",industry:"Food & Beverage",bio:"Gerente Administrativo at Grupo Rica, leading expansion of a key division within one of DR's top consumer brands.",initials:"RR"},
   {name:"Alejandro Najri",profile:"Founder / Entrepreneur",company:"Ferquido",role:"Sales Analyst",industry:"Distribution / Sales",bio:"Entrepreneur and sales professional. Part of Ferquido and building ventures in sales and distribution.",initials:"AN"},
@@ -2037,6 +2037,50 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     }
   }, 400);
+});
+</script>
+
+
+<script>
+// Inject LinkedIn button on each Member Highlights card
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){
+    if (typeof MEMBERS === 'undefined' || !Array.isArray(MEMBERS)) return;
+    // Direct LinkedIn URLs (verified or seed). Otherwise use a search URL.
+    var DIRECT_LI = {
+      'Juan Tomas Diaz Rainieri': 'https://www.linkedin.com/search/results/people/?keywords=Juan%20Tomas%20Diaz%20Rainieri',
+      'Emmanuel Checo': 'https://www.linkedin.com/search/results/people/?keywords=Emmanuel%20Checo',
+      'Abraham Vilalta': 'https://www.linkedin.com/search/results/people/?keywords=Abraham%20Vilalta',
+      'Teofilo Solano': 'https://www.linkedin.com/search/results/people/?keywords=Teofilo%20Solano',
+      'Alejandro Guerrero': 'https://www.linkedin.com/search/results/people/?keywords=Alejandro%20Guerrero%20Banco%20Popular'
+    };
+    function liUrl(m){
+      if (DIRECT_LI[m.name]) return DIRECT_LI[m.name];
+      return 'https://www.linkedin.com/search/results/people/?keywords=' + encodeURIComponent(m.name);
+    }
+    var grid = document.getElementById('landing-members-grid');
+    if (!grid) return;
+    var cards = grid.querySelectorAll('.member-card');
+    cards.forEach(function(card, i){
+      // Find matching member by initials or order
+      var name = (card.querySelector('h3, h4, .m-name')||{}).textContent;
+      var match = MEMBERS.find(function(m){ return name && (m.name === name.trim() || name.indexOf(m.name)>-1); }) || MEMBERS[i];
+      if (!match) return;
+      // Avoid duplicate injection
+      if (card.querySelector('.ng-li-btn')) return;
+      var btn = document.createElement('a');
+      btn.className = 'ng-li-btn';
+      btn.href = liUrl(match);
+      btn.target = '_blank';
+      btn.rel = 'noopener';
+      btn.title = 'Ver en LinkedIn';
+      btn.style.cssText = 'display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 12px;background:rgba(10,102,194,.15);color:#0a66c2;border:1px solid rgba(10,102,194,.4);border-radius:6px;font-size:11px;font-weight:600;text-decoration:none;transition:all .15s';
+      btn.onmouseover = function(){ btn.style.background = 'rgba(10,102,194,.3)'; };
+      btn.onmouseout = function(){ btn.style.background = 'rgba(10,102,194,.15)'; };
+      btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>LinkedIn';
+      card.appendChild(btn);
+    });
+  }, 700);
 });
 </script>
 
