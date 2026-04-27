@@ -1870,5 +1870,64 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 
+
+<!-- ===================== AI BUSINESS IDEAS (DR) ===================== -->
+<section id="ng-ai-ideas-section" class="ng-section">
+  <div class="ng-eyebrow">Inteligencia · Curaduria del Consejo</div>
+  <h2 class="ng-section-title">Ideas de negocio para Republica Dominicana</h2>
+  <p class="ng-section-sub">Oportunidades que el consejo identifica como atractivas en el mercado dominicano. Cada una sugiere el sector miembro mejor posicionado para liderar.</p>
+  <div class="ng-grid-2" id="ng-ai-ideas-grid"></div>
+</section>
+
+<!-- ===================== INVITE / REFER MEMBER ===================== -->
+<section id="ng-invite-section" class="ng-section" style="background:linear-gradient(135deg,rgba(201,168,76,.06),rgba(20,28,38,.4));border-radius:24px;border:1px solid rgba(201,168,76,.15);padding:60px 32px;margin:40px auto">
+  <div class="ng-eyebrow">Invitaciones</div>
+  <h2 class="ng-section-title">Invita a alguien al grupo</h2>
+  <p class="ng-section-sub">NextGEN crece por referidos. Si conoces a alguien que sumaria valor a la comunidad, comparte la pagina o envia una invitacion personal.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:720px;margin-top:16px">
+    <a class="ng-card-x" style="text-align:center;text-decoration:none" id="ng-invite-wa" href="#">
+      <div style="font-size:32px;margin-bottom:8px">&#128241;</div>
+      <h4>Compartir por WhatsApp</h4>
+      <p>Envia la invitacion directa a un contacto.</p>
+    </a>
+    <a class="ng-card-x" style="text-align:center;text-decoration:none" id="ng-invite-email" href="#">
+      <div style="font-size:32px;margin-bottom:8px">&#9993;</div>
+      <h4>Invitar por correo</h4>
+      <p>Plantilla pre-armada lista para enviar.</p>
+    </a>
+  </div>
+</section>
+
+<script>
+(function(){
+  // ====== AI BUSINESS IDEAS — curated for DR market ======
+  var IDEAS = [
+    {sector:"Energia / Renovable", title:"Solar-as-a-Service para condominios", desc:"Modelo de instalacion sin capex inicial para comunidades residenciales en la zona Este. Pago por kWh ahorrado vs tarifa Edenorte/Edesur. Valida con: gestion de proyectos, financiamiento corporativo y network inmobiliario.", match:"Miled Hazim, Angel Casado, Thomas Bacci"},
+    {sector:"Logistica / Tech", title:"Plataforma de last-mile para pymes turisticas", desc:"SaaS + flota tercerizada para hoteles boutique en Punta Cana que necesitan recibir suministros frecuentes desde Santo Domingo. Suscripcion mensual + variable por entrega.", match:"Domingo Lora (DLB), Samuel Fuentes (SaaS), Abelardo Melgen (turismo)"},
+    {sector:"Fintech / Seguros", title:"Microseguros para informales con descuento por nomina B2B", desc:"Aprovecha la red de Franco Fernandez para empaquetar polizas de salud y vida asequibles para empleados informales de pymes, cobradas por el empleador.", match:"Juan Sebastian Franco, Juan Diego Franco, Pedro Ventura"},
+    {sector:"Tecnologia / Comercio", title:"Marketplace de bienes premium importados con financiamiento", desc:"Capitaliza la red automotriz/comercial del grupo (Teruel y Co., United Mobile, Capellan) para una plataforma de financiamiento al consumidor para bienes premium importados.", match:"Diego Teruel, JT (United Smart Tech), Eduardo Capellan"},
+    {sector:"Hospitalidad / Real Estate", title:"Co-living premium para nomadas digitales en Punta Cana", desc:"Hub residencial corto/mediano plazo orientado a profesionales remotos extranjeros. Servicios incluidos, comunidad y experiencias curadas. Punto de entrada via Bellamar / Blue Sky.", match:"Carlos Vazquez, Abelardo Melgen, Diego Sagredo"},
+    {sector:"Industrial / Servicios", title:"Optimizacion energetica para industrias medianas", desc:"Auditorias + sistemas de eficiencia energetica para fabricantes y distribuidores. Pago vinculado al ahorro generado (performance-based contracting).", match:"Abraham Vilalta (Sone Billini), Marcos Caffaro (Empaques Calca), Vinicio Mejia"}
+  ];
+  var ig = document.getElementById('ng-ai-ideas-grid');
+  if (ig) ig.innerHTML = IDEAS.map(function(it){
+    return '<div class="ng-card-x"><div class="ng-meta">'+it.sector+'</div><h4>'+it.title+'</h4><p>'+it.desc+'</p><p style="color:#c9a84c;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:8px">Posibles lideres: '+it.match+'</p></div>';
+  }).join('');
+
+  // ====== INVITE BUTTONS ======
+  var SITE_URL = 'https://juant2200.github.io/nextgen/';
+  var GFORM = 'https://docs.google.com/forms/d/e/1FAIpQLSczsTnQVOAWoEEFSvz-jdFlVFnA9WcyG_DiJxbBUuCnGXNakw/viewform';
+  var waMsg = 'Hola, te invito a NextGEN — una comunidad privada de jovenes empresarios y lideres emergentes en Republica Dominicana. Conoce mas y aplica: ' + SITE_URL + ' \\nFormulario de aplicacion: ' + GFORM;
+  var emailSubject = 'Invitacion a NextGEN Network';
+  var emailBody = 'Hola,\\n\\nQuiero invitarte a NextGEN — una comunidad privada de jovenes empresarios, fundadores y lideres emergentes en Republica Dominicana. Existe para crear relaciones reales, compartir oportunidades y crecer juntos como generacion.\\n\\nLa pagina del grupo: ' + SITE_URL + '\\nFormulario para aplicar: ' + GFORM + '\\n\\nSi te interesa, completa el formulario y avisame para darte referencia.\\n\\nSaludos.';
+
+  var wa = document.getElementById('ng-invite-wa');
+  var em = document.getElementById('ng-invite-email');
+  if (wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(waMsg);
+  if (em) em.href = 'mailto:?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
+})();
+</script>
+
 </body>
 </html>
