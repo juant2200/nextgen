@@ -1355,7 +1355,7 @@ var NEWS_SECTORS=[
  {key:"Banca",feeds:["https://www.diariolibre.com/rss/economia.xml","https://listindiario.com/rss/economia.xml","https://acento.com.do/feed/"]},
  {key:"Inmobiliario",feeds:["https://www.diariolibre.com/rss/economia.xml","https://hoy.com.do/feed/"]},
  {key:"Turismo",feeds:["https://www.reportur.com/republica-dominicana/feed/","https://dominicantoday.com/feed/"]},
- {key:"Legal",feeds:["https://acento.com.do/feed/","https://hoy.com.do/feed/"]},
+ {key:"Legal",feeds:["https://www.diariolibre.com/rss/justicia.xml","https://acento.com.do/feed/"]},
  {key:"Tecnologia",feeds:["https://acento.com.do/feed/","https://dominicantoday.com/feed/"]},
  {key:"Alimentos",feeds:["https://www.diariolibre.com/rss/economia.xml","https://listindiario.com/rss/economia.xml"]},
  {key:"Logistica",feeds:["https://www.diariolibre.com/rss/economia.xml","https://listindiario.com/rss/economia.xml"]},
@@ -1482,7 +1482,7 @@ function renderNews(){
   })).then(function(lists){
    var items=[].concat.apply([],lists).slice(0,3);
    var list=sx.querySelector(".ng-news-list");
-   if(items.length===0){list.innerHTML='<p style="color:#9aa6b8;font-size:13px">Sin noticias ahora.</p>';return}
+   if(items.length===0){sx.style.display='none';return}
    list.innerHTML=items.map(function(it){
     var tmp=document.createElement("div");tmp.innerHTML=it.description||"";var txt=(tmp.textContent||"").slice(0,170)+"...";
     return '<a class="ng-news-card" href="'+it.link+'" target="_blank" rel="noopener"><h4>'+it.title+'</h4><p>'+txt+'</p><span class="ng-news-more">'+(L==='en'?'Read more \u2192':'Leer mas \u2192')+'</span></a>';
@@ -1578,12 +1578,7 @@ document.addEventListener('DOMContentLoaded', function(){
 </style>
 
 <!-- ===================== RESOURCE LIBRARY ===================== -->
-<section id="ng-resources-section" class="ng-section">
-  <div class="ng-eyebrow">Biblioteca</div>
-  <h2 class="ng-section-title">Recursos curados</h2>
-  <p class="ng-section-sub">Libros y materiales recomendados por el consejo. Selección enfocada en estrategia, finanzas, liderazgo y construcción de empresas duraderas.</p>
-  <div class="ng-grid-2" id="ng-resources-grid"></div>
-</section>
+
 
 <!-- ===================== PODCASTS / VIDEOS ===================== -->
 <section id="ng-podcasts-section" class="ng-section">
@@ -1615,35 +1610,24 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <script>
 (function(){
-  // ============ RESOURCES (curated) ============
-  var RESOURCES = [
-    {t:"The Hard Thing About Hard Things", a:"Ben Horowitz", desc:"Manual brutal y honesto sobre las decisiones difíciles que enfrenta un fundador.", url:"https://www.amazon.com/dp/0062273205"},
-    {t:"Zero to One", a:"Peter Thiel", desc:"Sobre crear monopolios productivos y construir empresas verdaderamente nuevas.", url:"https://www.amazon.com/dp/0804139296"},
-    {t:"Good to Great", a:"Jim Collins", desc:"Estudio empírico de qué separa empresas excelentes de empresas duraderas.", url:"https://www.amazon.com/dp/0066620996"},
-    {t:"Principles", a:"Ray Dalio", desc:"El sistema operativo personal y profesional del fundador de Bridgewater.", url:"https://www.amazon.com/dp/1501124021"},
-    {t:"The Lean Startup", a:"Eric Ries", desc:"Cómo iterar producto sin quemar capital ni tiempo.", url:"https://www.amazon.com/dp/0307887898"},
-    {t:"Shoe Dog", a:"Phil Knight", desc:"Memorias del fundador de Nike: la realidad cruda de construir un negocio.", url:"https://www.amazon.com/dp/1501135910"},
-    {t:"The Psychology of Money", a:"Morgan Housel", desc:"Sobre cómo el comportamiento, no la inteligencia, define los resultados financieros.", url:"https://www.amazon.com/dp/0857197681"},
-    {t:"Atomic Habits", a:"James Clear", desc:"Cómo pequeños cambios producen resultados extraordinarios.", url:"https://www.amazon.com/dp/0735211299"}
-  ];
-  var rg = document.getElementById('ng-resources-grid');
-  if (rg) rg.innerHTML = RESOURCES.map(function(r){
-    return '<div class="ng-card-x"><div class="ng-meta">'+r.a+'</div><h4>'+r.t+'</h4><p>'+r.desc+'</p><a href="'+r.url+'" target="_blank" rel="noopener">Comprar →</a></div>';
-  }).join('');
+  // RESOURCES section removed
 
   // ============ PODCASTS / VIDEOS ============
-  var PODCASTS = [
-    {t:"The Diary Of A CEO", host:"Steven Bartlett", desc:"Conversaciones profundas con líderes y empresarios sobre lo que realmente cuesta construir.", url:"https://www.youtube.com/@TheDiaryOfACEO"},
-    {t:"Acquired", host:"Ben Gilbert & David Rosenthal", desc:"Las historias detrás de las grandes empresas: cómo se construyeron y por qué ganaron.", url:"https://www.acquired.fm/"},
-    {t:"How I Built This", host:"Guy Raz / NPR", desc:"Entrevistas con fundadores sobre cómo construyeron sus negocios desde cero.", url:"https://www.npr.org/podcasts/510313/how-i-built-this"},
-    {t:"Invest Like the Best", host:"Patrick O\u2019Shaughnessy", desc:"Conversaciones con los mejores inversionistas y operadores del mundo.", url:"https://joincolossus.com/podcasts/"},
-    {t:"My First Million", host:"Sam Parr & Shaan Puri", desc:"Ideas de negocios reales y oportunidades que están en el aire.", url:"https://www.mfmpod.com/"},
-    {t:"All-In Podcast", host:"Chamath, Friedberg, Sacks, Calacanis", desc:"Análisis semanal de macro, mercados y tecnología.", url:"https://www.allinpodcast.co/"}
-  ];
+  // Podcasts/videos: SOLO contenido hecho por miembros o invitados que hemos traido al grupo
+  // (ej: Hermanos Nin, podcasts donde aparecio Maximo Lopez Oliver, etc.)
+  // Cuando agreguen URLs reales: {t:"Titulo", host:"Nombre", desc:"...", url:"https://..."}
+  var PODCASTS = [];
   var pg = document.getElementById('ng-podcasts-grid');
-  if (pg) pg.innerHTML = PODCASTS.map(function(p){
-    return '<div class="ng-card-x"><div class="ng-meta">'+p.host+'</div><h4>'+p.t+'</h4><p>'+p.desc+'</p><a href="'+p.url+'" target="_blank" rel="noopener">Escuchar / Ver →</a></div>';
-  }).join('');
+  if (pg) {
+    if (PODCASTS.length === 0) {
+      var sec = document.getElementById('ng-podcasts-section');
+      if (sec) sec.style.display = 'none';
+    } else {
+      pg.innerHTML = PODCASTS.map(function(p){
+        return '<div class="ng-card-x"><div class="ng-meta">'+p.host+'</div><h4>'+p.t+'</h4><p>'+p.desc+'</p><a href="'+p.url+'" target="_blank" rel="noopener">Escuchar / Ver \u2192</a></div>';
+      }).join('');
+    }
+  }
 
   // ============ SUCCESS BOARD (placeholders for now) ============
   // SUCCESS entries: SOLO articulos publicados sobre el miembro
