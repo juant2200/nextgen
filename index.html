@@ -2011,7 +2011,7 @@ document.addEventListener('DOMContentLoaded', function(){
     // Insert visual separator between council and other members
     var grid = document.getElementById('landing-members-grid');
     if (grid) {
-      var cards = grid.querySelectorAll('.member-card');
+      var cards = grid.querySelectorAll('.mem-card');
       // Find first non-council index
       // Find boundaries by tier
       var firstFoundingIdx = -1, firstRegularIdx = -1;
@@ -2064,7 +2064,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
     var grid = document.getElementById('landing-members-grid');
     if (!grid) return;
-    var cards = grid.querySelectorAll('.member-card');
+    var cards = grid.querySelectorAll('.mem-card');
     cards.forEach(function(card, i){
       // Find matching member by initials or order
       var name = (card.querySelector('h3, h4, .m-name')||{}).textContent;
