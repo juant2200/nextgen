@@ -1646,10 +1646,13 @@ document.addEventListener('DOMContentLoaded', function(){
   }).join('');
 
   // ============ SUCCESS BOARD (placeholders for now) ============
-  // SUCCESS entries: solo agrega aqui logros con un link especifico a articulo,
-  // post de LinkedIn, comunicado oficial o pagina del proyecto. Sin links inventados.
+  // SUCCESS entries: cada entrada con link a fuente verificable
+  // (LinkedIn profile, sitio oficial, articulo en medio).
   var SUCCESS = [
-    {who:"Comparte tu logro", what:"Mandanos el link", desc:"Tienes un articulo, post de LinkedIn, comunicado o lanzamiento? Mandalo al consejo y lo publicamos aqui con link directo.", url:"https://wa.me/18092993338?text=Hola%20NextGEN%2C%20quiero%20compartir%20un%20logro%20con%20el%20grupo.%20Adjunto%20link%3A%20", isCTA:true}
+    {who:"Maximo Lopez Oliver", what:"Presidente de Oliver & Oliver", desc:"Lidera la casa dominicana de rones premium Oliver & Oliver, junto a Bodegas Pedro Oliver, Rones del Caribe y Terravida Capital Partners.", url:"https://www.linkedin.com/in/m%C3%A1ximo-l%C3%B3pez-oliver-37a7b380/"},
+    {who:"Emmanuel Checo", what:"Co-fundador de Cherruso", desc:"Construye Cherruso junto a Joaquin Ruiz y Juan Bolivar, plataforma operacional para empresas dominicanas.", url:"https://www.linkedin.com/in/emmanuel-checo-fiorentino-387940247/"},
+    {who:"Juan Sebastian Franco", what:"4 ventures en seguros y tecnologia", desc:"Founder de Franco Fernandez & Asociados (corretaje de seguros), SPID (insurtech digital), CBP Consulting (gestion humana) y CrestView Technologies.", url:"https://www.linkedin.com/in/juan-sebastian-franco-116945191/"},
+    {who:"Abraham Vilalta", what:"Director Comercial Grupo Sone Billini", desc:"Lidera la performance comercial de un grupo activo en proteccion contra incendios, automatizacion de edificios y eficiencia energetica.", url:"https://www.linkedin.com/in/abraham-vilalta-b57b451bb/"}
   ];
   var sg = document.getElementById('ng-success-grid');
   if (sg) {
@@ -1726,7 +1729,9 @@ document.addEventListener('DOMContentLoaded', function(){
     dirGrid.innerHTML = filtered.map(function(m){
       var waNum = (m.w||'').replace(/[^0-9]/g,'');
       var wa = waNum ? '<a class="wa" href="https://wa.me/'+waNum+'?text=Hola%20'+encodeURIComponent(m.n.split(' ')[0])+'%2C%20somos%20parte%20de%20NextGEN" target="_blank" rel="noopener">WhatsApp</a>' : '';
-      return '<div class="ng-dir-card"><h3 class="ng-dir-name">'+m.n+'</h3><p class="ng-dir-role">'+m.r+'</p><p class="ng-dir-bio">'+m.b+'</p><div class="ng-dir-actions">'+wa+'</div></div>';
+      var liUrl = (window._NG_LI && window._NG_LI[m.n]) ? window._NG_LI[m.n] : null;
+      var li = liUrl ? '<a href="'+liUrl+'" target="_blank" rel="noopener" style="flex:1;text-align:center;padding:8px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;background:rgba(10,102,194,.15);color:#0a66c2;border:1px solid rgba(10,102,194,.4)">LinkedIn</a>' : '';
+      return '<div class="ng-dir-card"><h3 class="ng-dir-name">'+m.n+'</h3><p class="ng-dir-role">'+m.r+'</p><p class="ng-dir-bio">'+m.b+'</p><div class="ng-dir-actions">'+wa+li+'</div></div>';
     }).join('');
     if (!filtered.length) dirGrid.innerHTML = '<p style="color:#9aa6b8;grid-column:1/-1;text-align:center">Sin resultados</p>';
   }
@@ -2083,6 +2088,36 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }, 700);
 });
+</script>
+
+
+<script>
+// Member LinkedIn map (verified profiles)
+window._NG_LI = {
+  'Juan Tomas Diaz Rainieri': 'https://www.linkedin.com/in/juan-tomas-diaz-914322193/',
+  'Juan Tomás Díaz Rainieri': 'https://www.linkedin.com/in/juan-tomas-diaz-914322193/',
+  'Emmanuel Checo': 'https://www.linkedin.com/in/emmanuel-checo-fiorentino-387940247/',
+  'Abraham Vilalta': 'https://www.linkedin.com/in/abraham-vilalta-b57b451bb/',
+  'Teofilo Solano': 'https://www.linkedin.com/in/te%C3%B3filosolano/',
+  'Teófilo Solano': 'https://www.linkedin.com/in/te%C3%B3filosolano/',
+  'Alejandro Guerrero': 'https://www.linkedin.com/in/alejandro-guerrero-56a0a3258/',
+  'Joaquin Venegas': 'https://www.linkedin.com/in/joaquin-ruiz-0677a9195/',
+  'Joaquín Venegas': 'https://www.linkedin.com/in/joaquin-ruiz-0677a9195/',
+  'Ricardo Read': 'https://www.linkedin.com/in/ricardo-read-b3945521b/',
+  'Juan Sebastián Franco': 'https://www.linkedin.com/in/juan-sebastian-franco-116945191/',
+  'Juan Sebastian Franco': 'https://www.linkedin.com/in/juan-sebastian-franco-116945191/',
+  'Ángel Casado Aguasvivas': 'https://www.linkedin.com/in/angel-rafael-casado-aguasvivas-57601b167/',
+  'Angel Casado Aguasvivas': 'https://www.linkedin.com/in/angel-rafael-casado-aguasvivas-57601b167/',
+  'Martín Madera': 'https://www.linkedin.com/in/mart%C3%ADn-daniel-rodr%C3%ADguez-madera-0611271b2/',
+  'Martin Madera': 'https://www.linkedin.com/in/mart%C3%ADn-daniel-rodr%C3%ADguez-madera-0611271b2/',
+  'César Guzmán': 'https://www.linkedin.com/in/cesar-guzman-lehoux-68aa3a232/',
+  'Cesar Guzman': 'https://www.linkedin.com/in/cesar-guzman-lehoux-68aa3a232/',
+  'Máximo López Oliver': 'https://www.linkedin.com/in/m%C3%A1ximo-l%C3%B3pez-oliver-37a7b380/',
+  'Maximo Lopez': 'https://www.linkedin.com/in/m%C3%A1ximo-l%C3%B3pez-oliver-37a7b380/',
+  'Gabriel Matsumoto Najri': 'https://www.linkedin.com/in/gabriel-m-48680a136/',
+  'Gabriel Diaz': 'https://www.linkedin.com/in/gabriel-m-48680a136/',
+  'Thomas Bacci': 'https://www.linkedin.com/in/thomas-ciampi-bacci-meyer-b73506283/'
+};
 </script>
 
 </body>
