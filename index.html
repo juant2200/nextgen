@@ -1317,12 +1317,12 @@ window.ngSetLang=applyLang;
 
 var EVENTS=[
  {n:"Inauguracion y Consolidacion de NextGEN",d:"Primera actividad oficial de la comunidad, donde se realizo el primer acercamiento presencial entre los miembros, marcando el inicio de NextGEN.",icon:"\ud83d\udc8e",img:"photos/inauguracion.jpg"},
- {n:"Polo",d:"Encuentro en un prestigioso torneo de polo en Santo Domingo, fortaleciendo el networking entre miembros.",icon:"\ud83d\udc0e"},
+ {n:"Polo",d:"Encuentro en un prestigioso torneo de polo en Santo Domingo, fortaleciendo el networking entre miembros.",icon:"\ud83d\udc0e",img:"photos/polo.jpg"},
  {n:"Visita a Oliver & Oliver",d:"Visita a las bodegas de Oliver & Oliver, guiada por Maximo Lopez Oliver, presidente y miembro activo.",icon:"\ud83e\udd43",img:"photos/oliver-oliver.jpg"},
  {n:"Boca Marina",d:"Actividad en Boca Marina con dinamicas enfocadas en la vision de negocios y resolucion de problemas.",icon:"\u26f5",img:"photos/boca-marina.jpg"},
  {n:"Encuentro con Omar Fernandez",d:"Desayuno donde el senador compartio su vision y propuestas con la comunidad.",icon:"\ud83c\udf7d\ufe0f"},
- {n:"Bar Room",d:"Networking en ambiente informal y dinamico para fortalecer relaciones.",icon:"\ud83c\udf78",img:"photos/networking.jpg"},
- {n:"Encuentro con Hermanos Nin",d:"Charla con los Hermanos Nin, emprendedores dominicanos en Canada, sobre su trayectoria empresarial.",icon:"\ud83c\udf0e"}
+ {n:"Bar Room",d:"Networking en ambiente informal y dinamico para fortalecer relaciones.",icon:"\ud83c\udf78"},
+ {n:"Encuentro con Hermanos Nin",d:"Charla con los Hermanos Nin, emprendedores dominicanos en Canada, sobre su trayectoria empresarial.",icon:"\ud83c\udf0e",img:"photos/hermanos-nin.jpg"}
 ];
 
 // Aligned with MEMBERS industries present in the existing site
@@ -1955,6 +1955,32 @@ document.addEventListener('DOMContentLoaded', function(){
     // Hide any leftover language buttons
     document.querySelectorAll('.ng-lang-btn, .lang-btn, .lang-switch, #ng-lang-float').forEach(function(b){ b.style.display = 'none'; });
   } catch(e){}
+});
+</script>
+
+
+<script>
+// Hide broken event images, show icon as fallback
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){
+    document.querySelectorAll('.ng-event-card img').forEach(function(img){
+      img.addEventListener('error', function(){
+        var card = img.closest('.ng-event-card');
+        var cover = card.querySelector('.ng-event-cover');
+        if (cover && card) {
+          // Get fallback emoji from data
+          var idx = card.getAttribute('data-evt');
+          if (window._ngData && window._ngData.EVENTS && window._ngData.EVENTS[idx]) {
+            cover.innerHTML = window._ngData.EVENTS[idx].icon;
+            cover.style.fontSize = '64px';
+            cover.style.display = 'flex';
+            cover.style.alignItems = 'center';
+            cover.style.justifyContent = 'center';
+          }
+        }
+      });
+    });
+  }, 800);
 });
 </script>
 
