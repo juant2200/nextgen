@@ -431,7 +431,7 @@
       <li><a href="#investments" onclick="goSection('investments');return false">Oportunidades</a></li>
       <li><a href="#members-section" onclick="goSection('members-section');return false">Miembros</a></li>
       <li><a class="nav-pill" onclick="showPortal();return false" href="#">Member Portal</a></li>
-      <li><a class="nav-cta" href="#cta-section" onclick="goSection('cta-section');return false">Aplicar</a></li>
+      <li><a class="nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSczsTnQVOAWoEEFSvz-jdFlVFnA9WcyG_DiJxbBUuCnGXNakw/viewform" target="_blank" rel="noopener">Aplicar</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
@@ -445,10 +445,10 @@
   <!-- HERO -->
   <div class="hero">
     <div class="hero-eyebrow">Membership by Invitation Only</div>
-    <h1>Where the Next<br>Generation of Leaders<br><em>Build Together.</em></h1>
-    <p>NextGEN is a private community of ambitious young entrepreneurs, founders, and emerging business leaders built to create real relationships, share opportunities, and grow together.</p>
+    <h1>Donde la proxima<br>generacion de lideres<br><em>construye unida.</em></h1>
+    <p>NextGEN es una comunidad privada de jovenes empresarios, fundadores y lideres emergentes de negocios. Existe para crear relaciones reales, compartir oportunidades de calidad y crecer juntos como generacion.</p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'})">Request an Invitation</button>
+      <button class="btn-primary" onclick="document.getElementById('cta-section').scrollIntoView({behavior:'smooth'})">Solicitar invitacion</button>
       <button class="btn-ghost" onclick="showPortal()">Member Portal →</button>
     </div>
     <div class="hero-stats">
@@ -466,7 +466,7 @@
       <div class="about-grid">
         <div>
           <div class="section-label">Who We Are</div>
-          <h2 class="section-title">Built on Real Relationships.<br>Driven by Ambition.</h2>
+          <h2 class="section-title">Una comunidad construida sobre relaciones reales.</h2>
           <p class="section-sub">NextGEN was founded on a simple belief: the most valuable asset in business is the people you surround yourself with. Through curated events, strategic conversations, market insights, and access to business and investment opportunities, NextGEN gives its members a trusted environment to connect, learn, and create long-term value.</p>
           <div class="about-pillars">
             <div class="pillar"><div class="pillar-icon">🤝</div><h4>Real Relationships</h4><p>Curated introductions between people who can genuinely help each other move forward.</p></div>
@@ -477,7 +477,7 @@
         </div>
         <div>
           <p class="about-quote">"We didn't start NextGEN to build a network. We built it because we needed one worth being part of."</p>
-          <p class="about-byline">— Juan Tomas Diaz &amp; Abraham Vilalta, Co-Founders</p>
+          <p class="about-byline">— Juan Tomas Diaz Rainieri, Founder &middot; Emmanuel Checo, Co-Founder</p>
           <div style="margin-top:32px;padding:26px;background:var(--dark-3);border:1px solid var(--border2);border-radius:var(--radius)">
             <div class="section-label" style="margin-bottom:10px">Our Standard</div>
             <p style="font-size:13.5px;color:var(--text-2);line-height:1.8">Every member of NextGEN is here by invitation or careful review — not because of a title or follower count, but because of who they are, what they're building, and how they show up. Quality is non-negotiable. This isn't a casual network. It's a room where serious people do serious things.</p>
@@ -711,7 +711,7 @@
         <option>Founder / Entrepreneur</option>
         <option>Business Professional</option>
         <option>Entrepreneur in Progress</option>
-        <option>Co-Founder, NextGEN</option>
+        <option>Founder, NextGEN</option><option>Co-Founder, NextGEN</option><option>Miembro del Consejo Fundador</option>
       </select>
       <select class="dir-filter" id="dir-sort" onchange="filterDirectory()">
         <option value="name">Sort: Name A–Z</option>
@@ -824,8 +824,8 @@
 //  MEMBER DATA
 // ═══════════════════════════════════════════════
 const MEMBERS = [
-  {name:"Juan Tomas Diaz Rainieri",profile:"Co-Founder, NextGEN",company:"NextGEN",role:"Co-Founder",industry:"Community / Entrepreneurship",bio:"Co-created NextGEN with the vision of building a trusted community where ambitious young leaders can do their best work together.",initials:"JT",founding:true},
-  {name:"Emmanuel Checo",profile:"Council Member, NextGEN",company:"Vela",role:"Founder & CEO",industry:"SaaS / Technology",bio:"Operator and builder who brought NextGEN from idea to reality. Founder of Vela, a SaaS platform for business operations.",initials:"EC"},
+  {name:"Juan Tomas Diaz Rainieri",profile:"Founder, NextGEN",company:"NextGEN",role:"Founder",industry:"Comunidad / Emprendimiento",bio:"Founder de NextGEN. Lidera la vision y la curaduria del consejo, articulando una comunidad donde jovenes lideres dominicanos hacen sus mejores movimientos profesionales en conjunto.",initials:"JT",founding:true},
+  {name:"Emmanuel Checo",profile:"Co-Founder, NextGEN",company:"Vela",role:"Co-Founder & CEO",industry:"SaaS / Tecnologia",bio:"Co-Founder de NextGEN. Operador y constructor que llevo NextGEN de idea a realidad. Fundador de Vela, plataforma SaaS para operaciones de negocio.",initials:"EC",founding:true},
   {name:"Victor Andujar Mendez",profile:"Business Professional",company:"Grupo Vimenca",role:"",industry:"Finance / Conglomerate",bio:"Part of one of the Dominican Republic's leading financial and business conglomerates.",initials:"VA"},
   {name:"Ricardo Read",profile:"Business Professional",company:"Grupo Rica",role:"Administrative Manager",industry:"Food & Beverage",bio:"Gerente Administrativo at Grupo Rica, leading expansion of a key division within one of DR's top consumer brands.",initials:"RR"},
   {name:"Alejandro Najri",profile:"Founder / Entrepreneur",company:"Ferquido",role:"Sales Analyst",industry:"Distribution / Sales",bio:"Entrepreneur and sales professional. Part of Ferquido and building ventures in sales and distribution.",initials:"AN"},
@@ -843,7 +843,7 @@ const MEMBERS = [
   {name:"Thomas Bacci",profile:"Founder / Entrepreneur",company:"Itálica / Corporativo Cariba",role:"",industry:"Retail / Real Estate",bio:"Entrepreneur across multiple ventures including Itálica, Corporativo Cariba, and Home Couture.",initials:"TB"},
   {name:"Diego Alejandro Teruel",profile:"Founder / Entrepreneur",company:"Teruel y Co.",role:"",industry:"Automotive / Import",bio:"Family business in motorcycle and tire import: Vespa, Moto Guzzi, Aprilia, Zontes, and Compasal tires.",initials:"DA"},
   {name:"Ricardo Sánchez",profile:"Founder / Entrepreneur",company:"Renovation Company",role:"Founder",industry:"Construction / Real Estate",bio:"Founder of a commercial and residential renovation company.",initials:"RS"},
-  {name:"Abraham Vilalta",profile:"Co-Founder, NextGEN",company:"Grupo Soñe Billini",role:"Commercial Director",industry:"Hospitality / Retail",bio:"Commercial Director at Grupo Soñe Billini, managing commercial performance across multiple group companies.",initials:"AV",founding:true},
+  {name:"Abraham Vilalta",profile:"Miembro del Consejo Fundador",company:"Grupo Sone Billini",role:"Director Comercial",industry:"Proteccion contra incendios / Eficiencia energetica",bio:"Director Comercial de Grupo Sone Billini, donde gestiona el cumplimiento de metas comerciales del grupo. Miembro fundador del consejo de NextGEN.",initials:"AV",founding:true},
   {name:"Rubén Astacio",profile:"Founder / Entrepreneur",company:"Sunset Corp / Mucjo Project",role:"",industry:"Entertainment / Music",bio:"Entrepreneur and creator behind Sunset Corp and Mucjo Project.",initials:"RA"},
   {name:"Miled Hazim",profile:"Founder / Entrepreneur",company:"Helios Solar Park",role:"Founder",industry:"Energy / Renewable",bio:"Developing Helios Solar Park, a photovoltaic energy project in the Dominican Republic.",initials:"MH"},
   {name:"Domingo Lora",profile:"Founder / Entrepreneur",company:"DLB Transport",role:"Founder",industry:"Logistics / Transport",bio:"Founder of DLB Transport, a specialized logistics company for household goods, tools, mattresses, and construction materials.",initials:"DL"},
@@ -937,7 +937,7 @@ function renderLandingEvents(){
   const g=document.getElementById('landing-events-grid');if(!g)return;
   g.innerHTML=STATIC_EVENTS.map(e=>{
     if(e.desc==='more')return`<div class="card ev-card" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border-style:dashed;padding:40px 26px"><div style="font-size:32px;opacity:.3;margin-bottom:14px">+</div><h3 style="font-size:15px;color:var(--text-3)">More Events Coming</h3><p style="font-size:13px;margin-bottom:18px">Members get early access before public announcement.</p><button class="btn-rsvp" style="width:auto;padding:9px 22px">View Full Calendar</button></div>`;
-    return`<div class="card ev-card"><div class="ev-date-box"><span class="d">${e.day}</span><span class="m">${e.mon}</span></div><span class="badge ${e.tc}">${e.type}</span><h3>${e.title}</h3><p>${e.desc}</p><div class="ev-meta"><span>🕐 ${e.time}</span><span>📍 ${e.loc}</span><span>👥 ${e.seats}</span></div><button class="btn-rsvp">RSVP Now</button></div>`;
+    return`<div class="card ev-card"><div class="ev-date-box"><span class="d">${e.day}</span><span class="m">${e.mon}</span></div><span class="badge ${e.tc}">${e.type}</span><h3>${e.title}</h3><p>${e.desc}</p><div class="ev-meta"><span>🕐 ${e.time}</span><span>📍 ${e.loc}</span><span>👥 ${e.seats}</span></div><a class="btn-rsvp" href="https://wa.me/18092993338?text=Hola%20NextGEN%2C%20quiero%20RSVP%20a%20este%20evento" target="_blank" rel="noopener" style="display:inline-block;text-decoration:none">Reservar por WhatsApp</a></div>`;
   }).join('');
 }
 
@@ -1248,10 +1248,10 @@ document.addEventListener('DOMContentLoaded',()=>{
      ============================================================ -->
 <section id="ng-market-extra" class="ng-section">
   <h2 data-i18n="market.title">Mercado en Vivo</h2>
-  <p class="ng-sub" data-i18n="market.sub">Acciones y criptomonedas lado a lado. Datos en vivo. Contenido educativo, no asesoria financiera.</p>
+  <p class="ng-sub" data-i18n="market.sub">Mercado de valores y criptomonedas lado a lado. Datos en vivo. Contenido educativo, no asesoria financiera.</p>
   <div class="ng-market-wrap">
     <div class="ng-market-grid">
-      <div class="ng-market-col"><h3><span class="ng-live"></span><span data-i18n="market.stocks">Acciones</span></h3><div id="ng-market-stocks" class="ng-price-cards">Cargando...</div></div>
+      <div class="ng-market-col"><h3><span class="ng-live"></span><span data-i18n="market.stocks">Mercado de valores</span></h3><div id="ng-market-stocks" class="ng-price-cards">Cargando...</div></div>
       <div class="ng-market-col"><h3><span class="ng-live"></span><span data-i18n="market.crypto">Criptomonedas</span></h3><div id="ng-market-crypto" class="ng-price-cards">Cargando...</div></div>
     </div>
   </div>
@@ -1292,7 +1292,7 @@ var DAILY={date:"2026-04-08",
 
 var T={
  es:{
-  "market.title":"Mercado en Vivo","market.sub":"Acciones y criptomonedas lado a lado. Datos en vivo. Contenido educativo, no asesoria financiera.","market.stocks":"Acciones","market.crypto":"Criptomonedas",
+  "market.title":"Mercado en Vivo","market.sub":"Mercado de valores y criptomonedas lado a lado. Datos en vivo. Contenido educativo, no asesoria financiera.","market.stocks":"Mercado de valores","market.crypto":"Criptomonedas",
   "sectors.title":"Sectores de Nuestros Miembros","sectors.sub":"Donde esta la experiencia del grupo. Haz clic en un sector para filtrar el directorio.",
   "events.title":"Actividades Pasadas","events.sub":"Lo que hemos vivido juntos.",
   "news.title":"Noticias por Sector","news.sub":"Resumenes de las fuentes que importan para los sectores de nuestros miembros."
@@ -1317,8 +1317,8 @@ var PAGE_TR_ES_FROM_EN={
  "Opportunities":"Oportunidades","Members":"Miembros","Member Portal":"Portal de Miembros","Apply":"Aplicar",
  "Membership by Invitation Only":"Membresia Solo por Invitacion",
  "Where the Next":"Donde la Proxima","Generation of Leaders":"Generacion de Lideres","Build Together.":"Construye Unida.",
- "NextGEN is a private community of ambitious young entrepreneurs, founders, and emerging business leaders built to create real relationships, share opportunities, and grow together.":"NextGEN es una comunidad privada de jovenes emprendedores ambiciosos, fundadores y lideres empresariales emergentes, creada para construir relaciones reales, compartir oportunidades y crecer juntos.",
- "Request an Invitation":"Solicitar Invitacion","Member Portal \u2192":"Portal de Miembros \u2192",
+ "NextGEN es una comunidad privada de jovenes empresarios, fundadores y lideres emergentes de negocios. Existe para crear relaciones reales, compartir oportunidades de calidad y crecer juntos como generacion.":"NextGEN es una comunidad privada de jovenes emprendedores ambiciosos, fundadores y lideres empresariales emergentes, creada para construir relaciones reales, compartir oportunidades y crecer juntos.",
+ "Solicitar invitacion":"Solicitar Invitacion","Member Portal \u2192":"Portal de Miembros \u2192",
  "Active Members":"Miembros Activos","Founding Members":"Miembros Fundadores","Events Per Year":"Eventos por Ano","Curated Network":"Red Curada",
  "Who We Are":"Quienes Somos","Built on Real Relationships.":"Construidos en Relaciones Reales.","Driven by Ambition.":"Impulsados por Ambicion.",
  "Real Relationships":"Relaciones Reales","Deal Flow Session — Q2":"Sesion de Deal Flow — Q2",
@@ -1595,5 +1595,27 @@ function boot(){
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot)}else{boot()}
 })();
 </script>
+
+<script>
+// Wire dead UI per council feedback
+document.addEventListener('DOMContentLoaded', function(){
+  // Make news cards clickable to scroll to full news section
+  document.querySelectorAll('.news-grid .card, [data-news]').forEach(function(c){
+    c.style.cursor='pointer';
+    c.addEventListener('click', function(){
+      var s = document.getElementById('ng-news-section') || document.getElementById('news');
+      if (s) s.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+  // Force Spanish on first load
+  try {
+    if (typeof setLang === 'function') setLang('es');
+    document.querySelectorAll('.ng-lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.lang === 'es');
+    });
+  } catch(e){}
+});
+</script>
+
 </body>
 </html>
