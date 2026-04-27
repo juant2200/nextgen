@@ -1617,5 +1617,258 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+
+<style>
+  .ng-section{padding:60px 24px;max-width:1240px;margin:0 auto}
+  .ng-grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .ng-card-x{background:rgba(20,28,38,.85);border:1px solid rgba(201,168,76,.15);border-radius:14px;padding:20px;transition:transform .18s ease,border-color .18s ease}
+  .ng-card-x:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.45)}
+  .ng-card-x h4{color:#e9c977;font-size:15px;font-weight:700;margin:0 0 6px;letter-spacing:.2px}
+  .ng-card-x p{color:#9aa6b8;font-size:13px;line-height:1.5;margin:0 0 8px}
+  .ng-card-x .ng-meta{color:#7a8696;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+  .ng-card-x a{color:#c9a84c;text-decoration:none;font-weight:600;font-size:13px;border-bottom:1px solid transparent;transition:border-color .15s}
+  .ng-card-x a:hover{border-bottom-color:#c9a84c}
+  .ng-section-title{color:#e9c977;font-size:28px;font-weight:700;margin:0 0 8px;letter-spacing:-.3px}
+  .ng-section-sub{color:#9aa6b8;font-size:15px;margin:0 0 32px;max-width:680px}
+  .ng-eyebrow{color:#c9a84c;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:700;margin-bottom:10px}
+  .ng-dir-card{background:linear-gradient(135deg,rgba(201,168,76,.04),rgba(20,28,38,.6));border:1px solid rgba(201,168,76,.18);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:6px}
+  .ng-dir-name{color:#e9c977;font-size:15px;font-weight:700;margin:0}
+  .ng-dir-role{color:#cbd5e1;font-size:12px;margin:0}
+  .ng-dir-bio{color:#9aa6b8;font-size:12px;line-height:1.4;margin:6px 0 8px;flex-grow:1}
+  .ng-dir-actions{display:flex;gap:8px;margin-top:auto}
+  .ng-dir-actions a{flex:1;text-align:center;padding:8px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid rgba(201,168,76,.3);color:#c9a84c}
+  .ng-dir-actions a:hover{background:rgba(201,168,76,.08)}
+  .ng-dir-actions a.wa{background:#25d366;color:#fff;border-color:#25d366}
+  .ng-dir-actions a.wa:hover{filter:brightness(1.05)}
+</style>
+
+<!-- ===================== RESOURCE LIBRARY ===================== -->
+<section id="ng-resources-section" class="ng-section">
+  <div class="ng-eyebrow">Biblioteca</div>
+  <h2 class="ng-section-title">Recursos curados</h2>
+  <p class="ng-section-sub">Libros y materiales recomendados por el consejo. Selección enfocada en estrategia, finanzas, liderazgo y construcción de empresas duraderas.</p>
+  <div class="ng-grid-2" id="ng-resources-grid"></div>
+</section>
+
+<!-- ===================== PODCASTS / VIDEOS ===================== -->
+<section id="ng-podcasts-section" class="ng-section">
+  <div class="ng-eyebrow">Voces</div>
+  <h2 class="ng-section-title">Podcasts y videos</h2>
+  <p class="ng-section-sub">Conversaciones que vale la pena escuchar. Curaduría de empresarios y operadores que comparten cómo construyen.</p>
+  <div class="ng-grid-2" id="ng-podcasts-grid"></div>
+</section>
+
+<!-- ===================== SUCCESS BOARD ===================== -->
+<section id="ng-success-section" class="ng-section">
+  <div class="ng-eyebrow">Consejo</div>
+  <h2 class="ng-section-title">Reconocimientos del grupo</h2>
+  <p class="ng-section-sub">Logros recientes de miembros del grupo. Comparte el tuyo escribiéndonos por WhatsApp.</p>
+  <div class="ng-grid-2" id="ng-success-grid"></div>
+</section>
+
+<!-- ===================== DEALS / DISCOUNTS ===================== -->
+<section id="ng-deals-section" class="ng-section">
+  <div class="ng-eyebrow">Beneficios</div>
+  <h2 class="ng-section-title">Acuerdos entre miembros</h2>
+  <p class="ng-section-sub">Descuentos y condiciones preferenciales que los miembros ofrecen a la comunidad. Para sumar tu negocio, escribe al consejo.</p>
+  <div class="ng-grid-2" id="ng-deals-grid"></div>
+</section>
+
+<!-- ===================== MEMBER DIRECTORY (PRIVATE-ish) ===================== -->
+<section id="ng-directory-section" class="ng-section">
+  <div class="ng-eyebrow">Comunidad</div>
+  <h2 class="ng-section-title">Directorio de miembros</h2>
+  <p class="ng-section-sub">Los miembros activos de NextGEN. Toca el botón de WhatsApp para iniciar una conversación directa.</p>
+  <input id="ng-dir-search" placeholder="Buscar por nombre, empresa o industria…" style="width:100%;max-width:520px;padding:12px 14px;background:rgba(20,28,38,.7);border:1px solid rgba(201,168,76,.25);border-radius:10px;color:#e9c977;font-size:14px;margin-bottom:24px"/>
+  <div class="ng-grid-2" id="ng-directory-grid"></div>
+</section>
+
+<script>
+(function(){
+  // ============ RESOURCES (curated) ============
+  var RESOURCES = [
+    {t:"The Hard Thing About Hard Things", a:"Ben Horowitz", desc:"Manual brutal y honesto sobre las decisiones difíciles que enfrenta un fundador.", url:"https://www.amazon.com/dp/0062273205"},
+    {t:"Zero to One", a:"Peter Thiel", desc:"Sobre crear monopolios productivos y construir empresas verdaderamente nuevas.", url:"https://www.amazon.com/dp/0804139296"},
+    {t:"Good to Great", a:"Jim Collins", desc:"Estudio empírico de qué separa empresas excelentes de empresas duraderas.", url:"https://www.amazon.com/dp/0066620996"},
+    {t:"Principles", a:"Ray Dalio", desc:"El sistema operativo personal y profesional del fundador de Bridgewater.", url:"https://www.amazon.com/dp/1501124021"},
+    {t:"The Lean Startup", a:"Eric Ries", desc:"Cómo iterar producto sin quemar capital ni tiempo.", url:"https://www.amazon.com/dp/0307887898"},
+    {t:"Shoe Dog", a:"Phil Knight", desc:"Memorias del fundador de Nike: la realidad cruda de construir un negocio.", url:"https://www.amazon.com/dp/1501135910"},
+    {t:"The Psychology of Money", a:"Morgan Housel", desc:"Sobre cómo el comportamiento, no la inteligencia, define los resultados financieros.", url:"https://www.amazon.com/dp/0857197681"},
+    {t:"Atomic Habits", a:"James Clear", desc:"Cómo pequeños cambios producen resultados extraordinarios.", url:"https://www.amazon.com/dp/0735211299"}
+  ];
+  var rg = document.getElementById('ng-resources-grid');
+  if (rg) rg.innerHTML = RESOURCES.map(function(r){
+    return '<div class="ng-card-x"><div class="ng-meta">'+r.a+'</div><h4>'+r.t+'</h4><p>'+r.desc+'</p><a href="'+r.url+'" target="_blank" rel="noopener">Comprar →</a></div>';
+  }).join('');
+
+  // ============ PODCASTS / VIDEOS ============
+  var PODCASTS = [
+    {t:"The Diary Of A CEO", host:"Steven Bartlett", desc:"Conversaciones profundas con líderes y empresarios sobre lo que realmente cuesta construir.", url:"https://www.youtube.com/@TheDiaryOfACEO"},
+    {t:"Acquired", host:"Ben Gilbert & David Rosenthal", desc:"Las historias detrás de las grandes empresas: cómo se construyeron y por qué ganaron.", url:"https://www.acquired.fm/"},
+    {t:"How I Built This", host:"Guy Raz / NPR", desc:"Entrevistas con fundadores sobre cómo construyeron sus negocios desde cero.", url:"https://www.npr.org/podcasts/510313/how-i-built-this"},
+    {t:"Invest Like the Best", host:"Patrick O\u2019Shaughnessy", desc:"Conversaciones con los mejores inversionistas y operadores del mundo.", url:"https://joincolossus.com/podcasts/"},
+    {t:"My First Million", host:"Sam Parr & Shaan Puri", desc:"Ideas de negocios reales y oportunidades que están en el aire.", url:"https://www.mfmpod.com/"},
+    {t:"All-In Podcast", host:"Chamath, Friedberg, Sacks, Calacanis", desc:"Análisis semanal de macro, mercados y tecnología.", url:"https://www.allinpodcast.co/"}
+  ];
+  var pg = document.getElementById('ng-podcasts-grid');
+  if (pg) pg.innerHTML = PODCASTS.map(function(p){
+    return '<div class="ng-card-x"><div class="ng-meta">'+p.host+'</div><h4>'+p.t+'</h4><p>'+p.desc+'</p><a href="'+p.url+'" target="_blank" rel="noopener">Escuchar / Ver →</a></div>';
+  }).join('');
+
+  // ============ SUCCESS BOARD (placeholders for now) ============
+  var SUCCESS = [
+    {who:"Emmanuel Checo", what:"Vela cierra ronda Seed", desc:"Vela completó su ronda seed con participación de miembros de NextGEN como inversionistas ángeles."},
+    {who:"Miled Hazim", what:"Helios Solar Park avanza", desc:"Avance significativo en el desarrollo del parque fotovoltaico Helios Solar Park."},
+    {who:"Maximo Lopez", what:"Oliver & Oliver expansión", desc:"Bodegas Oliver & Oliver ampliando portafolio premium en RD y Caribe."},
+    {who:"Comparte tu logro", what:"WhatsApp al consejo", desc:"Si tienes un logro reciente que quieres compartir con la comunidad, escríbele al consejo.", url:"https://wa.me/18092993338?text=Hola%20NextGEN%2C%20quiero%20compartir%20un%20logro%20con%20el%20grupo"}
+  ];
+  var sg = document.getElementById('ng-success-grid');
+  if (sg) sg.innerHTML = SUCCESS.map(function(s){
+    var link = s.url ? '<a href="'+s.url+'" target="_blank" rel="noopener">Compartir →</a>' : '';
+    return '<div class="ng-card-x"><div class="ng-meta">'+s.who+'</div><h4>'+s.what+'</h4><p>'+s.desc+'</p>'+link+'</div>';
+  }).join('');
+
+  // ============ DEALS / DISCOUNTS (placeholders, opt-in by members) ============
+  var DEALS = [
+    {biz:"Green Bowl", offer:"20% off para miembros", desc:"Descuento sobre platos del menú al presentar membresía NextGEN.", url:""},
+    {biz:"BP Events by SJT", offer:"Tarifa preferencial en producción", desc:"Tarifa especial en producción de eventos para miembros del grupo.", url:""},
+    {biz:"Sunset Corp", offer:"Asesoría de marketing", desc:"Sesión gratuita de diagnóstico de marketing digital para miembros.", url:""},
+    {biz:"¿Quieres sumar el tuyo?", offer:"Escríbenos", desc:"Si tu negocio quiere ofrecer condiciones preferenciales a miembros, escribe al consejo.", url:"https://wa.me/18092993338?text=Hola%20NextGEN%2C%20quiero%20agregar%20un%20descuento%20al%20programa"}
+  ];
+  var dg = document.getElementById('ng-deals-grid');
+  if (dg) dg.innerHTML = DEALS.map(function(d){
+    var link = d.url ? '<a href="'+d.url+'" target="_blank" rel="noopener">Activar →</a>' : '';
+    return '<div class="ng-card-x"><div class="ng-meta">'+d.biz+'</div><h4>'+d.offer+'</h4><p>'+d.desc+'</p>'+link+'</div>';
+  }).join('');
+
+  // ============ MEMBER DIRECTORY ============
+  var MEMBERS_DIR = [
+    {n:"Emmanuel Checo", r:"Co-Founder NextGEN · Vela", i:"SaaS / Tecnología", b:"Operador y constructor. Founder de Vela, plataforma SaaS para operaciones de negocio.", w:"+1 8092993338"},
+    {n:"Juan Tomás Díaz Rainieri", r:"Founder NextGEN", i:"Comunidad / Emprendimiento", b:"Founder de NextGEN. Lidera la visión y curaduría del consejo.", w:""},
+    {n:"Abraham Vilalta", r:"Director Comercial · Grupo Soñé Billini", i:"Protección contra incendios / Eficiencia energética", b:"Director Comercial gestionando metas comerciales del grupo. Miembro fundador del consejo.", w:"+1 8098752293"},
+    {n:"Joaquín Venegas", r:"Director · Clip Media Studios", i:"Industria Musical", b:"Estudio de grabación y postproducción para entretenimiento, publicidad y marketing.", w:"+1 8097698174"},
+    {n:"Ricardo Read", r:"Gerente Administrativo · Grupo Rica", i:"Alimentos", b:"Encargado de la expansión de una división del Grupo Rica.", w:"+1 8296389743"},
+    {n:"Alejandro Najri", r:"Analista de Ventas · Ferquido", i:"Distribución / Sales", b:"Emprendedor y profesional de ventas en distribución agrícola.", w:"+1 8298024703"},
+    {n:"Miguel Hernández", r:"Superintendencia de Bancos", i:"Sector público / Regulación financiera", b:"Profesional en el regulador financiero dominicano.", w:"+1 8099723935"},
+    {n:"Alejandro Guerrero", r:"Banco Popular", i:"Banca", b:"Profesional en banca empresarial.", w:"+1 8092993338"},
+    {n:"Jean Oleaga", r:"Consultor · McKinsey", i:"Consultoría", b:"Consultor de estrategia con experiencia en transformaciones cross-industria en LatAm.", w:"+1 8098706957"},
+    {n:"José Daniel Rodríguez", r:"Abogado · Headrick", i:"Legal", b:"Abogado en firma legal con foco en innovación y tecnología.", w:"+1 8295685992"},
+    {n:"Juan Sebastián Franco", r:"Founder · Franco Fernández & Asociados", i:"Seguros / Tech / HR", b:"Founder de múltiples ventures: corretaje de seguros, SPID digital, CBP Consulting, CrestView Technologies.", w:"+1 8097545747"},
+    {n:"Martín Hache", r:"Ingeniería Civil", i:"Construcción", b:"Ingeniería civil en empresa familiar con proyectos en San Pedro y la zona Este.", w:"+1 8098460946"},
+    {n:"Samuel Fuentes Cabrera", r:"Founder · Stealth SaaS", i:"Tecnología / Logística", b:"Programador y founder en etapa temprana construyendo SaaS de logística.", w:"+1 8296380899"},
+    {n:"Ángel Casado Aguasvivas", r:"Real Estate & Health", i:"Real Estate / Salud", b:"Multi-sector entrepreneur en gestión inmobiliaria, operaciones e industria de salud.", w:"+1 8297152481"},
+    {n:"Martín Madera", r:"Gerente de Proyectos · Fontana", i:"Construcción / Inmobiliario", b:"Gerente de proyectos en el sector construcción.", w:"+1 8296962317"},
+    {n:"César Guzmán", r:"Asistente Legal · Grupo Raya", i:"Servicios", b:"Asistente legal en grupo de servicios.", w:"+1 8297949234"},
+    {n:"Diego Alejandro Teruel", r:"Founder · Teruel y Co.", i:"Automotriz / Importación", b:"Importación de motos premium (Vespa, Moto Guzzi, Aprilia) y neumáticos.", w:"+1 8094328062"},
+    {n:"Ricardo Sánchez", r:"Founder · Renovaciones", i:"Construcción / Real Estate", b:"Founder de empresa de remodelación de apartamentos y locales.", w:"+1 8093837515"},
+    {n:"Rubén Astacio", r:"Founder · Sunset Corp", i:"Entretenimiento / Marketing", b:"Founder de Sunset Corp y Mucjo Project.", w:"+1 8094817690"},
+    {n:"Miled Hazim", r:"Founder · Helios Solar Park", i:"Energía Renovable", b:"Desarrollando Helios Solar Park, parque fotovoltaico en RD.", w:"+1 8092843332"},
+    {n:"Domingo Lora", r:"Founder · DLB Transport", i:"Logística / Transporte", b:"Logística especializada en mudanzas, materiales y mobiliario.", w:"+1 8098852070"},
+    {n:"Teófilo Solano", r:"Founder · Fleet RD", i:"Marítimo / Construcción", b:"Fleet RD (alquiler de yates) y Gerente Comercial en CIMSA.", w:"+1 8298651380"},
+    {n:"Jacinto Sanz Peynado", r:"Grupo Higiene Integral", i:"Gestión Ambiental / Sector Público", b:"Recolección y manejo de residuos sólidos en RD. Asistente de la Alcaldía DN.", w:"+1 8093998880"},
+    {n:"Máximo López Oliver", r:"Presidente · Oliver & Oliver", i:"Bebidas / Real Estate", b:"Presidente de Oliver & Oliver, Bodegas Pedro Oliver, Rones del Caribe, Terravida Capital.", w:"+1 8492454751"},
+    {n:"Carlos Vázquez", r:"Gerente Ejecutivo · Bellamar", i:"Turismo / Hospitalidad", b:"Administración de rentas vacacionales en Juan Dolio.", w:"+1 8299883938"},
+    {n:"Daniel Hiraldo", r:"Founder · Ventux", i:"Tecnología", b:"Software de automatización de ventas, marketing y servicio al cliente.", w:"+1 8492484988"},
+    {n:"Gabriel Matsumoto Najri", r:"Banco Popular", i:"Banca", b:"Profesional bancario.", w:"+1 8295568913"},
+    {n:"Khalil Jadalla", r:"Gerente · Ciramar", i:"Marítimo / Mecánica", b:"Gerente de proyectos en empresa de reparación y mantenimiento de barcos.", w:"+1 8095193575"},
+    {n:"Thomas Bacci", r:"Founder · Itálica / Cariba", i:"Retail / Real Estate", b:"Multiple ventures: Itálica, Corporativo Cariba, Home Couture.", w:"+1 8294209724"},
+    {n:"Pedro Caro", r:"Brokerage de commodities", i:"Finanzas / Commodities", b:"Emprendedor en brokerage de commodities.", w:"+1 8097812095"}
+  ];
+  var dirGrid = document.getElementById('ng-directory-grid');
+  function renderDirectory(filter){
+    if (!dirGrid) return;
+    var f = (filter||'').toLowerCase().trim();
+    var filtered = MEMBERS_DIR.filter(function(m){
+      if (!f) return true;
+      return (m.n+' '+m.r+' '+m.i+' '+m.b).toLowerCase().indexOf(f) > -1;
+    });
+    dirGrid.innerHTML = filtered.map(function(m){
+      var waNum = (m.w||'').replace(/[^0-9]/g,'');
+      var wa = waNum ? '<a class="wa" href="https://wa.me/'+waNum+'?text=Hola%20'+encodeURIComponent(m.n.split(' ')[0])+'%2C%20somos%20parte%20de%20NextGEN" target="_blank" rel="noopener">WhatsApp</a>' : '';
+      return '<div class="ng-dir-card"><h3 class="ng-dir-name">'+m.n+'</h3><p class="ng-dir-role">'+m.r+'</p><p class="ng-dir-bio">'+m.b+'</p><div class="ng-dir-actions">'+wa+'</div></div>';
+    }).join('');
+    if (!filtered.length) dirGrid.innerHTML = '<p style="color:#9aa6b8;grid-column:1/-1;text-align:center">Sin resultados</p>';
+  }
+  renderDirectory('');
+  var dirSearch = document.getElementById('ng-dir-search');
+  if (dirSearch) dirSearch.addEventListener('input', function(e){ renderDirectory(e.target.value); });
+
+  // ============ LIVE CRYPTO via CoinGecko (free, no key) ============
+  function refreshCrypto(){
+    var ids = 'bitcoin,ethereum,solana,binancecoin,ripple,cardano';
+    fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids='+ids+'&order=market_cap_desc&price_change_percentage=24h')
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        var t = document.getElementById('ng-market-crypto');
+        if (!t || !Array.isArray(data)) return;
+        t.innerHTML = data.map(function(c){
+          var ch = (c.price_change_percentage_24h || 0).toFixed(2);
+          var color = ch >= 0 ? '#4ade80' : '#f87171';
+          var sign = ch >= 0 ? '+' : '';
+          return '<div class="ng-price-card" style="background:rgba(20,28,38,.7);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div><div style="color:#e9c977;font-weight:700;font-size:13px">'+c.symbol.toUpperCase()+'</div><div style="color:#9aa6b8;font-size:11px">'+c.name+'</div></div><div style="text-align:right"><div style="color:#fff;font-weight:700;font-size:14px">$'+c.current_price.toLocaleString()+'</div><div style="color:'+color+';font-size:12px;font-weight:600">'+sign+ch+'%</div></div></div>';
+        }).join('');
+      })
+      .catch(function(){});
+  }
+  refreshCrypto();
+  setInterval(refreshCrypto, 60000); // 60s
+
+  // ============ LIVE STOCKS via Yahoo Finance (CORS via allorigins proxy) ============
+  function refreshStocks(){
+    var symbols = ['NVDA','MSFT','AAPL','GOOGL','AMZN','TSLA'];
+    var url = 'https://query1.finance.yahoo.com/v6/finance/quote?symbols='+symbols.join(',');
+    var proxied = 'https://api.allorigins.win/get?url='+encodeURIComponent(url);
+    fetch(proxied)
+      .then(function(r){ return r.json(); })
+      .then(function(p){
+        var data;
+        try { data = JSON.parse(p.contents); } catch(e){ return; }
+        var quotes = data && data.quoteResponse && data.quoteResponse.result;
+        var t = document.getElementById('ng-market-stocks');
+        if (!t || !Array.isArray(quotes)) return;
+        t.innerHTML = quotes.map(function(q){
+          var ch = (q.regularMarketChangePercent || 0).toFixed(2);
+          var color = ch >= 0 ? '#4ade80' : '#f87171';
+          var sign = ch >= 0 ? '+' : '';
+          return '<div class="ng-price-card" style="background:rgba(20,28,38,.7);border:1px solid rgba(201,168,76,.15);border-radius:10px;padding:12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><div><div style="color:#e9c977;font-weight:700;font-size:13px">'+q.symbol+'</div><div style="color:#9aa6b8;font-size:11px">'+(q.shortName||q.symbol)+'</div></div><div style="text-align:right"><div style="color:#fff;font-weight:700;font-size:14px">$'+(q.regularMarketPrice||0).toFixed(2)+'</div><div style="color:'+color+';font-size:12px;font-weight:600">'+sign+ch+'%</div></div></div>';
+        }).join('');
+      })
+      .catch(function(){});
+  }
+  refreshStocks();
+  setInterval(refreshStocks, 90000); // 90s
+
+  // ============ NEWS via RSS (Forbes / Bloomberg / Reuters via rss2json) ============
+  function refreshNews(){
+    var feeds = [
+      {name:'Bloomberg Markets', url:'https://feeds.bloomberg.com/markets/news.rss'},
+      {name:'Forbes Business',  url:'https://www.forbes.com/business/feed/'},
+      {name:'Reuters Business', url:'https://feeds.reuters.com/reuters/businessNews'}
+    ];
+    var t = document.getElementById('ng-news');
+    if (!t) return;
+    var ng = document.createElement('div');
+    ng.className = 'ng-grid-2';
+    t.innerHTML = '';
+    t.appendChild(ng);
+    feeds.forEach(function(f){
+      fetch('https://api.rss2json.com/v1/api.json?rss_url='+encodeURIComponent(f.url))
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          if (!j.items) return;
+          j.items.slice(0,3).forEach(function(it){
+            var card = document.createElement('div');
+            card.className = 'ng-card-x';
+            card.innerHTML = '<div class="ng-meta">'+f.name+'</div><h4>'+it.title+'</h4><p>'+(it.description||'').replace(/<[^>]*>/g,'').slice(0,160)+'…</p><a href="'+it.link+'" target="_blank" rel="noopener">Leer →</a>';
+            ng.appendChild(card);
+          });
+        })
+        .catch(function(){});
+    });
+  }
+  refreshNews();
+})();
+</script>
+
 </body>
 </html>
