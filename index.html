@@ -1570,8 +1570,8 @@ document.addEventListener('DOMContentLoaded', function(){
   .ng-dir-name{color:#e9c977;font-size:15px;font-weight:700;margin:0}
   .ng-dir-role{color:#cbd5e1;font-size:12px;margin:0}
   .ng-dir-bio{color:#9aa6b8;font-size:12px;line-height:1.4;margin:6px 0 8px;flex-grow:1}
-  .ng-dir-actions{display:flex;gap:8px;margin-top:auto}
-  .ng-dir-actions a{flex:1;text-align:center;padding:8px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid rgba(201,168,76,.3);color:#c9a84c}
+  .ng-dir-actions{display:flex;flex-direction:column;gap:6px;margin-top:auto}
+  .ng-dir-actions a{display:block;text-align:center;padding:8px 10px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid rgba(201,168,76,.3);color:#c9a84c}
   .ng-dir-actions a:hover{background:rgba(201,168,76,.08)}
   .ng-dir-actions a.wa{background:#25d366;color:#fff;border-color:#25d366}
   .ng-dir-actions a.wa:hover{filter:brightness(1.05)}
@@ -1646,14 +1646,10 @@ document.addEventListener('DOMContentLoaded', function(){
   }).join('');
 
   // ============ SUCCESS BOARD (placeholders for now) ============
-  // SUCCESS entries: cada entrada con link a fuente verificable
-  // (LinkedIn profile, sitio oficial, articulo en medio).
-  var SUCCESS = [
-    {who:"Maximo Lopez Oliver", what:"Presidente de Oliver & Oliver", desc:"Lidera la casa dominicana de rones premium Oliver & Oliver, junto a Bodegas Pedro Oliver, Rones del Caribe y Terravida Capital Partners.", url:"https://www.linkedin.com/in/m%C3%A1ximo-l%C3%B3pez-oliver-37a7b380/"},
-    {who:"Emmanuel Checo", what:"Co-fundador de Cherruso", desc:"Construye Cherruso junto a Joaquin Ruiz y Juan Bolivar, plataforma operacional para empresas dominicanas.", url:"https://www.linkedin.com/in/emmanuel-checo-fiorentino-387940247/"},
-    {who:"Juan Sebastian Franco", what:"4 ventures en seguros y tecnologia", desc:"Founder de Franco Fernandez & Asociados (corretaje de seguros), SPID (insurtech digital), CBP Consulting (gestion humana) y CrestView Technologies.", url:"https://www.linkedin.com/in/juan-sebastian-franco-116945191/"},
-    {who:"Abraham Vilalta", what:"Director Comercial Grupo Sone Billini", desc:"Lidera la performance comercial de un grupo activo en proteccion contra incendios, automatizacion de edificios y eficiencia energetica.", url:"https://www.linkedin.com/in/abraham-vilalta-b57b451bb/"}
-  ];
+  // SUCCESS entries: SOLO articulos publicados sobre el miembro
+  // (Diario Libre, Listin, Forbes RD, comunicados oficiales).
+  // Perfiles de LinkedIn no califican como fuente.
+  var SUCCESS = [];
   var sg = document.getElementById('ng-success-grid');
   if (sg) {
     var realLogros = SUCCESS.filter(function(s){ return !s.isCTA; });
