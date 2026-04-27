@@ -754,11 +754,11 @@
 //  MEMBER DATA
 // ═══════════════════════════════════════════════
 const MEMBERS = [
-  {name:"Juan Tomas Diaz Rainieri",profile:"Founder, NextGEN",company:"NextGEN",role:"Founder",industry:"Comunidad / Emprendimiento",bio:"Founder de NextGEN. Lidera la vision y la curaduria del consejo, articulando una comunidad donde jovenes lideres dominicanos hacen sus mejores movimientos profesionales en conjunto.",initials:"JT",founding:true},
-  {name:"Emmanuel Checo",profile:"Co-Founder, NextGEN",company:"Vela",role:"Co-Founder & CEO",industry:"SaaS / Tecnologia",bio:"Co-Founder de NextGEN. Operador y constructor que llevo NextGEN de idea a realidad. Fundador de Vela, plataforma SaaS para operaciones de negocio.",initials:"EC",founding:true},
+  {name:"Juan Tomas Diaz Rainieri",profile:"Founder · Gerente Comercial",company:"NextGEN",role:"Gerente Comercial",industry:"Consejo Administrativo",bio:"Founder de NextGEN y Gerente Comercial del consejo administrativo. Lidera la vision, las relaciones comerciales y la curaduria de la comunidad.",initials:"JT",founding:true,council:true,councilOrder:1},
+  {name:"Emmanuel Checo",profile:"Co-Founder · Organizador",company:"Vela",role:"Organizador",industry:"Consejo Administrativo",bio:"Co-Founder de NextGEN y Organizador del consejo. Coordina los eventos y la operacion de la comunidad. Fundador de Vela, plataforma SaaS para operaciones de negocio.",initials:"EC",founding:true,council:true,councilOrder:2},
   {name:"Victor Andujar Mendez",profile:"Business Professional",company:"Grupo Vimenca",role:"",industry:"Finance / Conglomerate",bio:"Part of one of the Dominican Republic's leading financial and business conglomerates.",initials:"VA"},
   {name:"Ricardo Read",profile:"Business Professional",company:"Grupo Rica",role:"Administrative Manager",industry:"Food & Beverage",bio:"Gerente Administrativo at Grupo Rica, leading expansion of a key division within one of DR's top consumer brands.",initials:"RR"},
-  {name:"Alejandro Najri",profile:"Founder / Entrepreneur",company:"Ferquido",role:"Sales Analyst",industry:"Distribution / Sales",bio:"Entrepreneur and sales professional. Part of Ferquido and building ventures in sales and distribution.",initials:"AN"},
+  {name:"Alejandro Najri",profile:"Consejo · Finanzas",company:"Ferquido",role:"Finanzas",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como encargado de Finanzas. Emprendedor y analista de ventas en Ferquido.",initials:"AN",council:true,councilOrder:5},
   {name:"Miguel Hernandez",profile:"Business Professional",company:"Superintendencia de Bancos",role:"",industry:"Financial Regulation",bio:"Professional in the Dominican banking regulatory sector.",initials:"MH"},
   {name:"Alejandro Guerrero",profile:"Entrepreneur in Progress",company:"Banco Popular",role:"",industry:"Banking / Finance",bio:"Finance professional at Banco Popular, building his entrepreneurial path alongside his banking career.",initials:"AG"},
   {name:"Jean Oleaga",profile:"Business Professional",company:"McKinsey & Company",role:"Strategy Consultant",industry:"Consulting",bio:"Strategy consultant at McKinsey & Co, designing growth strategies for financial groups and franchise leaders across the region.",initials:"JO"},
@@ -773,11 +773,11 @@ const MEMBERS = [
   {name:"Thomas Bacci",profile:"Founder / Entrepreneur",company:"Itálica / Corporativo Cariba",role:"",industry:"Retail / Real Estate",bio:"Entrepreneur across multiple ventures including Itálica, Corporativo Cariba, and Home Couture.",initials:"TB"},
   {name:"Diego Alejandro Teruel",profile:"Founder / Entrepreneur",company:"Teruel y Co.",role:"",industry:"Automotive / Import",bio:"Family business in motorcycle and tire import: Vespa, Moto Guzzi, Aprilia, Zontes, and Compasal tires.",initials:"DA"},
   {name:"Ricardo Sánchez",profile:"Founder / Entrepreneur",company:"Renovation Company",role:"Founder",industry:"Construction / Real Estate",bio:"Founder of a commercial and residential renovation company.",initials:"RS"},
-  {name:"Abraham Vilalta",profile:"Miembro del Consejo Fundador",company:"Grupo Sone Billini",role:"Director Comercial",industry:"Proteccion contra incendios / Eficiencia energetica",bio:"Director Comercial de Grupo Sone Billini, donde gestiona el cumplimiento de metas comerciales del grupo. Miembro fundador del consejo de NextGEN.",initials:"AV",founding:true},
+  {name:"Abraham Vilalta",profile:"Consejo · Vocero",company:"Grupo Sone Billini",role:"Vocero",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como Vocero. Director Comercial de Grupo Sone Billini, gestionando metas comerciales del grupo.",initials:"AV",founding:true,council:true,councilOrder:3},
   {name:"Rubén Astacio",profile:"Founder / Entrepreneur",company:"Sunset Corp / Mucjo Project",role:"",industry:"Entertainment / Music",bio:"Entrepreneur and creator behind Sunset Corp and Mucjo Project.",initials:"RA"},
   {name:"Miled Hazim",profile:"Founder / Entrepreneur",company:"Helios Solar Park",role:"Founder",industry:"Energy / Renewable",bio:"Developing Helios Solar Park, a photovoltaic energy project in the Dominican Republic.",initials:"MH"},
   {name:"Domingo Lora",profile:"Founder / Entrepreneur",company:"DLB Transport",role:"Founder",industry:"Logistics / Transport",bio:"Founder of DLB Transport, a specialized logistics company for household goods, tools, mattresses, and construction materials.",initials:"DL"},
-  {name:"Teofilo Solano",profile:"Founder / Entrepreneur",company:"Fleet RD / CIMSA",role:"Commercial Manager",industry:"Marine / Waterproofing",bio:"Runs Fleet RD (national yacht and jet ski rental) and serves as Commercial Manager at CIMSA (waterproofing services).",initials:"TS"},
+  {name:"Teofilo Solano",profile:"Consejo · Operador",company:"Fleet RD / CIMSA",role:"Operador",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como Operador. Founder de Fleet RD (alquiler de yates a nivel nacional) y Gerente Comercial en CIMSA.",initials:"TS",council:true,councilOrder:4},
   {name:"Alejandro Fernandez",profile:"Business Professional",company:"Baccessory",role:"Project Sales",industry:"Bath / Kitchen / Hardware",bio:"Sales professional at Baccessory, a company specializing in bathroom, kitchen, and hardware products.",initials:"AF"},
   {name:"Daniel Hiraldo",profile:"Founder / Entrepreneur",company:"Ventux",role:"Founder",industry:"Technology / SaaS",bio:"Founder of Ventux, a software company focused on automating sales, marketing, and customer service processes.",initials:"DH"},
   {name:"Maximo Lopez",profile:"Founder / Entrepreneur",company:"Oliver & Oliver / Caribbean Brands",role:"President",industry:"Beverages / Capital",bio:"President of Oliver & Oliver, Bodegas Pedro Oliver, Rones del Caribe, Caribbean Brands, and Terravida Capital Partners.",initials:"ML"},
@@ -1327,37 +1327,49 @@ var EVENTS=[
 
 // Aligned with MEMBERS industries present in the existing site
 var SECTOR_MAP={
- "Technology":["SaaS / Technology","Technology / Logistics","Technology / SaaS","Insurance / Tech / HR"],
- "Finance":["Finance / Conglomerate","Banking / Finance","Beverages / Capital","Financial Regulation"],
- "RealEstate":["Real Estate / Health","Construction / Real Estate","Retail / Real Estate","Construction"],
- "Legal":["Legal","Legal / Conglomerate"],
- "Hospitality":["Hospitality / Retail","Tourism / Hospitality","Food & Beverage"],
- "Logistics":["Logistics / Transport","Distribution / Sales","Automotive / Import"],
- "Energy":["Energy / Renewable"],
- "Industrial":["Waste Management / Environmental","Waste Management / Municipal","Marine / Waterproofing","Bath / Kitchen / Hardware"],
- "Entertainment":["Entertainment / Music"],
- "Consulting":["Consulting","Community / Entrepreneurship"]
+ "Tecnologia":["SaaS / Tecnologia","SaaS / Technology","Technology / Logistics","Technology / SaaS","Insurance / Tech / HR","Tecnologia"],
+ "Banca":["Banking / Finance","Financial Regulation","Banca","Sector financiero","Mercado de valores","Sector Asegurador","Financiero","Financiero/Seguros","Inversion y finanzas","Financiera"],
+ "Inmobiliario":["Real Estate / Health","Construction / Real Estate","Retail / Real Estate","Construction","Inmobiliario","Bienes Raices","Inmobiliario / Salud"],
+ "Legal":["Legal","Legal / Conglomerate","Legal y sector de juegos de azar.","Consultoria Legal Corporativa"],
+ "Turismo":["Hospitality / Retail","Tourism / Hospitality","Turismo","Turismo y Hospitalidad","Turismo / Marketing","Hoteleria","Aviacion privada / Hospitality"],
+ "Alimentos":["Food & Beverage","Alimentos","Alimenticia","Produccion de Bebidas Alcoholicas, Distribucion, Bienes Raices","Alimentos y bebidas.","Tabaco","Panaderia Industrial"],
+ "Logistica":["Logistics / Transport","Distribution / Sales","Logistica","Logistica/empaques","Servicios","Comercial, entretenimiento, inmobiliario."],
+ "Automotriz":["Automotive / Import","Automotriz","Automovil","A la Industria de la Contruccion (Movimientos de tierra, excavaciones, obras viales) y equipos pesados de construccion."],
+ "Energia":["Energy / Renewable","Energia","Energia Renovable","Derivados del Petroleo"],
+ "Industrial":["Waste Management / Environmental","Waste Management / Municipal","Marine / Waterproofing","Bath / Kitchen / Hardware","Sector de gestion ambiental y saneamiento / sector publico","Construccion/Comercio/Zona Franca","Proteccion contra incendios / Eficiencia energetica","Construccion / Exportacion / CARROS","Materiales de Diseno de Interior / Construccion","Empresa maritima, mecanica","Provincia Duarte"],
+ "Entretenimiento":["Entertainment / Music","Entretenimiento","Industria Musical","Eventos","Eventos Culturales","Marketing / Consulting / Sales"],
+ "Salud":["Salud","Cuidado Personal y Gasolina"],
+ "Consultoria":["Consulting","Community / Entrepreneurship","Consultoria","Comunidad / Emprendimiento","Relaciones Internacionales","Consejo Administrativo"],
+ "Comercio":["Electrodomestico y inmobiliaria","Hogar, Ferretero, Construccion","Seguridad Privada","Exportacion de productos","Exportacion","Commodities brokerage","Brokerage de commodities"]
 };
 var SECTOR_META={
- "Technology":{es:"Tecnologia",en:"Technology",color:"#8b5cf6",icon:"\ud83d\udcbb"},
- "Finance":{es:"Finanzas",en:"Finance",color:"#3b82f6",icon:"\ud83d\udcb0"},
- "RealEstate":{es:"Bienes Raices",en:"Real Estate",color:"#ef4444",icon:"\ud83c\udfd8\ufe0f"},
+ "Tecnologia":{es:"Tecnologia",en:"Technology",color:"#8b5cf6",icon:"\ud83d\udcbb"},
+ "Banca":{es:"Banca y Finanzas",en:"Banking & Finance",color:"#3b82f6",icon:"\ud83d\udcb0"},
+ "Inmobiliario":{es:"Inmobiliario y Construccion",en:"Real Estate",color:"#ef4444",icon:"\ud83c\udfd8\ufe0f"},
  "Legal":{es:"Legal",en:"Legal",color:"#64748b",icon:"\u2696\ufe0f"},
- "Hospitality":{es:"Hospitalidad y Turismo",en:"Hospitality & Tourism",color:"#0ea5e9",icon:"\ud83c\udfdd\ufe0f"},
- "Logistics":{es:"Logistica y Automotriz",en:"Logistics & Auto",color:"#10b981",icon:"\ud83d\ude9a"},
- "Energy":{es:"Energia",en:"Energy",color:"#f59e0b",icon:"\u26a1"},
- "Industrial":{es:"Industrial y Manufactura",en:"Industrial & Mfg",color:"#a16207",icon:"\ud83c\udfed"},
- "Entertainment":{es:"Entretenimiento",en:"Entertainment",color:"#ec4899",icon:"\ud83c\udfa4"},
- "Consulting":{es:"Consultoria",en:"Consulting",color:"#14b8a6",icon:"\ud83d\udca1"}
+ "Turismo":{es:"Turismo y Hospitalidad",en:"Tourism",color:"#0ea5e9",icon:"\ud83c\udfdd\ufe0f"},
+ "Alimentos":{es:"Alimentos y Bebidas",en:"Food & Beverage",color:"#84cc16",icon:"\ud83c\udf77"},
+ "Logistica":{es:"Logistica y Distribucion",en:"Logistics",color:"#10b981",icon:"\ud83d\ude9a"},
+ "Automotriz":{es:"Automotriz",en:"Automotive",color:"#f97316",icon:"\ud83d\ude97"},
+ "Energia":{es:"Energia",en:"Energy",color:"#f59e0b",icon:"\u26a1"},
+ "Industrial":{es:"Industrial y Manufactura",en:"Industrial",color:"#a16207",icon:"\ud83c\udfed"},
+ "Entretenimiento":{es:"Entretenimiento y Eventos",en:"Entertainment",color:"#ec4899",icon:"\ud83c\udfa4"},
+ "Salud":{es:"Salud",en:"Health",color:"#06b6d4",icon:"\u2695\ufe0f"},
+ "Consultoria":{es:"Consultoria",en:"Consulting",color:"#14b8a6",icon:"\ud83d\udca1"},
+ "Comercio":{es:"Comercio y Distribucion",en:"Trade",color:"#7c3aed",icon:"\ud83d\udecd\ufe0f"}
 };
 
 var NEWS_SECTORS=[
- {key:"Technology",feeds:["https://techcrunch.com/feed/","https://feeds.arstechnica.com/arstechnica/index"]},
- {key:"Finance",feeds:["https://www.diariolibre.com/rss/economia.xml"]},
- {key:"RealEstate",feeds:["https://www.reportur.com/feed/"]},
- {key:"Hospitality",feeds:["https://www.preferente.com/feed","https://www.reportur.com/feed/"]},
- {key:"Energy",feeds:["https://oilprice.com/rss/main"]},
- {key:"Logistics",feeds:["https://www.diariolibre.com/rss/economia.xml"]}
+ {key:"Banca",feeds:["https://www.diariolibre.com/rss/economia.xml","https://listindiario.com/rss/economia.xml","https://acento.com.do/feed/"]},
+ {key:"Inmobiliario",feeds:["https://www.diariolibre.com/rss/economia.xml","https://hoy.com.do/feed/"]},
+ {key:"Turismo",feeds:["https://www.reportur.com/republica-dominicana/feed/","https://dominicantoday.com/feed/"]},
+ {key:"Legal",feeds:["https://acento.com.do/feed/","https://hoy.com.do/feed/"]},
+ {key:"Tecnologia",feeds:["https://acento.com.do/feed/","https://dominicantoday.com/feed/"]},
+ {key:"Alimentos",feeds:["https://www.diariolibre.com/rss/economia.xml","https://listindiario.com/rss/economia.xml"]},
+ {key:"Logistica",feeds:["https://www.diariolibre.com/rss/economia.xml","https://listindiario.com/rss/economia.xml"]},
+ {key:"Energia",feeds:["https://acento.com.do/feed/","https://www.diariolibre.com/rss/economia.xml"]},
+ {key:"Entretenimiento",feeds:["https://hoy.com.do/feed/","https://listindiario.com/rss/entretenimiento.xml"]},
+ {key:"Industrial",feeds:["https://www.diariolibre.com/rss/economia.xml","https://acento.com.do/feed/"]}
 ];
 
 var CRYPTOS=[{i:"bitcoin",l:"Bitcoin",s:"BTC"},{i:"ethereum",l:"Ethereum",s:"ETH"},{i:"solana",l:"Solana",s:"SOL"},{i:"binancecoin",l:"BNB",s:"BNB"},{i:"ripple",l:"XRP",s:"XRP"},{i:"cardano",l:"Cardano",s:"ADA"}];
@@ -1767,9 +1779,10 @@ document.addEventListener('DOMContentLoaded', function(){
   // ============ NEWS via RSS (Forbes / Bloomberg / Reuters via rss2json) ============
   function refreshNews(){
     var feeds = [
-      {name:'Bloomberg Markets', url:'https://feeds.bloomberg.com/markets/news.rss'},
-      {name:'Forbes Business',  url:'https://www.forbes.com/business/feed/'},
-      {name:'Reuters Business', url:'https://feeds.reuters.com/reuters/businessNews'}
+      {name:'Diario Libre · Economía', url:'https://www.diariolibre.com/rss/economia.xml'},
+      {name:'Listín Diario · Economía', url:'https://listindiario.com/rss/economia.xml'},
+      {name:'Acento RD', url:'https://acento.com.do/feed/'},
+      {name:'Hoy RD', url:'https://hoy.com.do/feed/'}
     ];
     var t = document.getElementById('ng-news');
     if (!t) return;
@@ -1981,6 +1994,46 @@ document.addEventListener('DOMContentLoaded', function(){
       });
     });
   }, 800);
+});
+</script>
+
+
+<script>
+// Sort MEMBERS so council appears first (in council order), then everyone else
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){
+    if (typeof MEMBERS === 'undefined' || !Array.isArray(MEMBERS)) return;
+    var beforeCount = MEMBERS.length;
+    // Stable sort: council first (by councilOrder), then non-council (preserving order)
+    MEMBERS.sort(function(a, b){
+      var ac = a.council ? (a.councilOrder || 999) : 1000;
+      var bc = b.council ? (b.councilOrder || 999) : 1000;
+      if (ac !== bc) return ac - bc;
+      return 0;
+    });
+    // Re-render the landing members grid + portal directory
+    if (typeof renderLandingMembers === 'function') renderLandingMembers();
+    if (typeof renderDirectory === 'function') renderDirectory();
+    // Insert visual separator between council and other members
+    var grid = document.getElementById('landing-members-grid');
+    if (grid) {
+      var cards = grid.querySelectorAll('.member-card');
+      // Find first non-council index
+      var firstNonCouncilIdx = -1;
+      MEMBERS.forEach(function(m, i){ if (!m.council && firstNonCouncilIdx === -1) firstNonCouncilIdx = i; });
+      if (firstNonCouncilIdx > 0 && cards[firstNonCouncilIdx]) {
+        var sep = document.createElement('div');
+        sep.style.cssText = 'grid-column:1/-1;text-align:center;padding:20px 0 10px;border-top:1px solid rgba(201,168,76,.18);margin-top:14px;color:#c9a84c;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700';
+        sep.textContent = 'Miembros';
+        cards[firstNonCouncilIdx].parentNode.insertBefore(sep, cards[firstNonCouncilIdx]);
+        // Also insert "Consejo Administrativo" header at top
+        var header = document.createElement('div');
+        header.style.cssText = 'grid-column:1/-1;text-align:center;padding:0 0 14px;color:#c9a84c;font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:700';
+        header.textContent = 'Consejo Administrativo';
+        grid.insertBefore(header, grid.firstChild);
+      }
+    }
+  }, 400);
 });
 </script>
 
