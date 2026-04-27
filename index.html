@@ -1272,8 +1272,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   <p class="ng-sub" data-i18n="news.sub">Resumenes de las fuentes que importan para los sectores de nuestros miembros.</p>
   <div id="ng-news"></div>
 </section>
-<div id="ng-lang-float" style="position:fixed;top:16px;right:16px;z-index:9998">
-  <div class="ng-lang-switch"><button class="ng-lang-btn active" data-lang="es" type="button">ES</button><button class="ng-lang-btn" data-lang="en" type="button">EN</button></div>
+<div id="ng-lang-float" style="position:fixed;top:16px;right:16px;z-index:9998;display:none">
+  <div class="ng-lang-switch" style="display:none"><button class="ng-lang-btn active" data-lang="es" type="button">ES</button><button class="ng-lang-btn" data-lang="en" type="button">EN</button></div>
 </div>
 
 <script id="ng-add-js">
@@ -1952,18 +1952,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
 <script>
 (function(){
-  var UPCOMING = [
-    {when:"Mayo 2026", title:"Cena de Estrategia Q2", desc:"Cena privada con los miembros para revisar prioridades del trimestre y deal flow activo.", tag:"Networking"},
-    {when:"Mayo 2026", title:"Sesion: Escalar de $1M a $10M ARR", desc:"Mesa redonda sobre estrategia de crecimiento y operacion en negocios B2B.", tag:"Estrategia"},
-    {when:"Junio 2026", title:"Visita empresarial: Bodegas de Punta Cana", desc:"Tour guiado a una bodega vinicola lider del este, networking extendido.", tag:"Visita"},
-    {when:"Junio 2026", title:"Founders Breakfast", desc:"Desayuno enfocado en levantamiento de capital, fundraising y deal structuring.", tag:"Capital"},
-    {when:"Julio 2026", title:"Polo Tournament Networking", desc:"Tarde de polo en torneo en Santo Domingo, ambiente de relaciones de alto valor.", tag:"Sociales"},
-    {when:"Por confirmar", title:"Charla con invitado especial", desc:"Conferencia con un empresario dominicano de referencia. Detalles por anunciar.", tag:"Charla"}
-  ];
+  var UPCOMING = [];
   var g = document.getElementById('upe-grid');
-  if (g) g.innerHTML = UPCOMING.map(function(u){
-    return '<div class="upe-card"><div class="upe-when">'+u.when+'</div><h4 class="upe-title">'+u.title+'</h4><p class="upe-desc">'+u.desc+'</p><span class="upe-tag">'+u.tag+'</span></div>';
-  }).join('');
+  if (g) {
+    if (UPCOMING.length === 0) {
+      g.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px 20px;border:1px dashed rgba(201,168,76,.3);border-radius:14px;background:rgba(20,28,38,.4)"><p style="color:#9aa6b8;font-size:14px;margin:0 0 14px">Aun no hay eventos confirmados publicamente. El consejo agrega proximos eventos en cuanto se confirman fechas.</p><a href="https://wa.me/18092993338?text=Hola%20NextGEN%2C%20quiero%20saber%20cual%20es%20el%20proximo%20evento" target="_blank" rel="noopener" style="display:inline-block;background:#25d366;color:#fff;padding:10px 22px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px">Preguntar por WhatsApp</a></div>';
+    } else {
+      g.innerHTML = UPCOMING.map(function(u){
+        return '<div class="upe-card"><div class="upe-when">'+u.when+'</div><h4 class="upe-title">'+u.title+'</h4><p class="upe-desc">'+u.desc+'</p><span class="upe-tag">'+u.tag+'</span></div>';
+      }).join('');
+    }
+  }
 })();
 </script>
 
@@ -1978,22 +1977,22 @@ document.addEventListener('DOMContentLoaded', function(){
     var aboutContainer = aboutSection.parentNode;
 
     var order = [
-      'ng-upcoming-events',
-      'ng-past-events-section',
-      'ng-directory-section',
-      'ng-members-sectors-section',
-      'events',           // legacy upcoming events (keep)
-      'ng-deals-section',
-      'ng-success-section',
-      'investments',      // investment opportunities
-      'ng-ai-ideas-section',
-      'ng-resources-section',
-      'ng-podcasts-section',
-      'ng-market-extra',  // market goes DOWN
-      'ng-news-section',
-      'news',             // legacy news section
-      'ng-invite-section',
-      'cta-section'
+      'ng-upcoming-events',         // 3. Proximos eventos (empty for manual entry)
+      'ng-members-sectors-section', // 4. Sectores
+      'ng-past-events-section',     // 5. Actividades pasadas
+      'ng-directory-section',       // 6. Directorio
+      'ng-deals-section',           // 7. Acuerdos
+      'ng-success-section',         // 8. Reconocimientos
+      'investments',                // 9. Oportunidades de inversion
+      'ng-news-section',            // 10. Noticias por sector
+      'news',                       // legacy news (keep below ng-news)
+      'ng-ai-ideas-section',        // 11. AI Business Ideas
+      'ng-resources-section',       // 12. Biblioteca
+      'ng-podcasts-section',        // 13. Podcasts
+      'ng-market-extra',            // 14. Mercado (DOWN)
+      'events',                     // legacy events
+      'ng-invite-section',          // 15. Invitar
+      'cta-section'                 // 16. CTA + Contacto
     ];
     order.forEach(function(id){
       var el = document.getElementById(id);
@@ -2020,6 +2019,20 @@ document.addEventListener('DOMContentLoaded', function(){
     if (typeof MEMBERS_DIR === 'undefined') return;
   }, 500);
 })();
+</script>
+
+
+<script>
+// Force Spanish — language switch removed per council decision
+document.addEventListener('DOMContentLoaded', function(){
+  try {
+    localStorage.setItem('ng_lang', 'es');
+    if (typeof setLang === 'function') setLang('es');
+    document.documentElement.lang = 'es';
+    // Hide any leftover language buttons
+    document.querySelectorAll('.ng-lang-btn, .lang-btn, .lang-switch, #ng-lang-float').forEach(function(b){ b.style.display = 'none'; });
+  } catch(e){}
+});
 </script>
 
 </body>
