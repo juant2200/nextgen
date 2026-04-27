@@ -1699,7 +1699,7 @@ document.addEventListener('DOMContentLoaded', function(){
     {n:"Pedro Caro", r:"Brokerage de commodities", i:"Finanzas / Commodities", b:"Emprendedor en brokerage de commodities.", w:"+1 8097812095"}
   ];
   var dirGrid = document.getElementById('ng-directory-grid');
-  window.renderDirectory = function renderDirectory(filter){
+  function renderDirectory(filter){
     if (!dirGrid) return;
     var f = (filter||'').toLowerCase().trim();
     var filtered = MEMBERS_DIR.filter(function(m){
