@@ -489,15 +489,7 @@
   <hr class="divider"/>
 
   <!-- NEWS (dynamic) -->
-  <section id="news" style="background:var(--dark)">
-    <div class="wrap">
-      <div class="section-label">Community Updates</div>
-      <h2 class="section-title">What's Happening in NextGEN</h2>
-      <div class="news-grid" id="landing-news-grid">
-        <!-- populated by JS -->
-      </div>
-    </div>
-  </section>
+  
   <hr class="divider"/>
 
   <!-- EVENTS -->
@@ -754,13 +746,13 @@
 //  MEMBER DATA
 // ═══════════════════════════════════════════════
 const MEMBERS = [
-  {name:"Juan Tomas Diaz Rainieri",profile:"Founder · Gerente Comercial",company:"NextGEN",role:"Gerente Comercial",industry:"Consejo Administrativo",bio:"Founder de NextGEN y Gerente Comercial del consejo administrativo. Lidera la vision, las relaciones comerciales y la curaduria de la comunidad.",initials:"JT",founding:true,council:true,councilOrder:1},
-  {name:"Emmanuel Checo",profile:"Co-Founder · Organizador",company:"Vela",role:"Organizador",industry:"Consejo Administrativo",bio:"Co-Founder de NextGEN y Organizador del consejo. Coordina los eventos y la operacion de la comunidad. Fundador de Vela, plataforma SaaS para operaciones de negocio.",initials:"EC",founding:true,council:true,councilOrder:2},
+  {name:"Juan Tomas Diaz Rainieri",profile:"Founder · NextGEN",company:"JV HOLDINGS",role:"Gerente Comercial del Consejo",industry:"Consejo Administrativo",bio:"Founder de NextGEN. Lidera la vision, las relaciones comerciales y la curaduria de la comunidad. CEO de JV HOLDINGS, grupo que opera y desarrolla negocios en Republica Dominicana.",initials:"JT",founding:true,council:true,councilOrder:1},
+  {name:"Emmanuel Checo",profile:"Founder · NextGEN",company:"Vela",role:"Organizador del Consejo",industry:"Consejo Administrativo",bio:"Founder de NextGEN y Organizador del consejo. Coordina los eventos y la operacion de la comunidad. Fundador de Vela, plataforma SaaS para operaciones de negocio.",initials:"EC",founding:true,council:true,councilOrder:2},
   {name:"Victor Andujar Mendez",profile:"Business Professional",company:"Grupo Vimenca",role:"",industry:"Finance / Conglomerate",bio:"Part of one of the Dominican Republic's leading financial and business conglomerates.",initials:"VA"},
   {name:"Ricardo Read",profile:"Business Professional",company:"Grupo Rica",role:"Administrative Manager",industry:"Food & Beverage",bio:"Gerente Administrativo at Grupo Rica, leading expansion of a key division within one of DR's top consumer brands.",initials:"RR"},
-  {name:"Alejandro Najri",profile:"Consejo · Finanzas",company:"Ferquido",role:"Finanzas",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como encargado de Finanzas. Emprendedor y analista de ventas en Ferquido.",initials:"AN",council:true,councilOrder:5},
+  {name:"Alejandro Najri",profile:"Founder / Entrepreneur",company:"Ferquido",role:"Sales Analyst",industry:"Distribution / Sales",bio:"Entrepreneur and sales professional. Part of Ferquido and building ventures in sales and distribution.",initials:"AN"},
   {name:"Miguel Hernandez",profile:"Business Professional",company:"Superintendencia de Bancos",role:"",industry:"Financial Regulation",bio:"Professional in the Dominican banking regulatory sector.",initials:"MH"},
-  {name:"Alejandro Guerrero",profile:"Entrepreneur in Progress",company:"Banco Popular",role:"",industry:"Banking / Finance",bio:"Finance professional at Banco Popular, building his entrepreneurial path alongside his banking career.",initials:"AG"},
+  {name:"Alejandro Guerrero",profile:"Consejo · Finanzas",company:"Banco Popular",role:"Finanzas",industry:"Consejo Administrativo",bio:"Miembro del consejo administrativo de NextGEN como encargado de Finanzas. Profesional en banca empresarial, construyendo su camino emprendedor en paralelo a su carrera bancaria.",initials:"AG",council:true,councilOrder:5},
   {name:"Jean Oleaga",profile:"Business Professional",company:"McKinsey & Company",role:"Strategy Consultant",industry:"Consulting",bio:"Strategy consultant at McKinsey & Co, designing growth strategies for financial groups and franchise leaders across the region.",initials:"JO"},
   {name:"José Daniel Rodríguez Muñoz",profile:"Business Professional",company:"Headrick",role:"Attorney",industry:"Legal",bio:"Lawyer at Headrick, one of the Dominican Republic's leading law firms.",initials:"JD"},
   {name:"Juan Sebastian Franco",profile:"Founder / Entrepreneur",company:"Franco Fernandez & Asociados",role:"Founder",industry:"Insurance / Tech / HR",bio:"Founder across multiple ventures: Franco Fernandez & Asociados (insurance), SPID (digital insurance), CBP Consulting (HR), and CrestView Technologies.",initials:"JS"},
@@ -1663,15 +1655,13 @@ document.addEventListener('DOMContentLoaded', function(){
   if (sg) {
     var realLogros = SUCCESS.filter(function(s){ return !s.isCTA; });
     if (realLogros.length === 0) {
-      // Empty state — only CTA shown prominently
-      var cta = SUCCESS.find(function(s){ return s.isCTA; });
-      sg.innerHTML = '<a href="'+cta.url+'" target="_blank" rel="noopener" class="ng-card-x" style="grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:48px 32px;text-decoration:none;color:inherit;border-style:dashed"><div style="font-size:36px;margin-bottom:14px">\ud83d\udcec</div><h4 style="font-size:18px">'+cta.what+'</h4><p style="max-width:520px">'+cta.desc+'</p><span style="display:inline-block;margin-top:14px;background:#25d366;color:#fff;padding:10px 22px;border-radius:8px;font-weight:600">Compartir por WhatsApp</span></a>';
+      // Hide entire Reconocimientos section when empty (no ugly CTA)
+      var sec = document.getElementById('ng-success-section');
+      if (sec) sec.style.display = 'none';
     } else {
-      sg.innerHTML = SUCCESS.map(function(s){
-        var clickable = !!s.url;
-        var hint = s.isCTA ? 'Compartir →' : 'Leer mas →';
-        var inner = '<div class="ng-meta">'+s.who+'</div><h4>'+s.what+'</h4><p>'+s.desc+'</p>' + (clickable ? '<span style="color:#c9a84c;font-size:13px;font-weight:600;display:block;margin-top:8px">'+hint+'</span>' : '');
-        if (clickable) {
+      sg.innerHTML = realLogros.map(function(s){
+        var inner = '<div class="ng-meta">'+s.who+'</div><h4>'+s.what+'</h4><p>'+s.desc+'</p>' + (s.url ? '<span style="color:#c9a84c;font-size:13px;font-weight:600;display:block;margin-top:8px">Leer mas \u2192</span>' : '');
+        if (s.url) {
           return '<a href="'+s.url+'" target="_blank" rel="noopener" class="ng-card-x" style="display:block;text-decoration:none;color:inherit">'+inner+'</a>';
         }
         return '<div class="ng-card-x">'+inner+'</div>';
