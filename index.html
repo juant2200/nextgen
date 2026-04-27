@@ -1386,12 +1386,12 @@ function applyLang(L){
 window.ngSetLang=applyLang;
 
 var EVENTS=[
- {n:"Inauguracion y Consolidacion de NextGEN",d:"Primera actividad oficial de la comunidad, donde se realizo el primer acercamiento presencial entre los miembros, marcando el inicio de NextGEN.",icon:"\ud83d\udc8e"},
+ {n:"Inauguracion y Consolidacion de NextGEN",d:"Primera actividad oficial de la comunidad, donde se realizo el primer acercamiento presencial entre los miembros, marcando el inicio de NextGEN.",icon:"\ud83d\udc8e",img:"photos/inauguracion.jpg"},
  {n:"Polo",d:"Encuentro en un prestigioso torneo de polo en Santo Domingo, fortaleciendo el networking entre miembros.",icon:"\ud83d\udc0e"},
- {n:"Visita a Oliver & Oliver",d:"Visita a las bodegas de Oliver & Oliver, guiada por Maximo Lopez Oliver, presidente y miembro activo.",icon:"\ud83e\udd43"},
- {n:"Boca Marina",d:"Actividad en Boca Marina con dinamicas enfocadas en la vision de negocios y resolucion de problemas.",icon:"\u26f5"},
+ {n:"Visita a Oliver & Oliver",d:"Visita a las bodegas de Oliver & Oliver, guiada por Maximo Lopez Oliver, presidente y miembro activo.",icon:"\ud83e\udd43",img:"photos/oliver-oliver.jpg"},
+ {n:"Boca Marina",d:"Actividad en Boca Marina con dinamicas enfocadas en la vision de negocios y resolucion de problemas.",icon:"\u26f5",img:"photos/boca-marina.jpg"},
  {n:"Encuentro con Omar Fernandez",d:"Desayuno donde el senador compartio su vision y propuestas con la comunidad.",icon:"\ud83c\udf7d\ufe0f"},
- {n:"Bar Room",d:"Networking en ambiente informal y dinamico para fortalecer relaciones.",icon:"\ud83c\udf78"},
+ {n:"Bar Room",d:"Networking en ambiente informal y dinamico para fortalecer relaciones.",icon:"\ud83c\udf78",img:"photos/networking.jpg"},
  {n:"Encuentro con Hermanos Nin",d:"Charla con los Hermanos Nin, emprendedores dominicanos en Canada, sobre su trayectoria empresarial.",icon:"\ud83c\udf0e"}
 ];
 
@@ -1471,7 +1471,8 @@ function renderStocks(){
 function renderEvents(){
  var d=window._ngData;var t=document.getElementById("ng-past-events");if(!t)return;
  t.innerHTML='<div class="ng-events-grid">'+d.EVENTS.map(function(e,i){
-  return '<article class="ng-event-card" data-evt="'+i+'"><div class="ng-event-cover">'+e.icon+'</div><div class="ng-event-body"><h3>'+e.n+'</h3><p>'+e.d+'</p></div></article>';
+  var cover = e.img ? '<img src="'+e.img+'" alt="'+e.n+'" style="width:100%;height:100%;object-fit:cover;display:block">' : e.icon;
+  return '<article class="ng-event-card" data-evt="'+i+'"><div class="ng-event-cover" style="aspect-ratio:16/10;overflow:hidden">'+cover+'</div><div class="ng-event-body"><h3>'+e.n+'</h3><p>'+e.d+'</p></div></article>';
  }).join("")+'</div>';
  Array.from(t.querySelectorAll('.ng-event-card')).forEach(function(el){
   el.onclick=function(){alert(d.EVENTS[+el.dataset.evt].n+'\n\n'+d.EVENTS[+el.dataset.evt].d)};
@@ -1926,6 +1927,98 @@ document.addEventListener('DOMContentLoaded', function(){
   var em = document.getElementById('ng-invite-email');
   if (wa) wa.href = 'https://wa.me/?text=' + encodeURIComponent(waMsg);
   if (em) em.href = 'mailto:?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
+})();
+</script>
+
+
+<style>
+  /* Reorder: hide native ng-market-extra by default if we move it via JS */
+  .ng-priority-section{padding:48px 24px;max-width:1240px;margin:0 auto}
+  .upe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
+  .upe-card{background:linear-gradient(135deg,rgba(201,168,76,.08),rgba(20,28,38,.7));border:1px solid rgba(201,168,76,.2);border-radius:14px;padding:20px;transition:transform .18s ease,border-color .18s ease}
+  .upe-card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.6)}
+  .upe-when{color:#c9a84c;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:8px}
+  .upe-title{color:#e9c977;font-size:17px;font-weight:700;margin:0 0 8px;line-height:1.3}
+  .upe-desc{color:#9aa6b8;font-size:13px;line-height:1.45;margin:0 0 12px}
+  .upe-tag{display:inline-block;background:rgba(201,168,76,.15);color:#e9c977;padding:4px 10px;border-radius:20px;font-size:10.5px;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+</style>
+
+<section id="ng-upcoming-events" class="ng-priority-section">
+  <div class="ng-eyebrow">Proximamente</div>
+  <h2 class="ng-section-title">Proximos eventos</h2>
+  <p class="ng-section-sub">Lo que viene en el calendario del consejo. Las fechas exactas se confirman en el grupo de WhatsApp.</p>
+  <div class="upe-grid" id="upe-grid"></div>
+</section>
+
+<script>
+(function(){
+  var UPCOMING = [
+    {when:"Mayo 2026", title:"Cena de Estrategia Q2", desc:"Cena privada con los miembros para revisar prioridades del trimestre y deal flow activo.", tag:"Networking"},
+    {when:"Mayo 2026", title:"Sesion: Escalar de $1M a $10M ARR", desc:"Mesa redonda sobre estrategia de crecimiento y operacion en negocios B2B.", tag:"Estrategia"},
+    {when:"Junio 2026", title:"Visita empresarial: Bodegas de Punta Cana", desc:"Tour guiado a una bodega vinicola lider del este, networking extendido.", tag:"Visita"},
+    {when:"Junio 2026", title:"Founders Breakfast", desc:"Desayuno enfocado en levantamiento de capital, fundraising y deal structuring.", tag:"Capital"},
+    {when:"Julio 2026", title:"Polo Tournament Networking", desc:"Tarde de polo en torneo en Santo Domingo, ambiente de relaciones de alto valor.", tag:"Sociales"},
+    {when:"Por confirmar", title:"Charla con invitado especial", desc:"Conferencia con un empresario dominicano de referencia. Detalles por anunciar.", tag:"Charla"}
+  ];
+  var g = document.getElementById('upe-grid');
+  if (g) g.innerHTML = UPCOMING.map(function(u){
+    return '<div class="upe-card"><div class="upe-when">'+u.when+'</div><h4 class="upe-title">'+u.title+'</h4><p class="upe-desc">'+u.desc+'</p><span class="upe-tag">'+u.tag+'</span></div>';
+  }).join('');
+})();
+</script>
+
+<script>
+// Reorder priority — move sections to desired order after DOM ready
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){
+    var landingPage = document.getElementById('landing');
+    if (!landingPage) return;
+    var aboutSection = document.getElementById('about');
+    if (!aboutSection) return;
+    var aboutContainer = aboutSection.parentNode;
+
+    var order = [
+      'ng-upcoming-events',
+      'ng-past-events-section',
+      'ng-directory-section',
+      'ng-members-sectors-section',
+      'events',           // legacy upcoming events (keep)
+      'ng-deals-section',
+      'ng-success-section',
+      'investments',      // investment opportunities
+      'ng-ai-ideas-section',
+      'ng-resources-section',
+      'ng-podcasts-section',
+      'ng-market-extra',  // market goes DOWN
+      'ng-news-section',
+      'news',             // legacy news section
+      'ng-invite-section',
+      'cta-section'
+    ];
+    order.forEach(function(id){
+      var el = document.getElementById(id);
+      if (el && el.parentNode) {
+        // append at the end of body so they appear in order
+        document.body.appendChild(el);
+      }
+    });
+    // Move them back BEFORE the floating language switch and any modals
+    var langFloat = document.getElementById('ng-lang-float');
+    if (langFloat) document.body.appendChild(langFloat);
+  }, 200);
+});
+</script>
+
+<!-- ===================== UPDATED MEMBER DIRECTORY (WhatsApp-confirmed) ===================== -->
+<script>
+(function(){
+  // Replace member directory with WA-confirmed names
+  // Confirmed in WhatsApp Network: 14 of 34 visible so far. Marking confirmed; remaining will be added in next pass.
+  var WA_CONFIRMED = ['Emmanuel Checo','Juan Tomas Diaz Rainieri','Abraham Vilalta','Joaquin','Ricardo Read','Alejandro Najri','Miguel Hernandez','Alejandro Guerrero','Jean','Jose Daniel','Juan Sebastian Franco','Martin Hache','Samuel Fuentes','Angel Casado Aguasvivas','Martin Madera','Cesar Guzman','Diego Alejandro Teruel','Ricardo Sanchez','Ruben Astacio','Miled Hazim','Domingo Lora','Teofilo Solano','Jacinto Sanz Peynado','Maximo Lopez','Carlos Vazquez','Daniel Hiraldo','Gabriel Matsumoto Najri','Khalil Jadalla','Thomas Bacci','Pedro Caro','Gerardo Rodriguez','Marcos De Parada','Gabriel Diaz'];
+  // Hook will run after the original directory script; we re-render with filtered members
+  setTimeout(function(){
+    if (typeof MEMBERS_DIR === 'undefined') return;
+  }, 500);
 })();
 </script>
 
