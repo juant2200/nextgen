@@ -1699,7 +1699,7 @@ document.addEventListener('DOMContentLoaded', function(){
     {n:"Pedro Caro", r:"Brokerage de commodities", i:"Finanzas / Commodities", b:"Emprendedor en brokerage de commodities.", w:"+1 8097812095"}
   ];
   var dirGrid = document.getElementById('ng-directory-grid');
-  function renderDirectory(filter){
+  window.renderDirectory = function renderDirectory(filter){
     if (!dirGrid) return;
     var f = (filter||'').toLowerCase().trim();
     var filtered = MEMBERS_DIR.filter(function(m){
@@ -1718,6 +1718,7 @@ document.addEventListener('DOMContentLoaded', function(){
   renderDirectory('');
   var dirSearch = document.getElementById('ng-dir-search');
   if (dirSearch) dirSearch.addEventListener('input', function(e){ renderDirectory(e.target.value); });
+  window.renderDirectory = renderDirectory;
 
   // ============ LIVE CRYPTO via CoinGecko (free, no key) ============
   function refreshCrypto(){
@@ -2098,6 +2099,20 @@ window._NG_LI = {
   'Gabriel Diaz': 'https://www.linkedin.com/in/gabriel-m-48680a136/',
   'Thomas Bacci': 'https://www.linkedin.com/in/thomas-ciampi-bacci-meyer-b73506283/'
 };
+// Force re-render of directory now that _NG_LI is loaded
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(function(){
+    if (typeof renderDirectory === 'function') {
+      renderDirectory(document.getElementById('ng-dir-search')?.value || '');
+    }
+  }, 100);
+});
+// Also try immediately in case DOMContentLoaded already fired
+setTimeout(function(){
+  if (typeof renderDirectory === 'function') {
+    renderDirectory(document.getElementById('ng-dir-search')?.value || '');
+  }
+}, 200);
 </script>
 
 </body>
