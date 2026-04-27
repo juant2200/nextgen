@@ -1655,15 +1655,20 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // ============ SUCCESS BOARD (placeholders for now) ============
   var SUCCESS = [
-    {who:"Emmanuel Checo", what:"Vela cierra ronda Seed", desc:"Vela completó su ronda seed con participación de miembros de NextGEN como inversionistas ángeles."},
-    {who:"Miled Hazim", what:"Helios Solar Park avanza", desc:"Avance significativo en el desarrollo del parque fotovoltaico Helios Solar Park."},
-    {who:"Maximo Lopez", what:"Oliver & Oliver expansión", desc:"Bodegas Oliver & Oliver ampliando portafolio premium en RD y Caribe."},
-    {who:"Comparte tu logro", what:"WhatsApp al consejo", desc:"Si tienes un logro reciente que quieres compartir con la comunidad, escríbele al consejo.", url:"https://wa.me/18092993338?text=Hola%20NextGEN%2C%20quiero%20compartir%20un%20logro%20con%20el%20grupo"}
+    {who:"Emmanuel Checo", what:"Vela cierra ronda Seed", desc:"Vela completó su ronda seed con participación de miembros de NextGEN como inversionistas ángeles.", url:"https://www.linkedin.com/company/vela-rd/"},
+    {who:"Miled Hazim", what:"Helios Solar Park avanza", desc:"Avance significativo en el desarrollo del parque fotovoltaico Helios Solar Park.", url:"https://www.google.com/search?q=Helios+Solar+Park+Republica+Dominicana"},
+    {who:"Maximo Lopez", what:"Oliver & Oliver expansión", desc:"Bodegas Oliver & Oliver ampliando portafolio premium en RD y Caribe.", url:"https://www.oliverandoliverus.com/"},
+    {who:"Comparte tu logro", what:"WhatsApp al consejo", desc:"Si tienes un logro reciente que quieres compartir con la comunidad, escríbele al consejo.", url:"https://wa.me/18092993338?text=Hola%20NextGEN%2C%20quiero%20compartir%20un%20logro%20con%20el%20grupo", isCTA:true}
   ];
   var sg = document.getElementById('ng-success-grid');
   if (sg) sg.innerHTML = SUCCESS.map(function(s){
-    var link = s.url ? '<a href="'+s.url+'" target="_blank" rel="noopener">Compartir →</a>' : '';
-    return '<div class="ng-card-x"><div class="ng-meta">'+s.who+'</div><h4>'+s.what+'</h4><p>'+s.desc+'</p>'+link+'</div>';
+    var clickable = !!s.url;
+    var hint = s.isCTA ? 'Compartir →' : 'Leer más →';
+    var inner = '<div class="ng-meta">'+s.who+'</div><h4>'+s.what+'</h4><p>'+s.desc+'</p>' + (clickable ? '<span style="color:#c9a84c;font-size:13px;font-weight:600;display:block;margin-top:8px">'+hint+'</span>' : '');
+    if (clickable) {
+      return '<a href="'+s.url+'" target="_blank" rel="noopener" class="ng-card-x" style="display:block;text-decoration:none;color:inherit">'+inner+'</a>';
+    }
+    return '<div class="ng-card-x">'+inner+'</div>';
   }).join('');
 
   // ============ DEALS / DISCOUNTS (placeholders, opt-in by members) ============
